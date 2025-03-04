@@ -1,17 +1,12 @@
 Package: rSTEMMUS.SCOPE
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Run STEMMUS-SCOPE model through R
 Version: 0.1.0
-Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
-  )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Author: Alby Duarte Rocha
+Authors@R: person("Alby", "Duarte Rocha", email = "a.duarterocha@tu-berlin.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6370-1240"))
+Maintainer: The package maintainer <a.duarterocha@tu-berlin.de>
+Description: This package compile functions to run STEMMUS-SCOPE by preparing and selecting inputs parameters (variables and constants) and model setting. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/AlbyDR/rSTEMMUS.SCOPE

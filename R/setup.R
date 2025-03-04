@@ -13,7 +13,7 @@
 #'
 #' EC data----
 #'
-#' input_folder(STEMMUS_SCOPE_dir = "D:/model/STEMMUS_SCOPE/",
+#' setup(STEMMUS_SCOPE_dir = "D:/model/STEMMUS_SCOPE/",
 #'             StartTime = "2023-06-01T00:00",
 #'            EndTime = "2023-11-30T23:00",
 #'             site_name = "DE-HoH",
@@ -25,7 +25,7 @@
 #'site_CRN_names <- c(paste0("DE-C0",1:9), paste0("DE-C",10:19))
 
 #'for (i in 1:19) {
-#'input_folder(STEMMUS_SCOPE_dir = "D:/model/STEMMUS_SCOPE/",
+#'setup(STEMMUS_SCOPE_dir = "D:/model/STEMMUS_SCOPE/",
 #'            StartTime = "2023-06-01T00:00",
 #'            EndTime = "2023-11-30T23:00",
 #'            site_name = site_CRN_names[i],
@@ -35,7 +35,7 @@
 #'
 #' @export
 #'
-input_folder <- function(
+setup <- function(
     STEMMUS_SCOPE_dir = "D:/model/STEMMUS_SCOPE/",
     StartTime = NA,
     EndTime = NA,

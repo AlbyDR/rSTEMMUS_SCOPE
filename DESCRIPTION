@@ -12,3 +12,4 @@ LazyData: true
 URL: https://github.com/AlbyDR/rSTEMMUS.SCOPE
 BugReports: https://github.com/AlbyDR/rSTEMMUS.SCOPE/issues
 RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)

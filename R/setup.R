@@ -12,7 +12,7 @@
 #' @examples
 #'
 #'
-#' EC data----
+#' EC data
 #'
 #' setup(patch = "D:/model/STEMMUS_SCOPE/",
 #'       StartTime = "2023-06-01T00:00",

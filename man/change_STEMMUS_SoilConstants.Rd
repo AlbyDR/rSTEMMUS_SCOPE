@@ -2,7 +2,7 @@
 % Please edit documentation in R/change_.R
 \name{change_STEMMUS_SoilConstants}
 \alias{change_STEMMUS_SoilConstants}
-\title{a function to change the current STEMMUS Model Soil Constants}
+\title{to change the current STEMMUS Model Soil Constants}
 \usage{
 change_STEMMUS_SoilConstants(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -41,10 +41,11 @@ next runs and not a specific site_name/run_name run as in SCOPE.
 }
 \examples{
 
-
+\dontrun{
 change_soil_constants(XK = 0.025)
 
 formattable::formattable(check_STEMMUS_SoilConstants(), align = c("l","c"))
+}
 
 }
 \seealso{

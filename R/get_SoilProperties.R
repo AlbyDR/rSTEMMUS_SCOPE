@@ -1,4 +1,4 @@
-#' Extract soil properties for point locations (Lat/Lon or sf multipoint object)
+#' to extract soil properties for point locations (Lat/Lon or sf multipoint object)
 #'
 #' @description
 #' `get_SoilProperties` returns all soil properties required to run the model.

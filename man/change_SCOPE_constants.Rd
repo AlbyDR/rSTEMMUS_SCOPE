@@ -2,7 +2,7 @@
 % Please edit documentation in R/change_.R
 \name{change_SCOPE_constants}
 \alias{change_SCOPE_constants}
-\title{a function change the current SCOPE model default constants}
+\title{to change the current SCOPE model default constants}
 \usage{
 change_SCOPE_constants(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -103,9 +103,9 @@ change_SCOPE_constants(
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,}
 
-\item{IGBP_veg_long}{the main IGBP landcover class in the point of interest,}
+\item{LAT, LON, startDOY, endDOY, timezn}{the latitude, longitude, timezone and initial and final ts doy of the year ,}
 
-\item{hc}{canopy height in the point of interest,}
+\item{IGBP_veg_long}{the main IGBP landcover class in the point of interest,}
 
 \item{veg_type_C}{default is 3, alternately can be use 4}
 
@@ -113,21 +113,19 @@ change_SCOPE_constants(
 
 \item{Vcmo, m, BallBerry0, Type, kV, Rdparam, Tparam, Tyear, beta, kNPQs, qLs, stressfactor}{Leaf_Biochemical parameters for the default values @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
 
-\item{fqe}{Fluorescence parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{fqe}{Fluorescence parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
 \item{spectrum, rss, rs_thermal, cs, rhos, lambdas, SMC, BSMBrightness, BSMlat, BSMlon}{Soil parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
 
-\item{LAI, hc, LIDFa, LIDFb, leafwidth}{Canopy parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{LAI, hc, LIDFa, LIDFb, leafwidth}{Canopy parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{z, Rin, Rli, Ta, p, ea, u, Ca, Oa}{Meteo parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{z, Rin, Rli, Ta, p, ea, u, Ca, Oa}{Meteo parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{zo, d, Cd, rb, CR, CD1, Psicor, CSSOIL, rbs, rwc}{Aerodynamic parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{zo, d, Cd, rb, CR, CD1, Psicor, CSSOIL, rbs, rwc}{Aerodynamic parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{tts, tto, psi}{Angles parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{tts, tto, psi}{Angles parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{delHaV, delSV, delHdV, delHaJ, delSJ, delHdJ, delHaP, delSP, delHdP, delHaR, delSR, delHdR, delHaKc, delHaKo, delHaT, Q10, s1, s2, s3, s4, s5, s6}{Photosynthetic Temperature Dependence Functional parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
-
-\item{lat, lon}{the latitude and longitude of the point of interest,}
+\item{delHaV, delSV, delHdV, delHaJ, delSJ, delHdJ, delHaP, delSP, delHdP, delHaR, delSR, delHdR, delHaKc, delHaKo, delHaT, Q10, s1, s2, s3, s4, s5, s6}{Photosynthetic Temperature Dependence Functional parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 }
 \value{
 write the new SCOPE model default constants in the input_data.xlsx file
@@ -140,6 +138,7 @@ This function change current SCOPE model default constants selected to run, @see
 }
 \examples{
 
+\dontrun{
 change_SCOPE_constants(site_name = "DE-Hai",
                        run_name = "ECdata_36",
                        LAT = st_coordinates(EC_loc)[3,2],
@@ -151,6 +150,8 @@ change_SCOPE_constants(site_name = "DE-Hai",
 
 formattable::formattable(check_SCOPE_constants(site_name = "DE-Hai", run_name = "ECdata_36")[[1]],
                          align = c("l","c","c","l"))
+
+}
 
 }
 \seealso{

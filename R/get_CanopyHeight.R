@@ -1,4 +1,4 @@
-#' Download Global Canopy Height 10m raster cropped to the area of interest (remote sensing product from Z...)
+#' to download Global Canopy Height 10m raster cropped to the area of interest
 #'
 #' @description
 #' `get_CanopyHeight` write an .tif raster image with 10m pixel for the area of interest.

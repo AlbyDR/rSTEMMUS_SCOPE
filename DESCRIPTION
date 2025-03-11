@@ -16,3 +16,14 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Imports: 
+    data.table,
+    dplyr,
+    ecmwfr,
+    rhdf5,
+    rio,
+    sf,
+    stringr,
+    terra,
+    tibble,
+    tidyr

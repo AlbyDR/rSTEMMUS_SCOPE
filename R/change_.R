@@ -1,6 +1,6 @@
 # SCOPE----
 
-#' a function change the current SCOPE options
+#' to change the current SCOPE options
 #'
 #' @description
 #' `change_SCOPE_options` change current SCOPE model options in the input_data.xlsx file
@@ -16,12 +16,14 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' change_SCOPE_options(site_name = "DE-Hai",
 #'                      run_name = "ECdata_36",
 #'                      calc_ebal = 1)
 #'
 #' formattable::formattable(check_SCOPE_options(site_name = "DE-Hai", run_name = "ECdata_36"),
 #'                          align = c("c","l"))
+#' }
 #'
 #' @export
 #'
@@ -70,7 +72,7 @@ return(print(paste0("The SCOPE model settings were altered inside the folder ", 
 }
 
 
-#' a function change the current SCOPE model default constants
+#' to change the current SCOPE model default constants
 #'
 #' @description
 #' `change_SCOPE_constants` change current SCOPE model default constants in the input_data.xlsx file
@@ -80,25 +82,25 @@ return(print(paste0("The SCOPE model settings were altered inside the folder ", 
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
-#' @param lat,lon the latitude and longitude of the point of interest,
+#' @param LAT,LON,startDOY,endDOY,timezn the latitude, longitude, timezone and initial and final ts doy of the year ,
 #' @param IGBP_veg_long the main IGBP landcover class in the point of interest,
-#' @param hc canopy height in the point of interest,
 #' @param veg_type_C default is 3, alternately can be use 4
-#' @param Cab,Cca,Cdm,Cw,Cs,Cant,N,rho_thermal,tau_thermal PROSPECT submodel parameters for the default values @seealso [get_SCOPE_constants()]
-#' @param Vcmo,m,BallBerry0,Type,kV,Rdparam,Tparam,Tyear,beta,kNPQs,qLs,stressfactor Leaf_Biochemical parameters for the default values @seealso [get_SCOPE_constants()]
-#' @param fqe Fluorescence parameters @seealso [get_SCOPE_constants()]
-#' @param spectrum,rss,rs_thermal,cs,rhos,lambdas,SMC,BSMBrightness,BSMlat,BSMlon Soil parameters @seealso [get_SCOPE_constants()]
-#' @param LAI,hc,LIDFa,LIDFb,leafwidth Canopy parameters @seealso [get_SCOPE_constants()]
-#' @param z,Rin,Rli,Ta,p,ea,u,Ca,Oa Meteo parameters @seealso [get_SCOPE_constants()]
-#' @param zo,d,Cd,rb,CR,CD1,Psicor,CSSOIL,rbs,rwc Aerodynamic parameters @seealso [get_SCOPE_constants()]
-#' @param tts,tto,psi Angles parameters @seealso [get_SCOPE_constants()]
-#' @param delHaV,delSV,delHdV,delHaJ,delSJ,delHdJ,delHaP,delSP,delHdP,delHaR,delSR,delHdR,delHaKc,delHaKo,delHaT,Q10,s1,s2,s3,s4,s5,s6 Photosynthetic Temperature Dependence Functional parameters @seealso [get_SCOPE_constants()]
+#' @param Cab,Cca,Cdm,Cw,Cs,Cant,N,rho_thermal,tau_thermal PROSPECT submodel parameters for the default values @seealso [check_SCOPE_constants()]
+#' @param Vcmo,m,BallBerry0,Type,kV,Rdparam,Tparam,Tyear,beta,kNPQs,qLs,stressfactor Leaf_Biochemical parameters for the default values @seealso [check_SCOPE_constants()]
+#' @param fqe Fluorescence parameters @seealso [check_SCOPE_constants()]
+#' @param spectrum,rss,rs_thermal,cs,rhos,lambdas,SMC,BSMBrightness,BSMlat,BSMlon Soil parameters @seealso [check_SCOPE_constants()]
+#' @param LAI,hc,LIDFa,LIDFb,leafwidth Canopy parameters @seealso [check_SCOPE_constants()]
+#' @param z,Rin,Rli,Ta,p,ea,u,Ca,Oa Meteo parameters @seealso [check_SCOPE_constants()]
+#' @param zo,d,Cd,rb,CR,CD1,Psicor,CSSOIL,rbs,rwc Aerodynamic parameters @seealso [check_SCOPE_constants()]
+#' @param tts,tto,psi Angles parameters @seealso [check_SCOPE_constants()]
+#' @param delHaV,delSV,delHdV,delHaJ,delSJ,delHdJ,delHaP,delSP,delHdP,delHaR,delSR,delHdR,delHaKc,delHaKo,delHaT,Q10,s1,s2,s3,s4,s5,s6 Photosynthetic Temperature Dependence Functional parameters @seealso [check_SCOPE_constants()]
 
 #' @return write the new SCOPE model default constants in the input_data.xlsx file
 #' @family check the current parameters and settings
 #'
 #' @examples
 #'
+#' \dontrun{
 #' change_SCOPE_constants(site_name = "DE-Hai",
 #'                        run_name = "ECdata_36",
 #'                        LAT = st_coordinates(EC_loc)[3,2],
@@ -110,6 +112,8 @@ return(print(paste0("The SCOPE model settings were altered inside the folder ", 
 #'
 #' formattable::formattable(check_SCOPE_constants(site_name = "DE-Hai", run_name = "ECdata_36")[[1]],
 #'                          align = c("l","c","c","l"))
+#'
+#' }
 #'
 #' @export
 #'
@@ -232,7 +236,7 @@ change_SCOPE_constants <- function(
 
 # STEMMUS----
 
-#' a function to change the current STEMMUS Model settings
+#' to change the current STEMMUS Model settings
 #'
 #' @description
 #' `change_STEMMUS_ModelSettings` change current model settings for STEMMUS
@@ -249,9 +253,11 @@ change_SCOPE_constants <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' change_STEMMUS_ModelSettings(J = 1)
 #'
 #' formattable::formattable(check_STEMMUS_ModelSettings(), align = c("l","c"))
+#'}
 #'
 #' @export
 #'
@@ -371,7 +377,7 @@ change_STEMMUS_ModelSettings <- function(
 }
 
 
-#' a function to change the current STEMMUS Model Soil Constants
+#' to change the current STEMMUS Model Soil Constants
 #'
 #' @description
 #' `change_STEMMUS_SoilConstants` change current model Soil Constants inputs for STEMMUS
@@ -388,10 +394,11 @@ change_STEMMUS_ModelSettings <- function(
 #'
 #' @examples
 #'
-#'
+#' \dontrun{
 #' change_soil_constants(XK = 0.025)
 #'
 #' formattable::formattable(check_STEMMUS_SoilConstants(), align = c("l","c"))
+#'}
 #'
 #' @export
 #'
@@ -441,7 +448,7 @@ return(print("constants modified, check it using get_soil_constants() function")
 }
 
 
-#' a function to change the current STEMMUS Model define Constants file
+#' to change the current STEMMUS Model define Constants file
 #'
 #' @description
 #' `change_STEMMUS_DefineConstants` change current model define Constants inputs for STEMMUS
@@ -452,17 +459,18 @@ return(print("constants modified, check it using get_soil_constants() function")
 #' next runs and not a specific site_name/run_name run as in SCOPE.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
-#' @param A,h,c,cp,cp_specific,R,R_specific,rhoa,kappa,MH2O,Mair,MCO2,sigmaSB,deg2rad,C2K,CKTN,l,g,RHOL,
-#' @param RHOI,Rv,RDA,RHO_bulk,Hc,GWT,MU_a,Gamma0,Gamma_w,Lambda1,Lambda2,Lambda3,MU_W0,MU1,b,W0,c_L,c_V,c_a,c_i,lambdav,k,
+#' @param A,h,c,cp,cp_specific,R,R_specific,rhoa,kappa,MH2O,Mair,MCO2,sigmaSB,deg2rad,C2K,CKTN,l,g,RHOL parameters
+#' @param RHOI,Rv,RDA,RHO_bulk,Hc,GWT,MU_a,Gamma0,Gamma_w,Lambda1,Lambda2,Lambda3,MU_W0,MU1,b,W0,c_L,c_V,c_a,c_i,lambdav,k more parameters
 #' @return write the new STEMMUS define Constants inputs
 #' @family check the current parameters and settings
 #'
 #' @examples
 #'
-#'
+#' \dontrun{
 #' change_define_constants(A = "6.02214E23")
 #'
 #' formattable::formattable(check_STEMMUS_DefineConstants(), align = c("l","c"))
+#'}
 #'
 #' @export
 #'

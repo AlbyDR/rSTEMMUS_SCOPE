@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_SCOPE_options}
 \alias{check_SCOPE_options}
-\title{a function check current SCOPE options}
+\title{to check current SCOPE options}
 \usage{
 check_SCOPE_options(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -27,11 +27,12 @@ the options are the defaults @seealso \code{\link[=info_SCOPE_options]{info_SCOP
 }
 \examples{
 
-run
+\dontrun{
 check_SCOPE_options(site_name = "DE-Hai", run_name = "ECdata_36")
 
 formattable::formattable(check_SCOPE_options(site_name = "DE-Hai", run_name = "ECdata_36"),
                          align = c("c","l"))
+}
 
 }
 \seealso{

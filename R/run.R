@@ -1,4 +1,4 @@
-#' It runs the model (as time series prediction) in MATLAB
+#' to run the model in MATLAB (as time series simulation)
 #'
 #' @description
 #' `run` opens the MATLAB, run the model and close it when is done
@@ -6,7 +6,7 @@
 #' @details
 #' This is a function run the model and MATLAB using the input variables set before
 #' **important** it needs MATLAB installed in the machine and the functions
-#' @seealso [setup(), set_static_inputs(), set_ts_inputs()] be previously ran
+#' @seealso [setup_folder())],  @seealso [set_static_inputs())],  @seealso [set_ts_inputs()] be previously ran
 #' with the same site_name and run_name
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",

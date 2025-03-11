@@ -2,7 +2,7 @@
 % Please edit documentation in R/run.R
 \name{run}
 \alias{run}
-\title{It runs the model (time series) in MATLAB}
+\title{to run the model in MATLAB (as time series simulation)}
 \usage{
 run(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -46,6 +46,10 @@ run_Matlab(patch = "D:/model/STEMMUS_SCOPE/",
 
 }
 \seealso{
-\code{\link[=setup(), set_static_inputs(), set_ts_inputs]{setup(), set_static_inputs(), set_ts_inputs()}} be previously ran
+[setup_folder())],  @seealso [set_static_inputs())],  @seealso [set_ts_inputs()] be previously ran
 with the same site_name and run_name
+
+[setup_folder())]: R:setup_folder())
+[set_static_inputs())]: R:set_static_inputs())
+[set_ts_inputs()]: R:set_ts_inputs()
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_SoilProperties.R
 \name{get_SoilProperties}
 \alias{get_SoilProperties}
-\title{Extract soil properties for point locations (Lat/Lon or sf multipoint object)}
+\title{to extract soil properties for point locations (Lat/Lon or sf multipoint object)}
 \usage{
 get_SoilProperties(
   patch = "D:/model/STEMMUS_SCOPE/input/input_for_input/SoilProperty/",

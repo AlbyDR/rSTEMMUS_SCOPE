@@ -27,10 +27,11 @@ currently being used by the model
 }
 \examples{
 
+\dontrun{
 info_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36")
 
-formattable(info_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"),
-            align = c("l","l"))
+formattable(info_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"), align = c("l","l"))
+}
 
 }
 \seealso{

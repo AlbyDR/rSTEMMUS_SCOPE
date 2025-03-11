@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_ts_inputs.R
 \name{set_ts_inputs}
 \alias{set_ts_inputs}
-\title{Setting all time series model inputs for the location of interest}
+\title{to set all time series model inputs for a location}
 \usage{
 set_ts_inputs(
   patch = "D:/model/STEMMUS_SCOPE/",

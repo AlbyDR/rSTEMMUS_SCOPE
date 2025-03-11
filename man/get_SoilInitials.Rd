@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_SoilInitials.R
 \name{get_SoilInitials}
 \alias{get_SoilInitials}
-\title{Download soil initial condition from Copernicus ERA5 (Soil temperature and Volumetric Soil Water per depth)}
+\title{to download soil initial conditions from ERA5}
 \usage{
 get_SoilInitials(
   dataset = "reanalysis-era5-land",
@@ -30,13 +30,13 @@ get_SoilInitials(
 
 \item{vars}{= c(}
 
+\item{years, months, days, times}{include the first day of the time series "YYYY", "MM", "DD" and "HH:mm"}
+
 \item{patch}{the patch to save/write the file}
 
 \item{target_f}{= "download2.grib",}
 
 \item{timeout_m}{= 50}
-
-\item{year, month, day, times}{include the first day of the time series "YYYY", "MM", "DD" and "HH:mm"}
 }
 \value{
 returns list with all soil properties required

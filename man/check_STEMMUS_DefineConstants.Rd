@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_STEMMUS_DefineConstants}
 \alias{check_STEMMUS_DefineConstants}
-\title{a function to check the current STEMMUS Model constants from the define file}
+\title{to check the current STEMMUS Model constants from the define file}
 \usage{
 check_STEMMUS_DefineConstants(patch = "D:/model/STEMMUS_SCOPE/")
 }
@@ -24,7 +24,9 @@ soil constant \code{\link[=info_STEMMUS_SoilConstants]{info_STEMMUS_SoilConstant
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_STEMMUS_DefineConstants(), align = c("l","c"))
+}
 
 }
 \seealso{

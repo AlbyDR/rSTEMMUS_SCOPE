@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_STEMMUS_SoilInitials}
 \alias{check_STEMMUS_SoilInitials}
-\title{a function to check the current STEMMUS Model soil initial}
+\title{to check the current STEMMUS Model soil initial}
 \usage{
 check_STEMMUS_SoilInitials(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -13,8 +13,7 @@ check_STEMMUS_SoilInitials(
 \arguments{
 \item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
 
-\item{site_name, run_name}{the name of the location and the name of run. The last can be used to
-name runs with different model parameters or settings,}
+\item{site_name, run_name}{the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,}
 }
 \value{
 a table with information about STEMMUS current soil initial inputs
@@ -30,8 +29,10 @@ for each run.
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","c"))
 formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai", run_name = "ECdata_36")[[2]], align = c("l","c"))
+}
 
 }
 \seealso{

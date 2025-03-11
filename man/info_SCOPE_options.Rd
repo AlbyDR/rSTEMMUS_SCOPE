@@ -18,7 +18,9 @@ The function has no arguments, just need to run info_SCOPE_options()
 }
 \examples{
 
+\dontrun{
 formattable::formattable(info_SCOPE_options(), align = c("l","c","c","l"))
+ }
 
 }
 \seealso{

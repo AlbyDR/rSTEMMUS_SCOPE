@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_CanopyHeight.R
 \name{get_CanopyHeight}
 \alias{get_CanopyHeight}
-\title{Download Global Canopy Height 10m raster cropped to the area of interest (remote sensing product from Z...)}
+\title{to download Global Canopy Height 10m raster cropped to the area of interest}
 \usage{
 get_CanopyHeight(site_name = NA, N_S_degree = NA, W_E_degree = NA, patch = NA)
 }

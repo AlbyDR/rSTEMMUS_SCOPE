@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_STEMMUS_ModelSettings}
 \alias{check_STEMMUS_ModelSettings}
-\title{a function to check the STEMMUS Model Settings options}
+\title{to check the STEMMUS Model Settings options}
 \usage{
 check_STEMMUS_ModelSettings(patch = "D:/model/STEMMUS_SCOPE/")
 }
@@ -23,7 +23,9 @@ next runs and not a specific site_name/run_name as in SCOPE.
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_STEMMUS_ModelSettings(), align = c("l","c"))
+}
 
 }
 \seealso{

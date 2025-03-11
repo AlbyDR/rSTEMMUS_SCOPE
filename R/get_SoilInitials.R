@@ -1,4 +1,4 @@
-#' Download soil initial condition from Copernicus ERA5 (Soil temperature and Volumetric Soil Water per depth)
+#' to download soil initial conditions from ERA5
 #'
 #' @description
 #' `get_SoilInitials` returns Soil temperature and Volumetric Soil Water per depth required to run the model.
@@ -14,7 +14,7 @@
 #' @param product = "reanalysis"
 #' @param vars = c(
 #' @param area_box = c(52.10, 9.75, 51.0, 11.65),
-#' @param year,month,day,times include the first day of the time series "YYYY", "MM", "DD" and "HH:mm"
+#' @param years,months,days,times include the first day of the time series "YYYY", "MM", "DD" and "HH:mm"
 #' @param format = "grib"
 #' @param target_f = "download2.grib",
 #' @param timeout_m = 50

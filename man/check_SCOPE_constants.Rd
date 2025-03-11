@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_SCOPE_constants}
 \alias{check_SCOPE_constants}
-\title{a function check current SCOPE constants}
+\title{to check current SCOPE constants}
 \usage{
 check_SCOPE_constants(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -27,11 +27,13 @@ using @seealso \code{\link[=set_static_inputs]{set_static_inputs()}} it will pre
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_SCOPE_constants(site_name = "DE-Hai", run_name = "ECdata_36")[[1]],
             align = c("l","c","c","l"))
 
 formattable::formattable(check_SCOPE_constants(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
             align = c("l","c","c","l"))
+}
 
 }
 \seealso{

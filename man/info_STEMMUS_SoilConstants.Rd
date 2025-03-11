@@ -18,7 +18,9 @@ The function has no arguments, just need to run info_STEMMUS_SoilConstants()
 }
 \examples{
 
+\dontrun{
 formattable::formattable(info_STEMMUS_SoilConstants(), align = c("l","c","c","l"))
+}
 
 }
 \seealso{

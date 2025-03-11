@@ -1,6 +1,6 @@
 # SCOPE ----
 
-#' a function check current SCOPE options
+#' to check current SCOPE options
 #'
 #' @description
 #' `check_SCOPE_options` present current SCOPE model options selected in the input_data.xlsx file
@@ -16,11 +16,12 @@
 #'
 #' @examples
 #'
-#' run
+#' \dontrun{
 #' check_SCOPE_options(site_name = "DE-Hai", run_name = "ECdata_36")
 #'
 #' formattable::formattable(check_SCOPE_options(site_name = "DE-Hai", run_name = "ECdata_36"),
 #'                          align = c("c","l"))
+#' }
 #'
 #' @export
 #'
@@ -40,7 +41,7 @@ return(SCOPE_options)
 }
 
 
-#' a function check current SCOPE constants
+#' to check current SCOPE constants
 #'
 #' @description
 #' `check_SCOPE_constants` present current SCOPE model constant filled in the input_data.xlsx file
@@ -56,11 +57,13 @@ return(SCOPE_options)
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_SCOPE_constants(site_name = "DE-Hai", run_name = "ECdata_36")[[1]],
 #'             align = c("l","c","c","l"))
 #'
 #' formattable::formattable(check_SCOPE_constants(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
 #'             align = c("l","c","c","l"))
+#' }
 #'
 #' @export
 #'
@@ -72,7 +75,7 @@ check_SCOPE_constants <- function(
   input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_constants <- input_data[[4]][6:117,c(1,2,8,9)]
-  SCOPE_constants |> dplyr::filter(!is.na(Input_for_SCOPE)) -> SCOPE_constants
+  SCOPE_constants |> dplyr::filter(!is.na("Input_for_SCOPE")) -> SCOPE_constants
   SCOPE_constants[,1] <- stringr::word(SCOPE_constants[,1], 1)
   SCOPE_constants[is.na(SCOPE_constants)] <- ""
 
@@ -84,7 +87,7 @@ check_SCOPE_constants <- function(
 }
 
 
-#' a function to check current SCOPE time series input files used by the model
+#'  to check current SCOPE time series input files used by the model
 #'
 #' @description
 #' `check_SCOPE_tsInputs` present current time series inputs used by the SCOPE model
@@ -101,10 +104,11 @@ check_SCOPE_constants <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36")
 #'
-#' formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"),
-#'             align = c("l","l"))
+#' formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"), align = c("l","l"))
+#' }
 #'
 #' @export
 #'
@@ -116,7 +120,7 @@ check_SCOPE_tsInputs <- function(
   input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_ts_inputs <- input_data[[3]][3:33, c(1,2)]
-  SCOPE_ts_inputs |> dplyr::filter(!is.na(files)) -> SCOPE_ts_inputs
+  SCOPE_ts_inputs |> dplyr::filter(!is.na("files")) -> SCOPE_ts_inputs
 
   row.names(SCOPE_ts_inputs) <- NULL
 
@@ -127,7 +131,7 @@ check_SCOPE_tsInputs <- function(
 
 # STEMMUS----
 
-#' a function to check the STEMMUS Model Settings options
+#' to check the STEMMUS Model Settings options
 #'
 #' @description
 #' `check_STEMMUS_ModelSettings` present current model settings (options) for STEMMUS
@@ -144,7 +148,9 @@ check_SCOPE_tsInputs <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_STEMMUS_ModelSettings(), align = c("l","c"))
+#' }
 #'
 #' @export
 #'
@@ -160,14 +166,14 @@ check_STEMMUS_ModelSettings <- function(
     stringr::str_split(pattern = ";") |> unlist() |>
     stringr::str_subset(pattern = " = ") |>
     tibble::as_tibble() |>
-    tidyr::separate_wider_delim(value, " = ", names = c("name", "value")) -> ModelSettings
+    tidyr::separate_wider_delim("value", " = ", names = c("name", "value")) -> ModelSettings
 
   return(ModelSettings)
 
 }
 
 
-#' a function to check the current STEMMUS Model Soil Constants
+#' to check the current STEMMUS Model Soil Constants
 #'
 #' @description
 #' `check_STEMMUS_SoilConstants` present current model Soil Constants inputs for STEMMUS
@@ -184,7 +190,9 @@ check_STEMMUS_ModelSettings <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_STEMMUS_SoilConstants(), align = c("l","c"))
+#' }
 #'
 #' @export
 #'
@@ -198,14 +206,14 @@ check_STEMMUS_SoilConstants <- function(
   checkSoilConstants$V1[-1] |>
     stringr::str_remove(pattern = "    SoilConstants.") |> stringr::str_remove(pattern = ";") |>
     stringr::str_subset(pattern = " = ") |> tibble::as_tibble() |>
-    tidyr::separate_wider_delim(value, " = ", names = c("name", "value")) -> SoilConstants
+    tidyr::separate_wider_delim("value", " = ", names = c("name", "value")) -> SoilConstants
 
   return(SoilConstants)
 
 }
 
 
-#' a function to check the current STEMMUS Model constants from the define file
+#' to check the current STEMMUS Model constants from the define file
 #'
 #' @description
 #' `check_STEMMUS_DefineConstants` present current model defined Constants inputs for STEMMUS
@@ -223,7 +231,9 @@ check_STEMMUS_SoilConstants <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_STEMMUS_DefineConstants(), align = c("l","c"))
+#' }
 #'
 #' @export
 #'
@@ -239,13 +249,13 @@ check_STEMMUS_DefineConstants <- function(
     stringr::str_split(pattern = ";") |> unlist() |>
     stringr::str_subset(pattern = " = ") |>
     tibble::as_tibble() |>
-    tidyr::separate_wider_delim(value, " = ", names = c("name", "value")) -> Constants
+    tidyr::separate_wider_delim("value", " = ", names = c("name", "value")) -> Constants
 
   return(Constants)
 
 }
 
-#' a function to check the current STEMMUS Model soil initial
+#' to check the current STEMMUS Model soil initial
 #'
 #' @description
 #' `check_STEMMUS_SoilInitials` present current model soil initial inputs for STEMMUS
@@ -257,15 +267,16 @@ check_STEMMUS_DefineConstants <- function(
 #' for each run.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
-#' @param site_name,run_name the name of the location and the name of run. The last can be used to
-#' name runs with different model parameters or settings,
+#' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about STEMMUS current soil initial inputs
 #' @family check the current parameters and settings
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","c"))
 #' formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai", run_name = "ECdata_36")[[2]], align = c("l","c"))
+#' }
 #'
 #' @export
 #'
@@ -278,11 +289,11 @@ check_STEMMUS_SoilInitials <- function(
 soil_init <- rhdf5::H5Fopen(paste0(patch, "input/runs/", site_name, "_", run_name, "/","soil_init.mat"))
 
 initials <- list(
-  "Soil_Temperature [°C]" = tibble::tibble(
+  "Soil_Temperature [degree C]" = tibble::tibble(
     "names" = c("Tss", "InitT0", "InitT1", "InitT2", "InitT3", "InitT4", "InitT5", "InitT6"),
     "values" = round(c(soil_init$Tss[1], soil_init$InitT0[1], soil_init$InitT1[1], soil_init$InitT2[1],
                  soil_init$InitT3[1], soil_init$InitT4[1], soil_init$InitT5[1], soil_init$InitT6[1]),2)),
-  "Soil_Water_Content [m3 m-3]" =  tibble(
+  "Soil_Water_Content [m3 m-3]" =  tibble::tibble(
     "names" = c("InitX0", "InitX1", "InitX2", "InitX3", "InitX4", "InitX5", "InitX6", "BtmX"),
     "values" = round(c(soil_init$InitX0[1], soil_init$InitX1[1], soil_init$InitX2[1], soil_init$InitX3[1],
                  soil_init$InitX4[1], soil_init$InitX5[1], soil_init$InitX6[1], soil_init$BtmX[1]),2)))
@@ -293,7 +304,7 @@ return(initials)
 
 }
 
-#' a function to check the current STEMMUS Model soil properties
+#' to check the current STEMMUS Model soil properties
 #'
 #' @description
 #' `check_STEMMUS_SoilProperties` present current model soil properties inputs for STEMMUS
@@ -312,7 +323,9 @@ return(initials)
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_STEMMUS_SoilProperties(site_name ="DE-Hai", run_name = "ECdata_36"), align = c("l","c","c","c","c","c","c","l"))
+#' }
 #'
 #' @export
 #'
@@ -445,7 +458,7 @@ check_STEMMUS_SoilProperties <- function(
 }
 
 
-#' a function to check the current STEMMUS Model global forcing data
+#' to check the current STEMMUS Model global forcing data
 #'
 #' @description
 #' `check_STEMMUS_ForcingGlobal` present current model global forcing data inputs for STEMMUS
@@ -463,8 +476,10 @@ check_STEMMUS_SoilProperties <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(check_STEMMUS_ForcingGlobal(site_name ="DE-Hai", run_name = "ECdata_36"),
 #'                          align = c("l","c","c"))
+#' }
 #'
 #' @export
 #'

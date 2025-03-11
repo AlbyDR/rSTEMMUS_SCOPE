@@ -27,23 +27,21 @@ parameters per IBGP landcover class, among other information.
 }
 \examples{
 
+\dontrun{
 info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")
 
-formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[1]],
-                         align = c("l","l"))
-table 1
-formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
-                         align = c("l","c","c"),
-                         caption = "Table 1. Example of LIDF values")
-table 2
-formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[3]],
-                         align = c("l","c","r","r","r","r","r","c","r","r"),
-                         caption = "Table 2. Examples of biochemical parameters for the model biochemical.m
-                         Calibrated temperature sensitivity parameters for Vcmax and Resp")
+formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","l"))
 
-table 3
+formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
+align = c("l","c","c"), caption = "Table1. Example of LIDF values")
+
+formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[3]],
+align = c("l","c","r","r","r","r","r","c","r","r"),
+caption = "Table2. Examples of biochemical parameters for the model biochemical.m Calibrated temperature sensitivity parameters for Vcmax and Resp")
+
 formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[4]],
-                         align = c("l","c","c","r","r","r"), caption = "Table 3. Typical ranges of input values")
+align = c("l","c","c","r","r","r"), caption = "Table3. Typical ranges of input values")
+}
 
 }
 \seealso{

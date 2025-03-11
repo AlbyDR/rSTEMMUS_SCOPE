@@ -1,42 +1,44 @@
-#' setup
+#' to create a input folder with required files to run the model
 #'
+#' @description
+#' `setup_folder` returns a new folder with the required files to run the model for a location.
+#'
+#' @details
 #' This is a function to prepare input folders and set-up path and files for a new run of STEMMUS_SCOPE/Matlab
 #' simulations. The input structure is created in the ../input/runs/site_name_inputs.
+#'
 #' @param patch the path to the STEMMUS_SCOPE downloaded folder, example:"D:/models/STEMMUS_SCOPE/".
 #' @param StartTime a start datetime to the simulations/initial conditions in this format "2023-01-01T01:00".
 #' @param EndTime a final datetime to end the simulations in the same format "2023-05-01T23:00".
-#' @param site_name a short name for the site or location of the run.
+#' @param site_name,run_name a short name for the site or location of the run.
 #' @param output_name the default is the site_name (with _) and the datatime from the Sys.time() funtion.
 #' @return It return a message "done!". A set of files from the simulation will be save on the SCOPE
 #'  directory/output/simulation_name
 #' @examples
 #'
-#'
-#' EC data
-#'
-#' setup(patch = "D:/model/STEMMUS_SCOPE/",
+#' \dontrun{
+#' setup_folder(patch = "D:/model/STEMMUS_SCOPE/",
 #'       StartTime = "2023-06-01T00:00",
 #'       EndTime = "2023-11-30T23:00",
 #'       site_name = "DE-HoH",
 #'       run_name = "ECdata_36",
 #'       output_name = format(Sys.time(), "%Y%b%d_%H%M"))
 #'
+#' site_CRN_names <- c(paste0("DE-C0",1:9), paste0("DE-C",10:19))
 #'
-#' site names
-#'site_CRN_names <- c(paste0("DE-C0",1:9), paste0("DE-C",10:19))
-
-#'for (i in 1:19) {
-#'setup(patch = "D:/model/STEMMUS_SCOPE/",
+#' for (i in 1:19) {
+#' setup_folder(patch = "D:/model/STEMMUS_SCOPE/",
 #'            StartTime = "2023-06-01T00:00",
 #'            EndTime = "2023-11-30T23:00",
 #'            site_name = site_CRN_names[i],
 #'            run_name = "DWD_36",
 #'            output_name = format(Sys.time(), "%Y%b%d_%H%M"))
 #'}
+#'}
 #'
 #' @export
 #'
-setup <- function(
+setup_folder <- function(
     patch = "D:/model/STEMMUS_SCOPE/",
     StartTime = NA,
     EndTime = NA,

@@ -1,4 +1,4 @@
-#' Setting all time series model inputs for the location of interest
+#' to set all time series model inputs for a location
 #'
 #' @description
 #' `set_ts_inputs` set all time series parameters required to run the model.
@@ -134,7 +134,7 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
 
   names(Mdata_df) <- c("space", argumants_Mdata$vector)
 
-  write.table(format(Mdata_df, nsmall = 8),
+  utils::write.table(format(Mdata_df, nsmall = 8),
               paste0(patch, "input/runs/", site_name, "_", run_name, "/", "Mdata.txt"),
               row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
@@ -145,7 +145,7 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
 
     for (i in 1:length(argumants_xls$arg)) {
 
-    write.table(format(vars_xls[[i]], nsmall = 8),
+    utils::write.table(format(vars_xls[[i]], nsmall = 8),
                 paste0(patch, "input/runs/", site_name, "_", run_name, "/", argumants_xls$file[i]),
                 row.names = F, col.names = F, quote = FALSE, sep = "   ")
   }

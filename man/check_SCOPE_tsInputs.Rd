@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_SCOPE_tsInputs}
 \alias{check_SCOPE_tsInputs}
-\title{a function to check current SCOPE time series input files used by the model}
+\title{to check current SCOPE time series input files used by the model}
 \usage{
 check_SCOPE_tsInputs(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -28,10 +28,11 @@ variable desciption and units @seealso \code{\link[=info_SCOPE_tsInputs]{info_SC
 }
 \examples{
 
+\dontrun{
 check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36")
 
-formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"),
-            align = c("l","l"))
+formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"), align = c("l","l"))
+}
 
 }
 \seealso{

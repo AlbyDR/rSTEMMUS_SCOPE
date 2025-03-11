@@ -2,7 +2,7 @@
 % Please edit documentation in R/change_.R
 \name{change_STEMMUS_DefineConstants}
 \alias{change_STEMMUS_DefineConstants}
-\title{a function to change the current STEMMUS Model define Constants file}
+\title{to change the current STEMMUS Model define Constants file}
 \usage{
 change_STEMMUS_DefineConstants(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -51,6 +51,10 @@ change_STEMMUS_DefineConstants(
 }
 \arguments{
 \item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+
+\item{A, h, c, cp, cp_specific, R, R_specific, rhoa, kappa, MH2O, Mair, MCO2, sigmaSB, deg2rad, C2K, CKTN, l, g, RHOL}{parameters}
+
+\item{RHOI, Rv, RDA, RHO_bulk, Hc, GWT, MU_a, Gamma0, Gamma_w, Lambda1, Lambda2, Lambda3, MU_W0, MU1, b, W0, c_L, c_V, c_a, c_i, lambdav, k}{more parameters}
 }
 \value{
 write the new STEMMUS define Constants inputs
@@ -65,10 +69,11 @@ next runs and not a specific site_name/run_name run as in SCOPE.
 }
 \examples{
 
-
+\dontrun{
 change_define_constants(A = "6.02214E23")
 
 formattable::formattable(check_STEMMUS_DefineConstants(), align = c("l","c"))
+}
 
 }
 \seealso{

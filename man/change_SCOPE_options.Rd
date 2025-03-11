@@ -2,7 +2,7 @@
 % Please edit documentation in R/change_.R
 \name{change_SCOPE_options}
 \alias{change_SCOPE_options}
-\title{a function change the current SCOPE options}
+\title{to change the current SCOPE options}
 \usage{
 change_SCOPE_options(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -46,12 +46,14 @@ This function change current SCOPE model options selected to run, @seealso \code
 }
 \examples{
 
+\dontrun{
 change_SCOPE_options(site_name = "DE-Hai",
                      run_name = "ECdata_36",
                      calc_ebal = 1)
 
 formattable::formattable(check_SCOPE_options(site_name = "DE-Hai", run_name = "ECdata_36"),
                          align = c("c","l"))
+}
 
 }
 \seealso{

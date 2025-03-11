@@ -18,7 +18,9 @@ The function has no arguments, just need to run info_IGBP_classes()
 }
 \examples{
 
+\dontrun{
 formattable::formattable(info_IGBP_classes(), align = c("l","c","c","l"))
+}
 
 }
 \seealso{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_STEMMUS_SoilProperties}
 \alias{check_STEMMUS_SoilProperties}
-\title{a function to check the current STEMMUS Model soil properties}
+\title{to check the current STEMMUS Model soil properties}
 \usage{
 check_STEMMUS_SoilProperties(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -30,7 +30,9 @@ for each run.
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_STEMMUS_SoilProperties(site_name ="DE-Hai", run_name = "ECdata_36"), align = c("l","c","c","c","c","c","c","l"))
+}
 
 }
 \seealso{

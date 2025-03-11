@@ -14,23 +14,21 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")
 #'
-#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[1]],
-#'                          align = c("l","l"))
-#' table 1
-#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
-#'                          align = c("l","c","c"),
-#'                          caption = "Table 1. Example of LIDF values")
-#' table 2
-#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[3]],
-#'                          align = c("l","c","r","r","r","r","r","c","r","r"),
-#'                          caption = "Table 2. Examples of biochemical parameters for the model biochemical.m
-#'                          Calibrated temperature sensitivity parameters for Vcmax and Resp")
+#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","l"))
 #'
-#' table 3
+#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
+#' align = c("l","c","c"), caption = "Table1. Example of LIDF values")
+#'
+#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[3]],
+#' align = c("l","c","r","r","r","r","r","c","r","r"),
+#' caption = "Table2. Examples of biochemical parameters for the model biochemical.m Calibrated temperature sensitivity parameters for Vcmax and Resp")
+#'
 #' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[4]],
-#'                          align = c("l","c","c","r","r","r"), caption = "Table 3. Typical ranges of input values")
+#' align = c("l","c","c","r","r","r"), caption = "Table3. Typical ranges of input values")
+#' }
 #'
 #' @export
 #'
@@ -40,7 +38,7 @@ info_SCOPE_README <- function(
     run_name = NA
 ){
 
-  input_data <- rio::import_list(paste0(STEMMUS_SCOPE_dir,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_readme <- input_data[[1]][1:95,c(1:10)]
   SCOPE_readme[is.na(SCOPE_readme)] <- ""
@@ -81,7 +79,9 @@ info_SCOPE_README <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(info_SCOPE_options(), align = c("l","c","c","l"))
+#'  }
 #'
 #' @export
 #'
@@ -155,10 +155,11 @@ return(SCOPE_options)
 #'
 #' @examples
 #'
+#' \dontrun{
 #' info_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36")
 #'
-#' formattable(info_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"),
-#'             align = c("l","l"))
+#' formattable(info_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"), align = c("l","l"))
+#' }
 #'
 #' @export
 #'
@@ -167,16 +168,16 @@ info_SCOPE_tsInputs <- function(
     site_name = NA,
     run_name = NA
 ){
-  input_data <- rio::import_list(paste0(STEMMUS_SCOPE_dir,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   readme_descr <- input_data[[1]][16:45,c(1,3)]
   row.names(readme_descr) <- NULL
   names(readme_descr) <- c("file_name", "description")
-  readme_descr |> dplyr::filter(!is.na(description)) -> readme_descr
+  readme_descr |> dplyr::filter(!is.na("description")) -> readme_descr
   readme_descr[is.na(readme_descr)] <- ""
 
   SCOPE_ts_inputs <- input_data[[3]][3:33, c(1,2)]
-  SCOPE_ts_inputs |> dplyr::filter(!is.na(files)) -> SCOPE_ts_inputs
+  SCOPE_ts_inputs |> dplyr::filter(!is.na("files")) -> SCOPE_ts_inputs
 
   row.names(SCOPE_ts_inputs) <- NULL
 
@@ -199,7 +200,9 @@ info_SCOPE_tsInputs <- function(
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(info_ModelSettings(), align = c("l","c","c","l"))
+#' }
 #'
 #' @export
 #'
@@ -214,7 +217,7 @@ ModelSettings <- data.frame(
                  "1", "1.5*1e-3", "1", "500", "0", "1", "30", "0", "100"),
 
   "units" = c("[cm]", "[-]","[0,1]","[0,1]","[0,1]","[0,1]","[0,1]","[0,1]","[0,1]","[1,2,2,4]",
-              "[cm-1]","[?]","[°C]","[k]", "[-]","[-]","[-]",
+              "[cm-1]","[?]","[degree C]","[k]", "[-]","[-]","[-]",
               "[cm]", "[0,1]", "[n] types", "[n] interactions", "[n] steps", "[n] elements"),
 
   "description" = c("rootzone depth",
@@ -261,7 +264,9 @@ return(ModelSettings)
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(info_STEMMUS_SoilConstants(), align = c("l","c","c","l"))
+#' }
 #'
 #' @export
 #'
@@ -297,7 +302,9 @@ return(SoilConstants)
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(info_STEMMUS_DefineConstants(), align = c("l","c","c","l"))
+#' }
 #'
 #' @export
 #'
@@ -362,7 +369,9 @@ return(define_constants)
 #'
 #' @examples
 #'
+#' \dontrun{
 #' formattable::formattable(info_IGBP_classes(), align = c("l","c","c","l"))
+#' }
 #'
 #' @export
 #'

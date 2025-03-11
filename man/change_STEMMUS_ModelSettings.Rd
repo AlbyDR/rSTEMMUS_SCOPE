@@ -2,7 +2,7 @@
 % Please edit documentation in R/change_.R
 \name{change_STEMMUS_ModelSettings}
 \alias{change_STEMMUS_ModelSettings}
-\title{a function to change the current STEMMUS Model settings}
+\title{to change the current STEMMUS Model settings}
 \usage{
 change_STEMMUS_ModelSettings(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -49,9 +49,11 @@ next runs and not a specific site_name/run_name run.
 }
 \examples{
 
+\dontrun{
 change_STEMMUS_ModelSettings(J = 1)
 
 formattable::formattable(check_STEMMUS_ModelSettings(), align = c("l","c"))
+}
 
 }
 \seealso{

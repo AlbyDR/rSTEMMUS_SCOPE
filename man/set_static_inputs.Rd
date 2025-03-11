@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_static_inputs.R
 \name{set_static_inputs}
 \alias{set_static_inputs}
-\title{Setting all statical input parameters and model setting required to run the model}
+\title{to set all statical input parameters and model setting required}
 \usage{
 set_static_inputs(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -138,7 +138,7 @@ set_static_inputs(
 \arguments{
 \item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
 
-\item{site_name, run_name}{the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,}
+\item{site_name, run_name, Simulation_Name}{the name of the location and the name of run. The second can be used to name runs with different model parameters or settings,}
 
 \item{timestep_min, }{four hourly data use 60, half hour 30 (maximum possible is 180 for timestamp of every 3 hours)}
 
@@ -148,42 +148,40 @@ set_static_inputs(
 
 \item{initial_soil_temperature, }{soil temperature in the 6 depths (). It can be obtained in ERA5 data with funtion get_SoilInitials}
 
-\item{soil_property_list}{a list of soil properties extracted from the function @seealso \code{\link[=get_SoilPropertie]{get_SoilPropertie()}}}
+\item{soil_property_list}{a list of soil properties extracted from the function @seealso \code{\link[=get_SoilProperties]{get_SoilProperties()}}}
 
 \item{coef_n, coef_alpha, saturatedk, ks0, residualMC, saturatedMC, porosity, theta_s0, fieldMC, FOClay, MSOCarbon, FOSand, coef_Lamda, fmax}{alternatively
 include a data.frame("depth0"=X,"depth5"=X,"depth30"=X,"depth60"=X,"depth100"=X,"depth200"=X) with the values for each soil property,
-the inputs ks0, theta_s0 and fmax require only one value. @seealso \code{\link[=get_soil_properties]{get_soil_properties()}}}
+the inputs ks0, theta_s0 and fmax require only one value. @seealso \code{\link[=get_SoilProperties]{get_SoilProperties()}}}
 
-\item{soil_file, leaf_file, atmos_file, setoptions}{default "soilnew.txt", "Optipar2017_ProspectD.mat","FLEX-S3_std.atm",  @seealso \code{\link[=info_SCOPE_README(), info_SCOPE_options]{info_SCOPE_README(), info_SCOPE_options()}}
+\item{soil_file, leaf_file, atmos_file}{default "soilnew.txt", "Optipar2017_ProspectD.mat","FLEX-S3_std.atm",  @seealso \code{\link[=info_SCOPE_README]{info_SCOPE_README()}}, @seealso \code{\link[=info_SCOPE_options]{info_SCOPE_options()}}
 SCOPE model inputs, constants from inputdata spreadsheet}
 
 \item{setoptions}{a vector of model settings from the input_data.xls options spreadsheet @seealso \code{\link[=info_SCOPE_options]{info_SCOPE_options()}}}
 
 \item{veg_type_C}{default is 3, alternately can be use 4}
 
-\item{Cab, Cca, Cdm, Cw, Cs, Cant, N, rho_thermal, tau_thermal}{PROSPECT submodel parameters for the default values @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{Cab, Cca, Cdm, Cw, Cs, Cant, N, rho_thermal, tau_thermal}{PROSPECT submodel parameters for the default values @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{Vcmo, m, BallBerry0, Type, kV, Rdparam, Tparam, Tyear, beta, kNPQs, qLs, stressfactor}{Leaf_Biochemical parameters for the default values @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{Vcmo, m, BallBerry0, Type, kV, Rdparam, Tparam, Tyear, beta, kNPQs, qLs, stressfactor}{Leaf_Biochemical parameters for the default values @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{fqe}{Fluorescence parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{fqe}{Fluorescence parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{spectrum, rss, rs_thermal, cs, rhos, lambdas, SMC, BSMBrightness, BSMlat, BSMlon}{Soil parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{spectrum, rss, rs_thermal, cs, rhos, lambdas, SMC, BSMBrightness, BSMlat, BSMlon}{Soil parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{LAI, hc, LIDFa, LIDFb, leafwidth}{Canopy parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{LAI, hc, LIDFa, LIDFb, leafwidth}{Canopy parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{hc}{canopy height in the point of interest,}
+\item{z, Rin, Rli, Ta, p, ea, u, Ca, Oa}{Meteo parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{z, Rin, Rli, Ta, p, ea, u, Ca, Oa}{Meteo parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
-
-\item{zo, d, Cd, rb, CR, CD1, Psicor, CSSOIL, rbs, rwc}{Aerodynamic parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{zo, d, Cd, rb, CR, CD1, Psicor, CSSOIL, rbs, rwc}{Aerodynamic parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
 \item{startDOY, endDOY, timezn, n_timestamps}{day of the year for the start and end of the run period. The the timezone and number of timestamps being run.}
 
-\item{tts, tto, psi}{Angles parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{LAT, LON, elevation}{the latitude, longitude and elevation of the point of interest,}
 
-\item{delHaV, delSV, delHdV, delHaJ, delSJ, delHdJ, delHaP, delSP, delHdP, delHaR, delSR, delHdR, delHaKc, delHaKo, delHaT, Q10, s1, s2, s3, s4, s5, s6}{Photosynthetic Temperature Dependence Functional parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{tts, tto, psi}{Angles parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{lat, lon, elevation}{the latitude, longitude and elevation of the point of interest,}
+\item{delHaV, delSV, delHdV, delHaJ, delSJ, delHdJ, delHaP, delSP, delHdP, delHaR, delSR, delHdR, delHaKc, delHaKo, delHaT, Q10, s1, s2, s3, s4, s5, s6}{Photosynthetic Temperature Dependence Functional parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 }
 \value{
 returns all files with static from STEMMUS and SCOPE will be write in the folder input/site_name_run_name_time

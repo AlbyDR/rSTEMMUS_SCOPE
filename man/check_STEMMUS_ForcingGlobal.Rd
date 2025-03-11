@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_STEMMUS_ForcingGlobal}
 \alias{check_STEMMUS_ForcingGlobal}
-\title{a function to check the current STEMMUS Model global forcing data}
+\title{to check the current STEMMUS Model global forcing data}
 \usage{
 check_STEMMUS_ForcingGlobal(
   patch = "D:/model/STEMMUS_SCOPE/",
@@ -29,8 +29,10 @@ are passed by the function @seealso \code{\link[=set_static_inputs]{set_static_i
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_STEMMUS_ForcingGlobal(site_name ="DE-Hai", run_name = "ECdata_36"),
                          align = c("l","c","c"))
+}
 
 }
 \seealso{

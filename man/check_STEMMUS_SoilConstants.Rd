@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_.R
 \name{check_STEMMUS_SoilConstants}
 \alias{check_STEMMUS_SoilConstants}
-\title{a function to check the current STEMMUS Model Soil Constants}
+\title{to check the current STEMMUS Model Soil Constants}
 \usage{
 check_STEMMUS_SoilConstants(patch = "D:/model/STEMMUS_SCOPE/")
 }
@@ -23,7 +23,9 @@ next runs and not a specific site_name/run_name run as in SCOPE.
 }
 \examples{
 
+\dontrun{
 formattable::formattable(check_STEMMUS_SoilConstants(), align = c("l","c"))
+}
 
 }
 \seealso{

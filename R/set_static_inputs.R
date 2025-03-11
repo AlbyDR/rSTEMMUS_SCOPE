@@ -1,4 +1,4 @@
-#' Setting all statical input parameters and model setting required to run the model
+#' to set all statical input parameters and model setting required
 #'
 #' @description
 #' `set_static_inputs` set all statical parameters and model setting required to run the model.
@@ -9,30 +9,29 @@
 #' otherwise all the soil properties need to be included manually.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
-#' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
-#' @param lat,lon,elevation the latitude, longitude and elevation of the point of interest,
+#' @param site_name,run_name,Simulation_Name the name of the location and the name of run. The second can be used to name runs with different model parameters or settings,
+#' @param LAT,LON,elevation the latitude, longitude and elevation of the point of interest,
 #' @param IGBP_veg_long the main IGBP landcover class in the point of interest,
-#' @param hc canopy height in the point of interest,
 #' @param veg_type_C default is 3, alternately can be use 4
 #' @param initial_soil_temperature, soil temperature in the 6 depths (). It can be obtained in ERA5 data with funtion get_SoilInitials
 #' @param initial_volumetric_soil_water volumetric soil water in the 6 depths (). It can be obtained in ERA5 data with funtion @seealso [get_SoilInitials()]
-#' @param soil_property_list a list of soil properties extracted from the function @seealso [get_SoilPropertie()]
+#' @param soil_property_list a list of soil properties extracted from the function @seealso [get_SoilProperties()]
 #' @param coef_n,coef_alpha,saturatedk,ks0,residualMC,saturatedMC,porosity,theta_s0,fieldMC,FOClay,MSOCarbon,FOSand,coef_Lamda,fmax alternatively
 #' include a data.frame("depth0"=X,"depth5"=X,"depth30"=X,"depth60"=X,"depth100"=X,"depth200"=X) with the values for each soil property,
-#' the inputs ks0, theta_s0 and fmax require only one value. @seealso [get_soil_properties()]
+#' the inputs ks0, theta_s0 and fmax require only one value. @seealso [get_SoilProperties()]
 #' @param startDOY,endDOY,timezn,n_timestamps day of the year for the start and end of the run period. The the timezone and number of timestamps being run.
 #' @param timestep_min, four hourly data use 60, half hour 30 (maximum possible is 180 for timestamp of every 3 hours)
-#' @param soil_file,leaf_file,atmos_file,setoptions default "soilnew.txt", "Optipar2017_ProspectD.mat","FLEX-S3_std.atm",  @seealso [info_SCOPE_README(), info_SCOPE_options()]
+#' @param soil_file,leaf_file,atmos_file default "soilnew.txt", "Optipar2017_ProspectD.mat","FLEX-S3_std.atm",  @seealso [info_SCOPE_README()], @seealso [info_SCOPE_options()]
 #' SCOPE model inputs, constants from inputdata spreadsheet
-#' @param Cab,Cca,Cdm,Cw,Cs,Cant,N,rho_thermal,tau_thermal PROSPECT submodel parameters for the default values @seealso [get_SCOPE_constants()]
-#' @param Vcmo,m,BallBerry0,Type,kV,Rdparam,Tparam,Tyear,beta,kNPQs,qLs,stressfactor Leaf_Biochemical parameters for the default values @seealso [get_SCOPE_constants()]
-#' @param fqe Fluorescence parameters @seealso [get_SCOPE_constants()]
-#' @param spectrum,rss,rs_thermal,cs,rhos,lambdas,SMC,BSMBrightness,BSMlat,BSMlon Soil parameters @seealso [get_SCOPE_constants()]
-#' @param LAI,hc,LIDFa,LIDFb,leafwidth Canopy parameters @seealso [get_SCOPE_constants()]
-#' @param z,Rin,Rli,Ta,p,ea,u,Ca,Oa Meteo parameters @seealso [get_SCOPE_constants()]
-#' @param zo,d,Cd,rb,CR,CD1,Psicor,CSSOIL,rbs,rwc Aerodynamic parameters @seealso [get_SCOPE_constants()]
-#' @param tts,tto,psi Angles parameters @seealso [get_SCOPE_constants()]
-#' @param delHaV,delSV,delHdV,delHaJ,delSJ,delHdJ,delHaP,delSP,delHdP,delHaR,delSR,delHdR,delHaKc,delHaKo,delHaT,Q10,s1,s2,s3,s4,s5,s6 Photosynthetic Temperature Dependence Functional parameters @seealso [get_SCOPE_constants()]
+#' @param Cab,Cca,Cdm,Cw,Cs,Cant,N,rho_thermal,tau_thermal PROSPECT submodel parameters for the default values @seealso [check_SCOPE_constants()]
+#' @param Vcmo,m,BallBerry0,Type,kV,Rdparam,Tparam,Tyear,beta,kNPQs,qLs,stressfactor Leaf_Biochemical parameters for the default values @seealso [check_SCOPE_constants()]
+#' @param fqe Fluorescence parameters @seealso [check_SCOPE_constants()]
+#' @param spectrum,rss,rs_thermal,cs,rhos,lambdas,SMC,BSMBrightness,BSMlat,BSMlon Soil parameters @seealso [check_SCOPE_constants()]
+#' @param LAI,hc,LIDFa,LIDFb,leafwidth Canopy parameters @seealso [check_SCOPE_constants()]
+#' @param z,Rin,Rli,Ta,p,ea,u,Ca,Oa Meteo parameters @seealso [check_SCOPE_constants()]
+#' @param zo,d,Cd,rb,CR,CD1,Psicor,CSSOIL,rbs,rwc Aerodynamic parameters @seealso [check_SCOPE_constants()]
+#' @param tts,tto,psi Angles parameters @seealso [check_SCOPE_constants()]
+#' @param delHaV,delSV,delHdV,delHaJ,delSJ,delHdJ,delHaP,delSP,delHdP,delHaR,delSR,delHdR,delHaKc,delHaKo,delHaT,Q10,s1,s2,s3,s4,s5,s6 Photosynthetic Temperature Dependence Functional parameters @seealso [check_SCOPE_constants()]
 #' @param setoptions a vector of model settings from the input_data.xls options spreadsheet @seealso [info_SCOPE_options()]
 #' @return returns all files with static from STEMMUS and SCOPE will be write in the folder input/site_name_run_name_time
 #' @family set input parameters
@@ -245,7 +244,7 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
     soil_parameters$FOS[1:6] <- FOSand
     soil_parameters$MSOC[1:6] <- MSOCarbon
 
-    soil_parameters$Coef_Lamda[1:6] <- coef_lamda
+    soil_parameters$Coef_Lamda[1:6] <- coef_Lamda
     soil_parameters$Coefficient_Alpha[1:6] <- coef_alpha
     soil_parameters$SaturatedK[1:6] <- saturatedk
     soil_parameters$Ks0[1] <- ks0

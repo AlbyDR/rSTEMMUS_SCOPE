@@ -1,4 +1,4 @@
-#' It runs the model (as time series) in MATLAB
+#' It runs the model (time series) in MATLAB
 #'
 #' @description
 #' `run` opens the MATLAB, run the model and close it when is done

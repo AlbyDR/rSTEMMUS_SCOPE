@@ -201,7 +201,7 @@ info_SCOPE_tsInputs <- function(
 #' @examples
 #'
 #' \dontrun{
-#' formattable::formattable(info_ModelSettings(), align = c("l","c","c","l"))
+#' formattable::formattable(info_STEMMUS_ModelSettings(), align = c("l","c","c","l"))
 #' }
 #'
 #' @export
@@ -377,7 +377,7 @@ return(define_constants)
 #'
 info_IGBP_classes <- function(){
 
-  IGBP_classes <- c("Evergreen Broadleaf Forest",
+  IGBP_classes <- data.frame("Veg_classes" = c("Evergreen Broadleaf Forest",
                     "Evergreen Needleleaf Forest",
                     "Deciduous Broadleaf Forests",
                     "Deciduous Needleleaf Forests",
@@ -388,7 +388,7 @@ info_IGBP_classes <- function(){
                     "Closed Shrublands",
                     "Savannas",
                     "Woody Savannas",
-                    "Croplands")
+                    "Croplands"))
 
   return(IGBP_classes)
 

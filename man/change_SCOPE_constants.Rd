@@ -109,13 +109,13 @@ change_SCOPE_constants(
 
 \item{veg_type_C}{default is 3, alternately can be use 4}
 
-\item{Cab, Cca, Cdm, Cw, Cs, Cant, N, rho_thermal, tau_thermal}{PROSPECT submodel parameters for the default values @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{Cab, Cca, Cdm, Cw, Cs, Cant, N, rho_thermal, tau_thermal}{PROSPECT submodel parameters for the default values @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{Vcmo, m, BallBerry0, Type, kV, Rdparam, Tparam, Tyear, beta, kNPQs, qLs, stressfactor}{Leaf_Biochemical parameters for the default values @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{Vcmo, m, BallBerry0, Type, kV, Rdparam, Tparam, Tyear, beta, kNPQs, qLs, stressfactor}{Leaf_Biochemical parameters for the default values @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
 \item{fqe}{Fluorescence parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
-\item{spectrum, rss, rs_thermal, cs, rhos, lambdas, SMC, BSMBrightness, BSMlat, BSMlon}{Soil parameters @seealso \code{\link[=get_SCOPE_constants]{get_SCOPE_constants()}}}
+\item{spectrum, rss, rs_thermal, cs, rhos, lambdas, SMC, BSMBrightness, BSMlat, BSMlon}{Soil parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 
 \item{LAI, hc, LIDFa, LIDFb, leafwidth}{Canopy parameters @seealso \code{\link[=check_SCOPE_constants]{check_SCOPE_constants()}}}
 

@@ -189,13 +189,13 @@ change_SCOPE_constants <- function(
   if(IGBP_veg_long == "Permanent Wetlands" & hc >= 5) {
     Tparam = c(0.2, 0.3, 288, 313, 328) }
   # Biome 2
-  if(IGBP_veg_long == "Deciduous Broadleaf Forests") {
+  if(IGBP_veg_long == "Deciduous Broadleaf Forest") {
     Tparam = c(0.2, 0.3, 283, 311, 328) }
   # Biome 3
   if(IGBP_veg_long == "Mixed Forests") {
     Tparam = c(0.2, 0.3, 288, 313, 328) }
   # Biome 4
-  if(IGBP_veg_long == "Deciduous Needleleaf Forests") {
+  if(IGBP_veg_long == "Deciduous Needleleaf Forest") {
     Tparam = c(0.2, 0.3, 278, 303, 328) }
   # Biome 5
   if(IGBP_veg_long == "Evergreen Broadleaf Forest") {
@@ -221,7 +221,7 @@ change_SCOPE_constants <- function(
   # Biome 9
   if(IGBP_veg_long == "Croplands") {
     Tparam = c(0.2, 0.3, 281, 308, 328) }
-  if(IGBP_veg_long == "Grasslands" & veg_type_C == 3) {
+  if(IGBP_veg_long == "Grassland" & veg_type_C == 3) {
     Tparam = c(0.2, 0.3, 281, 308, 328) }
 
   input_data[[4]][25,2:6] <- Tparam
@@ -575,3 +575,6 @@ return(print("constants modified, check it using get_define_constants() function
 
 }
 
+
+# check if the setting below are important to change when necessary
+# "D:/model/STEMMUS_SCOPE/src/+groundwater/initializeGroundwaterSettings.m"

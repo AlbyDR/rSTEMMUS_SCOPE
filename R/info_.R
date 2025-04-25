@@ -378,17 +378,17 @@ return(define_constants)
 info_IGBP_classes <- function(){
 
   IGBP_classes <- data.frame("Veg_classes" = c("Evergreen Broadleaf Forest",
-                    "Evergreen Needleleaf Forest",
-                    "Deciduous Broadleaf Forests",
-                    "Deciduous Needleleaf Forests",
-                    "Mixed Forests",
-                    "Permanent Wetlands",
-                    "Grasslands",
-                    "Open Shrublands",
-                    "Closed Shrublands",
-                    "Savannas",
-                    "Woody Savannas",
-                    "Croplands"))
+                                               "Evergreen Needleleaf Forest",
+                                               "Deciduous Broadleaf Forest",
+                                               "Deciduous Needleleaf Forest",
+                                               "Mixed Forests",
+                                               "Permanent Wetlands",
+                                               "Grassland",
+                                               "Open Shrublands",
+                                               "Closed Shrublands",
+                                               "Savannas",
+                                               "Woody Savannas",
+                                               "Croplands"))
 
   return(IGBP_classes)
 

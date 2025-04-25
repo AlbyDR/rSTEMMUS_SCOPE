@@ -493,9 +493,9 @@ check_STEMMUS_ForcingGlobal <- function(
   forcing_globals <- rhdf5::H5Fopen(paste0(patch, "input/runs/", site_name, "_", run_name, "/","forcing_globals.mat"))
 
   properties <- tibble::tibble(
-    "names" = c("Name on the site", "Latitude", "Longitude", "Altitude",
+    "names" = c("Site Name", "Latitude", "Longitude", "Altitude",
                 "Timestep size in seconds", "Number of timestamps",
-                "IGBP vecheckation class", "Canopy Height", "Measurement Height"),
+                "IGBP vegetation class", "Canopy Height", "Measurement Height"),
 
     "values" = c(intToUtf8(forcing_globals$sitename[1:6]),
                  forcing_globals$latitude[1],

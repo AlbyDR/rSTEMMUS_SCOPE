@@ -44,7 +44,7 @@
 #'                   LAT = 37.83,
 #'                   LON = 107.69,
 #'                   elevation = 500,
-#'                   IGBP_veg_long = "Grasslands",
+#'                   IGBP_veg_long = "Grassland",
 #'                   hc = 0.03,
 #'                   z = 2,
 #'                   zo = 0.00369,
@@ -302,14 +302,14 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   # Cropland/natural vegetation mosaics	Biome 9: Agriculture / C3 grassland
   # Cropland/natural vegetation mosaics	Biome 9: Agriculture / C3 grassland
   # Evergreen Broadleaf Forest  	      Biome 1: Broadleaf - evergreen trees
-  # Deciduous Broadleaf Forests	        Biome 2: Broadleaf - deciduous trees
-  # Evergreen Needleleaf Forests 	      Biome 4: Needleleaf evergreen trees
-  # Deciduous needleleaf Forests	      Biome 5: Needleleaf deciduous trees
+  # Deciduous Broadleaf Forest	        Biome 2: Broadleaf - deciduous trees
+  # Evergreen Needleleaf Forest 	      Biome 4: Needleleaf evergreen trees
+  # Deciduous needleleaf Forest 	      Biome 5: Needleleaf deciduous trees
   # Mixed Forests	                      Biome 3: Broadleaf and needle leaf trees
   # Woody savannas	                    Biome 8: Tree/Savanna
   # Savannas 	                          Biome 8: Tree/Savanna
   # Closed shrublands	                  Biome 7: Shrub/Stepp
-  # Grasslands	                        Biome 6: Short vegetation / C4 grassland or Biome 9: Agriculture / C3 grassland
+  # Grassland 	                        Biome 6: Short vegetation / C4 grassland or Biome 9: Agriculture / C3 grassland
   # Not available in IGBP	Shade plant
   # Open shrublands	                    Biome 7: Shrub/Stepp
   # Permanent Wetlands 	                Biome 1: Broadleaf - evergreen trees
@@ -332,19 +332,19 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   if(IGBP_veg_long == "Permanent Wetlands" & hc >= 5) {
     Tparam = c(0.2, 0.3, 288, 313, 328) }
   # Biome 2
-  if(IGBP_veg_long == "Deciduous Broadleaf Forests") {
+  if(IGBP_veg_long == "Deciduous Broadleaf Forest") {
     Tparam = c(0.2, 0.3, 283, 311, 328) }
   # Biome 3
   if(IGBP_veg_long == "Mixed Forests") {
     Tparam = c(0.2, 0.3, 288, 313, 328) }
   # Biome 4
-  if(IGBP_veg_long == "Deciduous needleleaf Forests") {
+  if(IGBP_veg_long == "Deciduous needleleaf Forest") {
     Tparam = c(0.2, 0.3, 278, 303, 328) }
   # Biome 5
   if(IGBP_veg_long == "Evergreen Broadleaf Forest") {
     Tparam = c(0.2, 0.3, 278, 303, 328) }
   # Biome 6
-  if(IGBP_veg_long == "Grasslands" & veg_type_C == 4) {
+  if(IGBP_veg_long == "Grassland" & veg_type_C == 4) {
     Tparam = c(0.2, 0.3, 288, 313, 328)
     Vcmo =  35.8
     m = 4
@@ -364,7 +364,7 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   # Biome 9
   if(IGBP_veg_long == "Croplands") {
     Tparam = c(0.2, 0.3, 281, 308, 328) }
-  if(IGBP_veg_long == "Grasslands" & veg_type_C == 3) {
+  if(IGBP_veg_long == "Grassland" & veg_type_C == 3) {
     Tparam = c(0.2, 0.3, 281, 308, 328) }
 
   # Model constants ----

@@ -72,9 +72,9 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 
 <br/>
 
-#### $$ ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100} $$ {#eq-01}
+#### $ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}$ {#eq-01}
 
-#### $$ VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100} $$
+#### $VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}$ {#eq-02}
 
 <br/>
 

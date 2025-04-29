@@ -72,11 +72,11 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 
 
 **(eq-01)**\
-$`ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}`$
+### $`ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}`$
 
 
 **(eq-02)**\
-$`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$
+### $`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$
 
 <br/>
 
@@ -150,6 +150,6 @@ phi_fc = 341.9 - soil water potential at field) capacity (cm)
 
 <br/>
 
-\#### 1.5 Constants and model settings
+#### 1.5 Constants and model settings
 
 Use the function of the family "info", "check" and "change" to get more information about which constants parameters and model setting from STEMMUS and SCOPE can be changed to calibrate the model for the site characteristics.

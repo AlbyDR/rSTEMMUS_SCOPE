@@ -4,7 +4,6 @@
 
 Codes to run the STEMMUS_SCOPE model in MATLAB from R
 
-<br/>
 
 ### To install rSTEMMUS_SCOPE, use:
 
@@ -13,8 +12,6 @@ devtools::install_github("AlbyDR/rSTEMMUS.SCOPE")
 library(rSTEMMUS.SCOPE)
 ```
 
-<br/>
-
 It may need to install the rhdf5 package before using BiocManager as below.
 
 ``` r
@@ -22,7 +19,6 @@ install.packages("BiocManager")
 BiocManager::install("rhdf5")
 ```
 
-<br/>
 
 MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be downloaded and unzipped in a directory of your choice (suggestion "D:/model/STEMMUS_SCOPE/"). The SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE>. Only src folder is needed.
 
@@ -67,16 +63,10 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 | Cab\_  | Chlorophyll ab               | [ug cm-2] | Calendar year       |
 | hc\_   | Canopy Height                |    [m]    | hc \>= 0.01         |
 
+### $`ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}`$ **(eq-01)** 
 
+### $`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$ **(eq-02)**
 
-**(eq-01)**
-### $`ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}`$
-
-
-**(eq-02)**
-### $`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$
-
-<br/>
 
 #### 1.2 Site specific characteristics
 ------------------------------------------------------------------------
@@ -93,7 +83,6 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 | IGBP_veg_long | Long name IGBP vegetation class | string |  |
 | canopy_height | Canopy Height (hc) | [m] |  |
 
-<br/>
 
 #### 1.3 Soil Initial Conditions (soil_init.mat)
 ------------------------------------------------------------------------
@@ -105,31 +94,30 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 
 note: data from CDS ERA5 Land
 
-<br/>
 
 #### 1.4 Soil Properties (soil_parameters.mat)
 ------------------------------------------------------------------------
 
 | symbol | variable | unit | observation |
 |:--------------|:-----------------|:-------------:|:----------------------|
-| SaturatedK | Saturated hydraulic conductivity | [cm s-1] | 1x6 ^[1]{.smallcaps}^ [Ks]/(24\*3600) cm d-1 |
-| ks0 | First element of SaturatedK vector | [cm s-1] | 1x1 ^[1]{.smallcaps}^ |
-| porosity | Porosity | [m3 m-3] | 1x6 ^[1]{.smallcaps}^ [thetas] |
-| theta_s0 | First element of porosity vector | [m3 m-3] | 1x1 ^[1]{.smallcaps}^ |
-| SaturatedMC | Saturated SWC | [m3 m-3] | 1x6^[1]{.smallcaps}^ [thetas] |
-| ResidualMC | Residual SWC | [m3 m-3] | 1x6 ^[1]{.smallcaps}^ [thetar] |
-| Coefficient_Alpha | Coefficient Alpha | [cm-1] | 1x6 ^[1]{.smallcaps}^ [alpha] |
-| Coefficient_n | Coefficient n | [-] | 1x6 ^[1]{.smallcaps}^ [n] |
-| fieldMC | Field Capacity | [m3 m-3] | 6x1 ^[2]{.smallcaps}^ |
+| SaturatedK | Saturated hydraulic conductivity | [cm s-1] | 1x6 ^[1]^ [Ks]/(24\*3600) cm d-1 |
+| ks0 | First element of SaturatedK vector | [cm s-1] | 1x1 ^[1]^ |
+| porosity | Porosity | [m3 m-3] | 1x6 ^[1]^ [thetas] |
+| theta_s0 | First element of porosity vector | [m3 m-3] | 1x1 ^[1]^ |
+| SaturatedMC | Saturated SWC | [m3 m-3] | 1x6^[1]^ [thetas] |
+| ResidualMC | Residual SWC | [m3 m-3] | 1x6 ^[1]^ [thetar] |
+| Coefficient_Alpha | Coefficient Alpha | [cm-1] | 1x6 ^[1]^ [alpha] |
+| Coefficient_n | Coefficient n | [-] | 1x6 ^[1]^ [n] |
+| fieldMC | Field Capacity | [m3 m-3] | 6x1 ^[2]^ |
 | FOS | Sandy Fraction | fraction (/100) | 6x1x1^3^ [SAND1/2] |
 | FOC | Clay | fraction (/100) | 6x1x1^3^ [CLAY1/2] |
 | MSOC | Organic Fraction (Carbon) | fraction (/10000) | 6x1x1^3^ [OC1/2] |
 | fmax |  | [-] | 1x1 surfdata |
 | Coef_Lamda | Lambda per depth | [-] | 6x1x1^4^ Lambda folder |
 
-<sup>[1]{.smallcaps}</sup> Derived from the **PTF_SoilGrids_Schaap** datasets (*n, alpha, Ks, thetas, thetar) from the valid depths: 0, 5, 15, 30, 60, 100 and 200 cm (sl1* to sl7), excluding *sl3 (15cm).*
+<sup>[1]</sup> Derived from the **PTF_SoilGrids_Schaap** datasets (*n, alpha, Ks, thetas, thetar) from the valid depths: 0, 5, 15, 30, 60, 100 and 200 cm (sl1* to sl7), excluding *sl3 (15cm).*
 
-<sup>[2]{.smallcaps}</sup> Calculated field capacity form field moisture content\
+<sup>[2]</sup> Calculated field capacity form field moisture content\
 field_moisture_content = theta_r + (theta_s - theta_r) / (1 + (alpha \* phi_fc) \^ coef_n) \^ (1 - 1/coef_n)\
 phi_fc = 341.9 - soil water potential at field) capacity (cm)
 

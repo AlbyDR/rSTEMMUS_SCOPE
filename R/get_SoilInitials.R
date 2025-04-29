@@ -18,7 +18,7 @@
 #' @param format = "grib"
 #' @param target_f = "download2.grib",
 #' @param timeout_m = 50
-#' @return returns list with all soil properties required
+#' @return returns list with all soil initials required
 #' @family get input parameters
 #'
 #' @examples

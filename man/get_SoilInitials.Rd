@@ -39,7 +39,7 @@ get_SoilInitials(
 \item{timeout_m}{= 50}
 }
 \value{
-returns list with all soil properties required
+returns list with all soil initials required
 }
 \description{
 \code{get_SoilInitials} returns Soil temperature and Volumetric Soil Water per depth required to run the model.

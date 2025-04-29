@@ -25,8 +25,10 @@ returns list with all soil properties required
 \code{get_SoilProperties} returns all soil properties required to run the model.
 }
 \details{
-This is a function to prepare the soil properties to run the set_static_inputs function.
-\strong{important} the folder inputs_for_input/SoilProperty with the global data files need to be downloaded.
+This is a function to prepare the soil properties to run the set_static_inputs function by
+extracting soil properties from raster ../input/input_for_input/SoilProperty/ folder using
+coordinates (+proj=longlat +datum=WGS8).
+\strong{important} the folder ../inputs_for_input/SoilProperty/ with the global data files need to be downloaded.
 }
 \examples{
 

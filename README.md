@@ -46,7 +46,6 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 <br/>
 
 #### 1.1 Time Series inputs (vectors .dat)
-
 ------------------------------------------------------------------------
 
 | symbol | variable                     |   unit    | observation         |
@@ -68,20 +67,18 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 | Cab\_  | Chlorophyll ab               | [ug cm-2] | Calendar year       |
 | hc\_   | Canopy Height                |    [m]    | hc \>= 0.01         |
 
-------------------------------------------------------------------------
 
 
-**(eq-01)**\
+**(eq-01)**
 ### $`ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}`$
 
 
-**(eq-02)**\
+**(eq-02)**
 ### $`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$
 
 <br/>
 
 #### 1.2 Site specific characteristics
-
 ------------------------------------------------------------------------
 
 | symbol | variable | unit | observation |
@@ -96,12 +93,9 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 | IGBP_veg_long | Long name IGBP vegetation class | string |  |
 | canopy_height | Canopy Height (hc) | [m] |  |
 
-------------------------------------------------------------------------
-
 <br/>
 
 #### 1.3 Soil Initial Conditions (soil_init.mat)
-
 ------------------------------------------------------------------------
 
 | symbol | variable | unit | observation |
@@ -109,14 +103,11 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 | SWC | Initial soil water content | m3 m-3 | “volumetric soil water” layer 1 to 4 (swvl1, swvl2, swvl3, swvl4) |
 | Ts | Initial soil temperature | °C | "Skin temperature” (skt) and “Soil temperature” level 1 to 4 (stl1, stl2, stl3, stl4) |
 
-------------------------------------------------------------------------
-
 note: data from CDS ERA5 Land
 
 <br/>
 
 #### 1.4 Soil Properties (soil_parameters.mat)
-
 ------------------------------------------------------------------------
 
 | symbol | variable | unit | observation |
@@ -135,8 +126,6 @@ note: data from CDS ERA5 Land
 | MSOC | Organic Fraction (Carbon) | fraction (/10000) | 6x1x1^3^ [OC1/2] |
 | fmax |  | [-] | 1x1 surfdata |
 | Coef_Lamda | Lambda per depth | [-] | 6x1x1^4^ Lambda folder |
-
-------------------------------------------------------------------------
 
 <sup>[1]{.smallcaps}</sup> Derived from the **PTF_SoilGrids_Schaap** datasets (*n, alpha, Ks, thetas, thetar) from the valid depths: 0, 5, 15, 30, 60, 100 and 200 cm (sl1* to sl7), excluding *sl3 (15cm).*
 

@@ -67,6 +67,7 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 
 ### $`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$ **(eq-02)**
 
+<br/>
 
 #### 1.2 Site specific characteristics
 ------------------------------------------------------------------------
@@ -83,6 +84,7 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 | IGBP_veg_long | Long name IGBP vegetation class | string |  |
 | canopy_height | Canopy Height (hc) | [m] |  |
 
+<br/>
 
 #### 1.3 Soil Initial Conditions (soil_init.mat)
 ------------------------------------------------------------------------
@@ -94,6 +96,7 @@ MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be
 
 note: data from CDS ERA5 Land
 
+<br/>
 
 #### 1.4 Soil Properties (soil_parameters.mat)
 ------------------------------------------------------------------------

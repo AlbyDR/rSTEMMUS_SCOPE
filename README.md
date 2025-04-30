@@ -2,8 +2,7 @@
 
 ## rSTEMMUS_SCOPE
 
-Codes to run the STEMMUS_SCOPE model in MATLAB from R
-
+Codes to run the STEMMUS_SCOPE model in MATLAB from R. Integrated code of SCOPE and STEMMUS. SCOPE is a radiative transfer and energy balance model (see https://github.com/AlbyDR/rSCOPE), and STEMMUS model is a two-phase mass and heat transfer model. For more information about the coupling between these two models, please check this [reference](https://gmd.copernicus.org/articles/14/1379/2021/). 
 
 ### To install rSTEMMUS_SCOPE, use:
 
@@ -11,16 +10,33 @@ Codes to run the STEMMUS_SCOPE model in MATLAB from R
 devtools::install_github("AlbyDR/rSTEMMUS.SCOPE")
 library(rSTEMMUS.SCOPE)
 ```
-
-It may need to install the rhdf5 package before using BiocManager as below.
-
+You may need to install the rhdf5 package before using BiocManager, as shown below.
 ``` r
 install.packages("BiocManager")
 BiocManager::install("rhdf5")
 ```
 
+Model Documentation
+The documentation of the STEMMUS_SCOPE model can be found [here](https://ecoextreml.github.io/STEMMUS_SCOPE).
 
-MATLAB R2015b or superior is required to run SCOPE and the SCOPE code need to be downloaded and unzipped in a directory of your choice (suggestion "D:/model/STEMMUS_SCOPE/"). The SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE>. Only src folder is needed.
+MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code needs to be downloaded and unzipped in a directory of your choice (e.g. "D:/model/STEMMUS_SCOPE/"). The STEMMUS_SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE> (Only src folder is required). 
+
+**folder structure**
+* D:/model/STEMMUS_SCOPE/
+   - input/
+     - directional/
+     - fluspect_parameters/
+     - leafangles/
+     - radiationdata/
+     - soil_spectrum/
+     - runs/
+     - input_for_input/
+       - SoilProperty/
+     - files(template_config.txt, Mdata.txt, input_data.xls, forcing_globals.mat, soil_parameters.mat and soil_init.mat)
+   - output/
+   - src/
+
+In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines 25-26 the code:  *CFG = readlines( '../input/runs/path.txt' )* 
 
 <br/>
 
@@ -124,7 +140,7 @@ note: data from CDS ERA5 Land
 field_moisture_content = theta_r + (theta_s - theta_r) / (1 + (alpha \* phi_fc) \^ coef_n) \^ (1 - 1/coef_n)\
 phi_fc = 341.9 - soil water potential at field) capacity (cm)
 
-<sup>3</sup> Both layers (1, 2) are combined and the values from the depth 1,3,5,6,7,8 are used per variable
+<sup>3</sup> Both layers (1, 2) are combined, and the values from depths 1,3,5,6,7,8 are used per variable
 
 <sup>4</sup> Only the Lambda file layers l1, l3, l5, l6, l7, l8 (depth_indices) were combined and used
 
@@ -132,4 +148,4 @@ phi_fc = 341.9 - soil water potential at field) capacity (cm)
 
 #### 1.5 Constants and model settings
 
-Use the function of the family "info", "check" and "change" to get more information about which constants parameters and model setting from STEMMUS and SCOPE can be changed to calibrate the model for the site characteristics.
+Use functions of the family "info", "check" and "change" to get more information about which constant (model parameters) and model settings from STEMMUS and SCOPE can be changed to calibrate the model for the site characteristics.

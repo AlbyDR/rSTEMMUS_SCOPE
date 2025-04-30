@@ -81,9 +81,9 @@ In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines
 | Cab\_  | Chlorophyll ab               | [ug cm-2] | Calendar year       |
 | hc\_   | Canopy Height                |    [m]    | hc \>= 0.01         |
 
-### $`ea = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* {RH \choose 100}`$ **(eq-01)** 
+### $`ea = 6.107*10^{7.5 * Ta \choose 237.3 + Ta}* {RH\choose 100}`$            **(eq-01)** 
 
-### $`VPD = 6.107*10^{7.5 X Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$ **(eq-02)**
+### $`VPD = 6.107*10^{7.5 * Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$       **(eq-02)**
 
 <br/>
 
@@ -121,26 +121,27 @@ note: data from CDS ERA5 Land
 
 | symbol | variable | unit | observation |
 |:--------------|:-----------------|:-------------:|:----------------------|
-| SaturatedK | Saturated hydraulic conductivity | [cm s-1] | 1x6 ^[1]^ [Ks]/(24\*3600) cm d-1 |
-| ks0 | First element of SaturatedK vector | [cm s-1] | 1x1 ^[1]^ |
-| porosity | Porosity | [m3 m-3] | 1x6 ^[1]^ [thetas] |
-| theta_s0 | First element of porosity vector | [m3 m-3] | 1x1 ^[1]^ |
-| SaturatedMC | Saturated SWC | [m3 m-3] | 1x6^[1]^ [thetas] |
-| ResidualMC | Residual SWC | [m3 m-3] | 1x6 ^[1]^ [thetar] |
-| Coefficient_Alpha | Coefficient Alpha | [cm-1] | 1x6 ^[1]^ [alpha] |
-| Coefficient_n | Coefficient n | [-] | 1x6 ^[1]^ [n] |
-| fieldMC | Field Capacity | [m3 m-3] | 6x1 ^[2]^ |
-| FOS | Sandy Fraction | fraction (/100) | 6x1x1^3^ [SAND1/2] |
-| FOC | Clay | fraction (/100) | 6x1x1^3^ [CLAY1/2] |
-| MSOC | Organic Fraction (Carbon) | fraction (/10000) | 6x1x1^3^ [OC1/2] |
+| SaturatedK<sup>1</sup> | Saturated hydraulic conductivity | [cm s-1] | 1x6 [Ks]/(24\*3600) *cm d-1* |
+| ks0<sup>1</sup> | First element of SaturatedK vector | [cm s-1] | 1x1 |
+| porosity<sup>1</sup> | Porosity | [m3 m-3] | 1x6 [thetas] |
+| theta_s0<sup>1</sup> | First element of porosity vector | [m3 m-3] | 1x1 |
+| SaturatedMC<sup>1</sup> | Saturated SWC | [m3 m-3] | 1x6 [thetas] |
+| ResidualMC<sup>1</sup> | Residual SWC | [m3 m-3] | 1x6 [thetar] |
+| Coefficient_Alpha<sup>1</sup> | Coefficient Alpha | [cm-1] | 1x6 [alpha] |
+| Coefficient_n<sup>1</sup> | Coefficient n | [-] | 1x6 [n] |
+| fieldMC<sup>2</sup> | Field Capacity | [m3 m-3] | 6x1 |
+| FOS<sup>3</sup> | Sandy Fraction | fraction (/100) | 6x1x1 [SAND1/2] |
+| FOC<sup>3</sup> | Clay | fraction (/100) | 6x1x1 [CLAY1/2] |
+| MSOC<sup>3</sup> | Organic Fraction (Carbon) | fraction (/10000) | 6x1x1 [OC1/2] |
 | fmax |  | [-] | 1x1 surfdata |
-| Coef_Lamda | Lambda per depth | [-] | 6x1x1^4^ Lambda folder |
+| Coef_Lamda<sup>4</sup> | Lambda per depth | [-] | 6x1x1 Lambda folder |
 
 <sup>[1]</sup> Derived from the **PTF_SoilGrids_Schaap** datasets (*n, alpha, Ks, thetas, thetar) from the valid depths: 0, 5, 15, 30, 60, 100 and 200 cm (sl1* to sl7), excluding *sl3 (15cm).*
 
 <sup>[2]</sup> Calculated field capacity form field moisture content\
-field_moisture_content = theta_r + (theta_s - theta_r) / (1 + (alpha \* phi_fc) \^ coef_n) \^ (1 - 1/coef_n)\
-phi_fc = 341.9 - soil water potential at field) capacity (cm)
+#### $`fieldMC = theta_r + (theta_s - theta_r) / (1 + (alpha*phi_fc)^{coef_n})^{(1 - (1 / coef_n))}`$            **(eq-03)** 
+
+*where phifc = 341.9 - soil water potential at field capacity (cm)*
 
 <sup>3</sup> Both layers (1, 2) are combined, and the values from depths 1,3,5,6,7,8 are used per variable
 

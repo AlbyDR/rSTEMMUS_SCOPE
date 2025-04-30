@@ -16,12 +16,13 @@ install.packages("BiocManager")
 BiocManager::install("rhdf5")
 ```
 
-Model Documentation
+#### Model Documentation
+
 The documentation of the STEMMUS_SCOPE model can be found [here](https://ecoextreml.github.io/STEMMUS_SCOPE).
 
 MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code needs to be downloaded and unzipped in a directory of your choice (e.g. "D:/model/STEMMUS_SCOPE/"). The STEMMUS_SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE> (Only src folder is required). 
 
-**folder structure**
+**Folder structure**
 * D:/model/STEMMUS_SCOPE/
    - input/
      - directional/

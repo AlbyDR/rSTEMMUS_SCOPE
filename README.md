@@ -20,7 +20,7 @@ BiocManager::install("rhdf5")
 
 The documentation of the STEMMUS_SCOPE model can be found [here](https://ecoextreml.github.io/STEMMUS_SCOPE).
 
-MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code needs to be downloaded and unzipped in a directory of your choice (e.g. "D:/model/STEMMUS_SCOPE/"). The STEMMUS_SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE> (Only src folder is required). 
+MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code needs to be downloaded and unzipped in a directory of your choice (e.g. "D:/model/STEMMUS_SCOPE/"). The STEMMUS_SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE> (Only src folder is required).
 
 **Folder structure**
 * D:/model/STEMMUS_SCOPE/
@@ -31,9 +31,10 @@ MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code n
      - radiationdata/
      - soil_spectrum/
      - runs/
+       - file (path.txt)
      - input_for_input/
        - SoilProperty/
-     - files(template_config.txt, Mdata.txt, input_data.xls, forcing_globals.mat, soil_parameters.mat and soil_init.mat)
+     - files (template_config.txt, Mdata.txt, input_data.xls, forcing_globals.mat, soil_parameters.mat and soil_init.mat)
    - output/
    - src/
 

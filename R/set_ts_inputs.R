@@ -36,22 +36,22 @@
 #' @examples
 #' \dontrun{
 #' set_ts_inputs(patch = "D:/model/STEMMUS_SCOPE/",
-#'               site_name = site_names[19],
-#'               run_name = "DWD_4",
-#'               t_file =	ts_DWD[[19]]$t_,
-#'               year_file	= year(ts_DWD[[19]]$timestamp),
-#'               Rin_file	= ts_DWD[[19]]$Rin_sun,
-#'               Rli_file	= ts_DWD[[19]]$Rli_,
-#'               p_file	= ts_DWD[[19]]$p_,
-#'               Ta_file =	ts_DWD[[19]]$Ta_,
-#'               RH_file = ts_DWD[[19]]$RH_,
-#'               ea_file =	ts_DWD[[19]]$ea_,
-#'               u_file	= ts_DWD[[19]]$u_,
-#'               rain_file = ts_DWD[[19]]$rain_/36000,
-#'               VPD_file = 	ts_DWD[[19]]$VPD_,
-#'               tts_file	= tts_calc[[19]],
-#'               CO2_file	= DE_ICOS$CO2_,
-#'               LAI_file =	unlist(LAI500_Modis[20]))
+#'               site_name = "DE-HoH",
+#'               run_name = "ECdata_01",
+#'               t_file =	ts_DWD$t_,
+#'               year_file	= year(ts_DWD$timestamp),
+#'               Rin_file	= ts_DWD$Rin_sun,
+#'               Rli_file	= ts_DWD$Rli_,
+#'               p_file	= ts_DWD$p_,
+#'               Ta_file =	ts_DWD$Ta_,
+#'               RH_file = ts_DWD$RH_,
+#'               ea_file =	ts_DWD$ea_,
+#'               u_file	= ts_DWD$u_,
+#'               rain_file = ts_DWD$rain_/36000,
+#'               VPD_file = ts_DWD$VPD_,
+#'               tts_file	= tts_calc,             # optional
+#'               CO2_file	= DE_ICOS$CO2_,         # optional
+#'               LAI_file =	LAI500_Modis$LAI)
 #' }
 #'
 #' @export

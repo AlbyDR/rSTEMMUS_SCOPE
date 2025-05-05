@@ -17,6 +17,10 @@
 #' @examples
 #' \dontrun{
 #'
+#'run_Matlab(patch = "D:/model/STEMMUS_SCOPE/",
+#'               site_name = "DE-HoH",
+#'               run_name = "ECdata_01")
+#'
 #' n = 10
 #' for (i in 1:10) {
 #'

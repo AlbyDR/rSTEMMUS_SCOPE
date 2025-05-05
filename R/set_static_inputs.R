@@ -39,8 +39,8 @@
 #' @examples
 #' \dontrun{
 #' set_static_inputs(patch = "D:/model/STEMMUS_SCOPE/",
-#'                   site_name = "mySite",
-#'                   run_name = "grass_2019",
+#'                   site_name = "DE-HoH",
+#'                   run_name = "ECdata_01",
 #'                   LAT = 37.83,
 #'                   LON = 107.69,
 #'                   elevation = 500,
@@ -50,10 +50,11 @@
 #'                   zo = 0.00369,
 #'                   d = 0.0201,
 #'                   n_timestamps = 7344, # number of timestamps
-#'                   timestep_min = 30, # hourly 60, half hour 3
+#'                   timestep_min = 30, # hourly 60, half hour 30
 #'                   initial_soil_temperature = data.frame("skt"=Initial_01MAY19_Yachi_p[1,2],
 #'                                                         "stl1"=Initial_01MAY19_Yachi_p[2,2],
 #'                                                         "stl2"=Initial_01MAY19_Yachi_p[3,2],
+#'                                                         "stl3"=Initial_01MAY19_Yachi_p[4,2],
 #'                                                         "stl4"=Initial_01MAY19_Yachi_p[5,2]), #CDS ERA5Land layers 1 to 4
 #'                   initial_volumetric_soil_water = data.frame("swvl1"=Initial_01MAY19_Yachi_p[6,2],
 #'                                                              "swvl2"=Initial_01MAY19_Yachi_p[7,2],

@@ -21,7 +21,7 @@
 #'       StartTime = "2023-06-01T00:00",
 #'       EndTime = "2023-11-30T23:00",
 #'       site_name = "DE-HoH",
-#'       run_name = "ECdata_36",
+#'       run_name = "ECdata_01",
 #'       output_name = format(Sys.time(), "%Y%b%d_%H%M"))
 #'
 #' site_CRN_names <- c(paste0("DE-C0",1:9), paste0("DE-C",10:19))

@@ -64,7 +64,8 @@ After collect and orginaze the data required to run the model (see input variabl
 | fluoreecence | Fluorecence | [W m-2 um-1 sr-1] | wavelengths 640 to 850 nm |
 | reflectance | Fraction of Radiation (in observation direction *pi/irradiance) | [-] | from 400 to 2400 nm |
 
-** Soil-Vegetation-Atmophere interactions **
+**Soil-Vegetation-Atmophere interactions**
+
 ![image](https://github.com/user-attachments/assets/74685153-ec0b-44e3-8e44-1a101485712f)
 
 

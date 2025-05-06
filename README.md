@@ -42,7 +42,11 @@ In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines
 
 <br/>
 
-[see here the steps to run the model](https://github.com/AlbyDR/rSTEMMUS.SCOPE/blob/master/run_steps.md)
+#### Steps to run the model for a time series at spefific location
+
+After collect and orginaze the data required to run the model (see input variables below), there will be four steps (functions) to run a time series simulation for a specific location.
+[see here the steps](https://github.com/AlbyDR/rSTEMMUS.SCOPE/blob/master/run_steps.md)
+
 
 **The required data are divided into:**
 

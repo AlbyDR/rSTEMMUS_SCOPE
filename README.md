@@ -42,7 +42,7 @@ In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines
 
 <br/>
 
-[see here the steps to run the model](../run_steps.md)
+[see here the steps to run the model](https://github.com/AlbyDR/rSTEMMUS.SCOPE/master/run_steps.md)
 
 **The required data are divided into:**
 

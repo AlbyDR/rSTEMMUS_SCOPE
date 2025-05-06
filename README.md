@@ -102,9 +102,9 @@ After collect and orginaze the data required to run the model (see input variabl
 | ea\_   | Air Vapor Pressure           |   [hPa]   | eq-01               |
 | VPD\_  | Vapor Pressure Deficit       |   [hPa]   | eq-02               |
 | tts\_  | Zenith Solar Angle           |    [-]    |                     |
-| t\_    | Timestamp (doy_float)        |    [-]    |                     |
-| year\_ | Year                         | [integer] | decimal Julian day  |
-| Cab\_  | Chlorophyll ab               | [ug cm-2] | Calendar year       |
+| t\_    | Timestamp (doy_float)        |    [-]    | decimal Julian day  |
+| year\_ | Year                         | [integer] | Calendar year       |
+| Cab\_  | Chlorophyll ab               | [ug cm-2] |                     |
 | hc\_   | Canopy Height                |    [m]    | hc \>= 0.01         |
 
 ### $`ea = 6.107*10^{7.5 * Ta \choose 237.3 + Ta}* {RH\choose 100}`$            **(eq-01)** 

@@ -46,7 +46,27 @@ After collect and orginaze the data required to run the model (see input variabl
 
 ------------------------------------------------------------------------
 
-**The required data are divided into:**
+**Main model outputs from the simulations**
+
+| output file | variable                     |   unit    | observation         |
+|:-------|:-----------------------------|:---------:|:--------------------|
+| Sim_Theta | Soil Water Content (SWC) | [m3 m-3] | per depth (1 to 500 cm) |
+| Sim_Temp  | Soil Temperature (Ts)    |   [°C]   | per depth (1 to 500 cm) |
+| surftemp | Surface Temperature (LST)  |   [°C]   | soil skin and canopy |
+| waterPotential | Leaf Water Potential (LWP)  |   [m]   |  |
+| waterStreessFactor | Soil Water Stress (factor)  |   [-]   | from 0 to 1 |
+| fluxes | Evapotranspiration (ET) | [W m-2] | divide by soil (Evap) and plant (Trap) |
+| fluxes | Heat Fluxes (lE, H, G) | [W m-2] | divide by soil (s) and canopy (c) |
+| fluxes | Net Ecosystem Carbon Exchange (NEE) | [Kg m-2 s-1] |  |
+| fluxes | Vegetation Gross Primary Production (GPP) | [Kg m-2 s-1] |  |
+| fluxes | others variables (A, Rn, Resp, aPAR) | [W m-2; umol m-2 s-1] |  |
+| aerodyn | aerodynmic parameters (raa, rawc, raws, ustar, rac, ras) | [s m-1] |  |
+| fluoreecence | Fluorecence | [W m-2 um-1 sr-1] | wavelengths 640 to 850 nm |
+| reflectance | Fraction of Radiation (in observation direction *pi/irradiance) | [-] | from 400 to 2400 nm |
+
+------------------------------------------------------------------------
+
+**The required input data are divided into:**
 
 ```         
   1.1 Meteorological and vegetation properties time series inputs

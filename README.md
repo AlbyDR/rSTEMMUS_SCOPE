@@ -1,11 +1,9 @@
 ## README
-
+------------------------------------------------------------------------
 ## rSTEMMUS_SCOPE
-
 Codes to run the STEMMUS_SCOPE model in MATLAB from R. Integrated code of SCOPE and STEMMUS. SCOPE is a radiative transfer and energy balance model (see https://github.com/AlbyDR/rSCOPE), and STEMMUS model is a two-phase mass and heat transfer model. For more information about the coupling between these two models, please check this [reference](https://gmd.copernicus.org/articles/14/1379/2021/). 
 
 ### To install rSTEMMUS_SCOPE, use:
-
 ``` r
 devtools::install_github("AlbyDR/rSTEMMUS.SCOPE")
 library(rSTEMMUS.SCOPE)
@@ -15,7 +13,7 @@ You may need to install the rhdf5 package before using BiocManager, as shown bel
 install.packages("BiocManager")
 BiocManager::install("rhdf5")
 ```
-
+------------------------------------------------------------------------
 #### Model Documentation
 
 The documentation of the STEMMUS_SCOPE model can be found [here](https://ecoextreml.github.io/STEMMUS_SCOPE).
@@ -40,13 +38,13 @@ MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code n
 
 In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines 25-26 the code:  *CFG = readlines( '../input/runs/path.txt' )* 
 
-<br/>
-
+------------------------------------------------------------------------
 #### Steps to run the model for a time series at spefific location
 
 After collect and orginaze the data required to run the model (see input variables below), there will be four steps (functions) to run a time series simulation for a specific location.
 [see here the steps](https://github.com/AlbyDR/rSTEMMUS.SCOPE/blob/master/run_steps.md)
 
+------------------------------------------------------------------------
 
 **The required data are divided into:**
 
@@ -60,13 +58,10 @@ After collect and orginaze the data required to run the model (see input variabl
   1.4 Soil Properties
 
   1.5 Constants and model settings
-  
 ```
 
-<br/>
-
-#### 1.1 Time Series inputs (vectors .dat)
 ------------------------------------------------------------------------
+#### 1.1 Time Series inputs (vectors .dat)
 
 | symbol | variable                     |   unit    | observation         |
 |:-------|:-----------------------------|:---------:|:--------------------|
@@ -91,10 +86,8 @@ After collect and orginaze the data required to run the model (see input variabl
 
 ### $`VPD = 6.107*10^{7.5 * Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$       **(eq-02)**
 
-<br/>
-
-#### 1.2 Site specific characteristics
 ------------------------------------------------------------------------
+#### 1.2 Site specific characteristics
 
 | symbol | variable | unit | observation |
 |:---------------|:---------------------|:--------------:|:------------------|
@@ -108,10 +101,8 @@ After collect and orginaze the data required to run the model (see input variabl
 | IGBP_veg_long | Long name IGBP vegetation class | string |  |
 | canopy_height | Canopy Height (hc) | [m] |  |
 
-<br/>
-
-#### 1.3 Soil Initial Conditions (soil_init.mat)
 ------------------------------------------------------------------------
+#### 1.3 Soil Initial Conditions (soil_init.mat)
 
 | symbol | variable | unit | observation |
 |:-----------|:-----------|:----------:|:------------------------------------|
@@ -120,10 +111,8 @@ After collect and orginaze the data required to run the model (see input variabl
 
 note: data from CDS ERA5 Land
 
-<br/>
-
-#### 1.4 Soil Properties (soil_parameters.mat)
 ------------------------------------------------------------------------
+#### 1.4 Soil Properties (soil_parameters.mat)
 
 | symbol | variable | unit | observation |
 |:--------------|:-----------------|:-------------:|:----------------------|
@@ -153,8 +142,6 @@ note: data from CDS ERA5 Land
 
 <sup>4</sup> Only the Lambda file layers l1, l3, l5, l6, l7, l8 (depth_indices) were combined and used
 
-<br/>
-
+------------------------------------------------------------------------
 #### 1.5 Constants and model settings
-
 Use functions of the family "info", "check" and "change" to get more information about which constant (model parameters) and model settings from STEMMUS and SCOPE can be changed to calibrate the model for the site characteristics.

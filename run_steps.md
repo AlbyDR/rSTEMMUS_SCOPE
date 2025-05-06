@@ -253,3 +253,5 @@ ggplot() +
 ``` r
 plotET_DE001 / plotSWC_DE001 / plotRain_DE001 + plot_layout(heights = c(1, 3 , 1))
 ```
+![image](https://github.com/user-attachments/assets/007a574c-f46b-486a-97db-cdb37d24d65a)
+

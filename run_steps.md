@@ -45,6 +45,11 @@ Second step is to set all required static input parameters to run the model.
                    timezn = 1,        # timezone
                    setoptions = c(1,1,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,1)) # SCOPE model options (see info_)
 ```
+**note:** see "get_SoilInitials()" for the initial_soil_temperature and initial_volumetric_soil_water, 
+"get_SoilProperties()" for soil_property_list, "info_SCOPE_options()" for setoptions, 
+"info_IGBP_classes()" for IGBP_veg_long, "info_SCOPE_README()" for SCOPE constants. 
+STEMMUS constants and setting can be checked by "check_STEMMUS_DefineConstants()", 
+"check_STEMMUS_SoilConstants()" and "check_STEMMUS_ModelSettings()".
 
 Third step is to set all required time series input data to run the model (see README).
 

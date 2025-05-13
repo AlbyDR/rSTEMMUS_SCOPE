@@ -21,7 +21,8 @@ The documentation of the STEMMUS_SCOPE model can be found [here](https://ecoextr
 MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code needs to be downloaded and unzipped in a directory of your choice (e.g. "D:/model/STEMMUS_SCOPE/"). The STEMMUS_SCOPE code is available at <https://github.com/EcoExtreML/STEMMUS_SCOPE> (Only src folder is required).
 
 **Folder structure**
-* D:/model/STEMMUS_SCOPE/
+```
+D:/model/STEMMUS_SCOPE/
    - input/
      - directional/
      - fluspect_parameters/
@@ -35,8 +36,9 @@ MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code n
      - files (template_config.txt, Mdata.txt, input_data.xls, forcing_globals.mat, soil_parameters.mat and soil_init.mat)
    - output/
    - src/
+```
 
-In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines 25-26 the code:  *CFG = readlines( '../input/runs/path.txt' )* . The file path.txt should be placed in the folder "runs".
+In the folder src, open the file ```STEMMUS-SCOPE.m``` (script) and include on lines 25-26 the code: ```CFG = readlines('../input/runs/path.txt')```. The file ```path.txt``` should be placed in the folder ```../input/runs/```.
 
 ------------------------------------------------------------------------
 #### Steps to run the model for a time series at a specific location

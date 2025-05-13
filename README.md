@@ -36,12 +36,12 @@ MATLAB R2015b or superior is required to run SCOPE, and the STEMMUS_SCOPE code n
    - output/
    - src/
 
-In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines 25-26 the code:  *CFG = readlines( '../input/runs/path.txt' )* 
+In the folder src, open the file *STEMMUS-SCOPE.m* (script) and include on lines 25-26 the code:  *CFG = readlines( '../input/runs/path.txt' )* . The file path.txt should be placed in the folder "runs".
 
 ------------------------------------------------------------------------
-#### Steps to run the model for a time series at spefific location
+#### Steps to run the model for a time series at a specific location
 
-After collect and orginaze the data required to run the model (see input variables below), there will be four steps (functions) to run a time series simulation for a specific location.
+After collecting and organising the data required to run the model (see input variables below), there will be four steps (functions) to run a time series simulation for a specific location.
 [see here the steps](https://github.com/AlbyDR/rSTEMMUS.SCOPE/blob/master/run_steps.md)
 
 ------------------------------------------------------------------------
@@ -59,7 +59,7 @@ After collect and orginaze the data required to run the model (see input variabl
 | fluxes | Heat Fluxes (lE, H, G) | [W m-2] | divide by soil (s) and canopy (c) |
 | fluxes | Net Ecosystem Carbon Exchange (NEE) | [Kg m-2 s-1] |  |
 | fluxes | Vegetation Gross Primary Production (GPP) | [Kg m-2 s-1] |  |
-| fluxes | others variables (A, Rn, Resp, aPAR) | [W m-2; umol m-2 s-1] |  |
+| fluxes | other variables (A, Rn, Resp, aPAR) | [W m-2; umol m-2 s-1] |  |
 | aerodyn | aerodynmic parameters (raa, rawc, raws, ustar, rac, ras) | [s m-1] |  |
 | fluoreecence | Fluorecence | [W m-2 um-1 sr-1] | wavelengths 640 to 850 nm |
 | reflectance | Fraction of Radiation (in observation direction *pi/irradiance) | [-] | from 400 to 2400 nm |
@@ -76,7 +76,7 @@ After collect and orginaze the data required to run the model (see input variabl
 ```         
   1.1 Meteorological and vegetation properties time series inputs
   
-  1.2 Site specific characteristics
+  1.2 Site-specific characteristics
 
   1.3 Soil Initial Conditions
   
@@ -112,7 +112,7 @@ After collect and orginaze the data required to run the model (see input variabl
 ### $`VPD = 6.107*10^{7.5 * Ta \choose 237.3 + Ta}* 1 - {RH\choose 100}`$       **(eq-02)**
 
 ------------------------------------------------------------------------
-#### 1.2 Site specific characteristics
+#### 1.2 Site-specific characteristics
 
 | symbol | variable | unit | observation |
 |:---------------|:---------------------|:--------------:|:------------------|

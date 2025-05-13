@@ -1,0 +1,1 @@
+D:/model/STEMMUS_SCOPE/input/runs/DE-C12_DWD_36/DE-C12_DWD_36_config.txt

@@ -5,13 +5,13 @@
 \title{to check current SCOPE time series input files used by the model}
 \usage{
 check_SCOPE_tsInputs(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   site_name = NA,
   run_name = NA
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to
 name runs with different model parameters or settings,}
@@ -31,7 +31,8 @@ variable desciption and units @seealso \code{\link[=info_SCOPE_tsInputs]{info_SC
 \dontrun{
 check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36")
 
-formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"), align = c("l","l"))
+formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai",
+                         run_name = "ECdata_36"), align = c("l","l"))
 }
 
 }

@@ -8,7 +8,7 @@
 #' **important** @seealso [info_SCOPE_README()] to more information about which inputs are required or optional,
 #' also the units must be used.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @param data_frame if all data input are into one data.frame with column names (t_, Ta_, RH_, u_, p_, rain_, Rin_, Rli_, LAI_, CO2_, ea_)
 #' @param t_file required
@@ -35,7 +35,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' set_ts_inputs(patch = "D:/model/STEMMUS_SCOPE/",
+#' set_ts_inputs(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'               site_name = "DE-HoH",
 #'               run_name = "ECdata_01",
 #'               t_file =	ts_DWD$t_,
@@ -56,7 +56,7 @@
 #'
 #' @export
 #'
-set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
+set_ts_inputs <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
                       site_name = NA,
                       run_name = NULL,
                       data_frame = NULL, # if all data input is into one data.frame with column names (t_, Ta_, RH_, u_, p_, rain_, Rin_, Rli_, LAI_, CO2_, ea_)
@@ -135,7 +135,7 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   names(Mdata_df) <- c("space", argumants_Mdata$vector)
 
   utils::write.table(format(Mdata_df, nsmall = 8),
-              paste0(patch, "input/runs/", site_name, "_", run_name, "/", "Mdata.txt"),
+              paste0(patch, "runs/", site_name, "_", run_name, "/", "Mdata.txt"),
               row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
   vars_xls <- lapply(argumants_xls$arg, function(x) {
@@ -146,26 +146,26 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
     for (i in 1:length(argumants_xls$arg)) {
 
     utils::write.table(format(vars_xls[[i]], nsmall = 8),
-                paste0(patch, "input/runs/", site_name, "_", run_name, "/", argumants_xls$file[i]),
+                paste0(patch, "runs/", site_name, "_", run_name, "/", argumants_xls$file[i]),
                 row.names = F, col.names = F, quote = FALSE, sep = "   ")
   }
 
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   for (i in 1:length(argumants_xls$arg)) {
 
        input_data[[3]]$files[argumants_xls[i,5]] <- argumants_xls[i,8]
   }
 
-  rio::export(input_data, paste0(patch, "input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
+  rio::export(input_data, paste0(patch, "runs/", site_name, "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
 
   LAI_dat <- data.frame(as.character(""), round(t_file,7), round(LAI_file,2))
-  utils::write.table(format(LAI_dat, nsmall = 8), paste0(patch, "input/runs/", site_name, "_", run_name, "/", "LAI_.dat"),
+  utils::write.table(format(LAI_dat, nsmall = 8), paste0(patch, "runs/", site_name, "_", run_name, "/", "LAI_.dat"),
                      row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
   if(!is.null(hc_file) == TRUE) {
     utils::write.table(format(cbind(as.character(""),t_file, hc_file), nsmall = 8),
-                paste0(patch, "input/runs/", site_name, "_", run_name, "/", "hc_.dat"),
+                paste0(patch, "runs/", site_name, "_", run_name, "/", "hc_.dat"),
                 row.names = F, col.names = F, quote = FALSE, sep = "   ")
   } else {
     print("no hc")
@@ -196,18 +196,18 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
     df <- data.frame(as.character(""), data_frame[names[i]])
 
     utils::write.table(format(df, nsmall = 8),
-                paste0(patch, "input/runs/", site_name, "_", run_name, "/", names[i], ".dat"),
+                paste0(patch, "runs/", site_name, "_", run_name, "/", names[i], ".dat"),
                 row.names = F, col.names = F, quote = FALSE, sep = "   ")
      }
 
   LAI_dat <- data.frame(as.character(""), data_frame$t_, data_frame$LAI_)
   utils::write.table(format(LAI_dat, nsmall = 8),
-              paste0(patch, "input/runs/", site_name, "_", run_name, "/", "LAI_.dat"),
+              paste0(patch, "runs/", site_name, "_", run_name, "/", "LAI_.dat"),
               row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
   if(!is.null(data_frame$hc_) == TRUE) {
     utils::write.table(format(cbind(as.character(""), data_frame$t_, data_frame$hc_), nsmall = 8),
-                paste0(patch, "input/runs/", site_name, "_", run_name, "/", "hc_.dat"),
+                paste0(patch, "runs/", site_name, "_", run_name, "/", "hc_.dat"),
                 row.names = F, col.names = F, quote = FALSE, sep = "   ")
   } else {
     print("no hc")
@@ -217,11 +217,11 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   Mdata <- data.frame(as.character(""), Mdata)
   #
   utils::write.table(format(Mdata, nsmall = 8),
-              paste0(patch, "input/runs/", site_name, "_", run_name, "/", "Mdata.txt"),
+              paste0(patch, "runs/", site_name, "_", run_name, "/", "Mdata.txt"),
               row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
   # include the input names .dat in the xls filenames spreadsheet ----
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   names <- as.vector.data.frame(paste0(names(data_frame),".dat"))
   names(names) <- names(data_frame)
@@ -229,11 +229,11 @@ set_ts_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
                                     NA,NA,names["CO2_"],names["z_"],names["tts_"],NA,NA,names["LAI_"],names["hc_"],
                                     NA,names["Vcmax_"],names["Cab_"],NA,NA,names["LIDF_"])
 
-  rio::export(input_data, paste0(patch, "input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
+  rio::export(input_data, paste0(patch, "runs/", site_name, "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
 
   }
 
 
-  return(print(paste0("The inputs were created inside the folder ", site_name, "_", run_name, " at ..input/runs/")))
+  return(print(paste0("The inputs were created inside the folder ", site_name, "_", run_name, " at runs/")))
 
 }

@@ -4,10 +4,10 @@
 \alias{check_STEMMUS_SoilConstants}
 \title{to check the current STEMMUS Model Soil Constants}
 \usage{
-check_STEMMUS_SoilConstants(patch = "D:/model/STEMMUS_SCOPE/")
+check_STEMMUS_SoilConstants(patch = "D:/model/rSTEMMUS_SCOPE/")
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 }
 \value{
 a table with information about STEMMUS current Soil Constants inputs

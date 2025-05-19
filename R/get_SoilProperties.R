@@ -5,11 +5,11 @@
 #'
 #' @details
 #' This is a function to prepare the soil properties to run the set_static_inputs function by
-#' extracting soil properties from raster ../input/input_for_input/SoilProperty/ folder using
+#' extracting soil properties from raster ../input/SoilProperty/ folder using
 #' coordinates (+proj=longlat +datum=WGS8).
 #' **important** the folder ../inputs_for_input/SoilProperty/ with the global data files need to be downloaded.
 #'
-#' @param patch the patch to the raster files, default "D:/model/STEMMUS_SCOPE/input/input_for_input/SoilProperty/",
+#' @param patch the patch to the raster files, default "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",
 #' @param lat,lon the latitude and longitude of the point of interest,
 #' @param sf_points alternatively a multipoint sf object
 #' @return returns list with all soil properties required
@@ -17,13 +17,13 @@
 #'
 #' @examples
 #'
-#' Soil_property_loc1 <- get_SoilProperties(patch = "D:/model/STEMMUS_SCOPE/input/input_for_input/SoilProperty/",
+#' Soil_property_loc1 <- get_SoilProperties(patch = "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",
 #'                                          lon = 107.688,
 #'                                          lat = 37.829)
 #'
 #' @export
 #'
-get_SoilProperties <- function(patch = "D:/model/STEMMUS_SCOPE/input/input_for_input/SoilProperty/",
+get_SoilProperties <- function(patch = "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",
                                lon = NA,
                                lat = NA,
                                sf_points = NULL

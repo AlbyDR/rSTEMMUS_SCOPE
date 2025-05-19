@@ -46,11 +46,11 @@
 #'                 months = "06",
 #'                 days = "01",
 #'                 times = "00:00",
-#'                 path_file = "D:/model/STEMMUS_SCOPE/input/input_for_input/Initial_condition",
+#'                 path_file = "D:/model/rSTEMMUS_SCOPE/input/",
 #'                 target_f = "download2.grib",
 #'                 timeout_m = 50)
 #'
-#' rast_init_Cond_01JUN23 <- terra::rast("D:/model/STEMMUS_SCOPE/input/input_for_input/Initial_condition/Init_Cond_01_JUN.grib")
+#' initials_01JUN23 <- terra::rast("D:/model/rSTEMMUS_SCOPE/data/Init_Cond_01_JUN.grib")
 #' }
 #'
 #' @export

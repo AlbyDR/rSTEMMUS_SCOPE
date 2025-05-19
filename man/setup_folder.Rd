@@ -5,7 +5,7 @@
 \title{to create a input folder with required files to run the model}
 \usage{
 setup_folder(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   StartTime = NA,
   EndTime = NA,
   site_name = NA,
@@ -14,7 +14,7 @@ setup_folder(
 )
 }
 \arguments{
-\item{patch}{the path to the STEMMUS_SCOPE downloaded folder, example:"D:/models/STEMMUS_SCOPE/".}
+\item{patch}{the path to the STEMMUS_SCOPE downloaded folder, example:"D:/models/rSTEMMUS_SCOPE/".}
 
 \item{StartTime}{a start datetime to the simulations/initial conditions in this format "2023-01-01T01:00".}
 
@@ -42,7 +42,7 @@ setup_folder(patch = "D:/model/STEMMUS_SCOPE/",
       StartTime = "2023-06-01T00:00",
       EndTime = "2023-11-30T23:00",
       site_name = "DE-HoH",
-      run_name = "ECdata_36",
+      run_name = "ECdata_01",
       output_name = format(Sys.time(), "\%Y\%b\%d_\%H\%M"))
 
 site_CRN_names <- c(paste0("DE-C0",1:9), paste0("DE-C",10:19))

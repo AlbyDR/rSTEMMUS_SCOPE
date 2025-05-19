@@ -5,13 +5,13 @@
 \title{to check the current STEMMUS Model global forcing data}
 \usage{
 check_STEMMUS_ForcingGlobal(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   site_name = NA,
   run_name = NA
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to
 name runs with different model parameters or settings,}
@@ -30,8 +30,8 @@ are passed by the function @seealso \code{\link[=set_static_inputs]{set_static_i
 \examples{
 
 \dontrun{
-formattable::formattable(check_STEMMUS_ForcingGlobal(site_name ="DE-Hai", run_name = "ECdata_36"),
-                         align = c("l","c","c"))
+formattable::formattable(check_STEMMUS_ForcingGlobal(site_name ="DE-Hai",
+run_name = "ECdata_36"), align = c("l","c","c"))
 }
 
 }

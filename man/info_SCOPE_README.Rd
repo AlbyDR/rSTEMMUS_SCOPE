@@ -5,13 +5,13 @@
 \title{information about the SCOPE inputs}
 \usage{
 info_SCOPE_README(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   site_name = NA,
   run_name = NA
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,}
 }
@@ -30,14 +30,16 @@ parameters per IBGP landcover class, among other information.
 \dontrun{
 info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")
 
-formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","l"))
+formattable::formattable(info_SCOPE_README(site_name = "DE-Hai",
+                         run_name = "ECdata_36")[[1]], align = c("l","l"))
 
 formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
-align = c("l","c","c"), caption = "Table1. Example of LIDF values")
+                         align = c("l","c","c"), caption = "Table1. Example of LIDF values")
 
 formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[3]],
 align = c("l","c","r","r","r","r","r","c","r","r"),
-caption = "Table2. Examples of biochemical parameters for the model biochemical.m Calibrated temperature sensitivity parameters for Vcmax and Resp")
+caption = "Table2. Examples of biochemical parameters for the model biochemical.m
+Calibrated temperature sensitivity parameters for Vcmax and Resp")
 
 formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[4]],
 align = c("l","c","c","r","r","r"), caption = "Table3. Typical ranges of input values")

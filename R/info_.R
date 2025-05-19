@@ -7,7 +7,7 @@
 #' This is a function show examples of typical input values ranges, parameters units, sensitivity of some
 #' parameters per IBGP landcover class, among other information.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about SCOPE parameters
 #' @family information about parameters and settings
@@ -17,14 +17,16 @@
 #' \dontrun{
 #' info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")
 #'
-#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","l"))
+#' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai",
+#'                          run_name = "ECdata_36")[[1]], align = c("l","l"))
 #'
 #' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[2]],
-#' align = c("l","c","c"), caption = "Table1. Example of LIDF values")
+#'                          align = c("l","c","c"), caption = "Table1. Example of LIDF values")
 #'
 #' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[3]],
 #' align = c("l","c","r","r","r","r","r","c","r","r"),
-#' caption = "Table2. Examples of biochemical parameters for the model biochemical.m Calibrated temperature sensitivity parameters for Vcmax and Resp")
+#' caption = "Table2. Examples of biochemical parameters for the model biochemical.m
+#' Calibrated temperature sensitivity parameters for Vcmax and Resp")
 #'
 #' formattable::formattable(info_SCOPE_README(site_name = "DE-Hai", run_name = "ECdata_36")[[4]],
 #' align = c("l","c","c","r","r","r"), caption = "Table3. Typical ranges of input values")
@@ -33,12 +35,12 @@
 #' @export
 #'
 info_SCOPE_README <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
 
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_readme <- input_data[[1]][1:95,c(1:10)]
   SCOPE_readme[is.na(SCOPE_readme)] <- ""
@@ -148,7 +150,7 @@ return(SCOPE_options)
 #' This is function shows all time series data used in the SCOPE and which ones are
 #' currently being used by the model
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about SCOPE time series inputs
 #' @family information about parameters and settings
@@ -164,11 +166,11 @@ return(SCOPE_options)
 #' @export
 #'
 info_SCOPE_tsInputs <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   readme_descr <- input_data[[1]][16:45,c(1,3)]
   row.names(readme_descr) <- NULL

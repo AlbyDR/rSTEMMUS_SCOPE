@@ -9,7 +9,7 @@
 #' This function shows current SCOPE model options selected to run. If not changes were done
 #' the options are the defaults @seealso [info_SCOPE_options()]
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about SCOPE current selected model options
 #' @family check the current parameters and settings
@@ -26,12 +26,12 @@
 #' @export
 #'
 check_SCOPE_options <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
   ){
 
-input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
 SCOPE_options <- input_data[[2]][4:21,1:2]
 row.names(SCOPE_options) <- NULL
@@ -50,7 +50,7 @@ return(SCOPE_options)
 #' This function shows current SCOPE  constant used to run the model. If it was not changed while
 #' using @seealso [set_static_inputs()] it will present the default values.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about SCOPE current model constant parameters
 #' @family check the current parameters and settings
@@ -68,11 +68,11 @@ return(SCOPE_options)
 #' @export
 #'
 check_SCOPE_constants <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_constants <- input_data[[4]][6:117,c(1,2,8,9)]
   SCOPE_constants |> dplyr::filter(!is.na("Input_for_SCOPE")) -> SCOPE_constants
@@ -96,7 +96,7 @@ check_SCOPE_constants <- function(
 #' This function shows current time series inputs used by SCOPE to run the model. More information about the
 #' variable desciption and units @seealso [info_SCOPE_tsInputs()].
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to
 #' name runs with different model parameters or settings,
 #' @return a table with information about SCOPE model current time series inputs
@@ -107,17 +107,18 @@ check_SCOPE_constants <- function(
 #' \dontrun{
 #' check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36")
 #'
-#' formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai", run_name = "ECdata_36"), align = c("l","l"))
+#' formattable::formattable(check_SCOPE_ts_Inputs(site_name = "DE-Hai",
+#'                          run_name = "ECdata_36"), align = c("l","l"))
 #' }
 #'
 #' @export
 #'
 check_SCOPE_tsInputs <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_ts_inputs <- input_data[[3]][3:33, c(1,2)]
   SCOPE_ts_inputs |> dplyr::filter(!is.na("files")) -> SCOPE_ts_inputs
@@ -142,7 +143,7 @@ check_SCOPE_tsInputs <- function(
 #' **important** differently from SCOPE options any change in the settings will impact all
 #' next runs and not a specific site_name/run_name as in SCOPE.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @return a table with information about STEMMUS current selected model settings or options
 #' @family check the current parameters and settings
 #'
@@ -155,7 +156,7 @@ check_SCOPE_tsInputs <- function(
 #' @export
 #'
 check_STEMMUS_ModelSettings <- function(
-    patch = "D:/model/STEMMUS_SCOPE/"
+    patch = "D:/model/rSTEMMUS_SCOPE/"
 
 ){
 
@@ -184,7 +185,7 @@ check_STEMMUS_ModelSettings <- function(
 #' **important** differently from SCOPE constant parameters any change in the settings will impact all
 #' next runs and not a specific site_name/run_name run as in SCOPE.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @return a table with information about STEMMUS current Soil Constants inputs
 #' @family check the current parameters and settings
 #'
@@ -197,7 +198,7 @@ check_STEMMUS_ModelSettings <- function(
 #' @export
 #'
 check_STEMMUS_SoilConstants <- function(
-    patch = "D:/model/STEMMUS_SCOPE/"
+    patch = "D:/model/rSTEMMUS_SCOPE/"
 
 ){
 
@@ -225,7 +226,7 @@ check_STEMMUS_SoilConstants <- function(
 #' next runs and not a specific site_name/run_name run as in SCOPE. These constant are different from the
 #' soil constant [info_STEMMUS_SoilConstants()].
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @return a table with information about STEMMUS current defined constants inputs
 #' @family check the current parameters and settings
 #'
@@ -238,7 +239,7 @@ check_STEMMUS_SoilConstants <- function(
 #' @export
 #'
 check_STEMMUS_DefineConstants <- function(
-    patch = "D:/model/STEMMUS_SCOPE/"
+    patch = "D:/model/rSTEMMUS_SCOPE/"
 
 ){
 
@@ -266,7 +267,7 @@ check_STEMMUS_DefineConstants <- function(
 #' **important** the soil initial values are passed by the function @seealso [set_static_inputs()]
 #' for each run.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about STEMMUS current soil initial inputs
 #' @family check the current parameters and settings
@@ -274,19 +275,21 @@ check_STEMMUS_DefineConstants <- function(
 #' @examples
 #'
 #' \dontrun{
-#' formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai", run_name = "ECdata_36")[[1]], align = c("l","c"))
-#' formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai", run_name = "ECdata_36")[[2]], align = c("l","c"))
+#' formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai",
+#' run_name = "ECdata_36")[[1]], align = c("l","c"))
+#' formattable::formattable(check_STEMMUS_SoilInitials(site_name ="DE-Hai",
+#' run_name = "ECdata_36")[[2]], align = c("l","c"))
 #' }
 #'
 #' @export
 #'
 check_STEMMUS_SoilInitials <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
 
-soil_init <- rhdf5::H5Fopen(paste0(patch, "input/runs/", site_name, "_", run_name, "/","soil_init.mat"))
+soil_init <- rhdf5::H5Fopen(paste0(patch, "runs/", site_name, "_", run_name, "/","soil_init.mat"))
 
 initials <- list(
   "Soil_Temperature [degree C]" = tibble::tibble(
@@ -315,7 +318,7 @@ return(initials)
 #' **important** the soil initial values are passed by the function @seealso [set_static_inputs()]
 #' for each run.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to
 #' name runs with different model parameters or settings,
 #' @return a table with information about STEMMUS current soil properties inputs
@@ -324,18 +327,19 @@ return(initials)
 #' @examples
 #'
 #' \dontrun{
-#' formattable::formattable(check_STEMMUS_SoilProperties(site_name ="DE-Hai", run_name = "ECdata_36"), align = c("l","c","c","c","c","c","c","l"))
+#' formattable::formattable(check_STEMMUS_SoilProperties(site_name ="DE-Hai",
+#' run_name = "ECdata_36"), align = c("l","c","c","c","c","c","c","l"))
 #' }
 #'
 #' @export
 #'
 check_STEMMUS_SoilProperties <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
 
-  soil_properties <- rhdf5::H5Fopen(paste0(patch, "input/runs/", site_name, "_", run_name, "/","soil_parameters.mat"))
+  soil_properties <- rhdf5::H5Fopen(paste0(patch, "runs/", site_name, "_", run_name, "/","soil_parameters.mat"))
 
   properties <- tibble::tibble(
       "names" = c("Clay Fraction",
@@ -468,7 +472,7 @@ check_STEMMUS_SoilProperties <- function(
 #' **important** This global information is required to run the model and the global forcing data
 #' are passed by the function @seealso [set_static_inputs()] for each run.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to
 #' name runs with different model parameters or settings,
 #' @return a table with information about STEMMUS current global forcing data inputs
@@ -477,20 +481,19 @@ check_STEMMUS_SoilProperties <- function(
 #' @examples
 #'
 #' \dontrun{
-#' formattable::formattable(check_STEMMUS_ForcingGlobal(site_name ="DE-Hai", run_name = "ECdata_36"),
-#'                          align = c("l","c","c"))
+#' formattable::formattable(check_STEMMUS_ForcingGlobal(site_name ="DE-Hai",
+#' run_name = "ECdata_36"), align = c("l","c","c"))
 #' }
 #'
 #' @export
 #'
 check_STEMMUS_ForcingGlobal <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA
 ){
 
-  forcing_globals <- rhdf5::H5Fopen(paste0(patch, "input/runs/", "DE-Hai", "_", "ECdata_36", "/","forcing_globals.mat"))
-  forcing_globals <- rhdf5::H5Fopen(paste0(patch, "input/runs/", site_name, "_", run_name, "/","forcing_globals.mat"))
+  forcing_globals <- rhdf5::H5Fopen(paste0(patch, "runs/", site_name, "_", run_name, "/","forcing_globals.mat"))
 
   properties <- tibble::tibble(
     "names" = c("Site Name", "Latitude", "Longitude", "Altitude",

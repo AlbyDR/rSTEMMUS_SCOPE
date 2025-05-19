@@ -5,14 +5,14 @@
 \title{to run the model in MATLAB (as time series simulation)}
 \usage{
 run(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   site_name = NA,
   run_name = NA,
   cores = NULL
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,}
 
@@ -30,6 +30,10 @@ This is a function run the model and MATLAB using the input variables set before
 }
 \examples{
 \dontrun{
+
+run_Matlab(patch = "D:/model/rSTEMMUS_SCOPE/",
+              site_name = "DE-HoH",
+              run_name = "ECdata_01")
 
 n = 10
 for (i in 1:10) {

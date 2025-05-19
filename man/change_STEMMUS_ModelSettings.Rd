@@ -5,7 +5,9 @@
 \title{to change the current STEMMUS Model settings}
 \usage{
 change_STEMMUS_ModelSettings(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
+  site_name = NA,
+  run_name = NA,
   R_depth = 350,
   J = 1,
   SWCC = 1,
@@ -32,7 +34,9 @@ change_STEMMUS_ModelSettings(
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
+
+\item{site_name, run_name}{the name of the location and the name of run will be changed in the runs folder. The last can be used to name runs with different model parameters or settings,}
 
 \item{R_depth, J, SWCC, Hystrs, Thmrlefc, Soilairefc, hThmrl, W_Chg, ThmrlCondCap, ThermCond, SSUR, fc, Tr, T0, rwuef, rroot, SFCC, Tot_Depth, Eqlspace, NS, NIT, KT, NL}{defaut is c(350,1,1,0,1,0,1,1,1,1,"10^2",0.02,20,273.15,1,"1.5*1e-3",1,500,0,1,30,0,100)}
 }

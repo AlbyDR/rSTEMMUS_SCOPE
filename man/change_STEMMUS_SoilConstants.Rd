@@ -5,7 +5,9 @@
 \title{to change the current STEMMUS Model Soil Constants}
 \usage{
 change_STEMMUS_SoilConstants(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
+  site_name = NA,
+  run_name = NA,
   hd = -1e+07,
   hm = -9899,
   CHST = 0,
@@ -24,7 +26,9 @@ change_STEMMUS_SoilConstants(
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
+
+\item{site_name, run_name}{the name of the location and the name of run will be changed in the runs folder. The last can be used to name runs with different model parameters or settings,}
 
 \item{hd, hm, CHST, Elmn_Lnth, Dmark, Phi_S1, Phi_S2, Phi_S3, Phi_S4, Phi_S5, Phi_S6, Phi_soc, Lamda_soc, Theta_soc, XK, }{dafault = c(-1e7, -9899,0,0,0,-17.9,-17,-17,-19,-10,-10,-0.0103,2.7,0.6,0.025)}
 }

@@ -8,7 +8,7 @@
 #' @details
 #' This function change current SCOPE model options selected to run, @seealso [info_SCOPE_options()]
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @param calc_ebal,calc_vert_profiles,calc_fluor,calc_planck,calc_directional,calc_xanthophyllabs,calc_PSI,rt_thermal,calc_zo,soilspectrum,soil_heat_method,Fluorescence_model,calc_rss_rbs,apply_T_corr,verify,save_headers,makeplots,simulation default c(1,1,1,0,0,1,0,0,1,0,1,0,0,1,0,1,0,1)
 #' @return write the new SCOPE model options in the input_data.xlsx file
@@ -28,7 +28,7 @@
 #' @export
 #'
 change_SCOPE_options <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA,
     run_name = NA,
     # set options
@@ -60,14 +60,14 @@ setoptions <- c(calc_ebal, calc_vert_profiles, calc_fluor, calc_planck,
 
 
 # open the excel file
-input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
 # change the model according the argument setoptions in the spreadsheet options
 input_data[[2]]$`Simulation options` = c(NA,NA,NA,setoptions,NA,NA)
 
-rio::export(input_data, paste0(patch, "input/runs/", site_name,  "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
+rio::export(input_data, paste0(patch, "runs/", site_name,  "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
 
-return(print(paste0("The SCOPE model settings were altered inside the folder ", site_name, "_", run_name, " at ..input/runs/")))
+return(print(paste0("The SCOPE model settings were altered inside the folder ", site_name, "_", run_name, " at runs/")))
 
 }
 
@@ -80,7 +80,7 @@ return(print(paste0("The SCOPE model settings were altered inside the folder ", 
 #' @details
 #' This function change current SCOPE model default constants selected to run, @seealso [check_SCOPE_constants()]
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @param LAT,LON,startDOY,endDOY,timezn the latitude, longitude, timezone and initial and final ts doy of the year ,
 #' @param IGBP_veg_long the main IGBP landcover class in the point of interest,
@@ -118,7 +118,7 @@ return(print(paste0("The SCOPE model settings were altered inside the folder ", 
 #' @export
 #'
 change_SCOPE_constants <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     site_name = NA, run_name = NA,
     LAT = NA, LON = NA,
     IGBP_veg_long = NA,
@@ -162,7 +162,7 @@ change_SCOPE_constants <- function(
 
 ){
 
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   # in the spreadsheet inputdata
   input_data[[4]]$values <- c(NA, NA, NA, NA, NA, NA, NA,
@@ -226,9 +226,9 @@ change_SCOPE_constants <- function(
 
   input_data[[4]][25,2:6] <- Tparam
 
-  rio::export(input_data, paste0(patch, "input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
+  rio::export(input_data, paste0(patch, "runs/", site_name, "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
 
-  return(print(paste0("The SCOPE default constants, input_data were updated for the location in the folder ", site_name, "-", run_name, " at ..input/runs/")))
+  return(print(paste0("The SCOPE default constants, input_data were updated for the location in the folder ", site_name, "-", run_name, " at.. runs/")))
 
 }
 
@@ -246,7 +246,8 @@ change_SCOPE_constants <- function(
 #' **important** differently from SCOPE options, any change in the settings will impact all
 #' next runs and not a specific site_name/run_name run.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param site_name,run_name the name of the location and the name of run will be changed in the runs folder. The last can be used to name runs with different model parameters or settings,
 #' @param R_depth,J,SWCC,Hystrs,Thmrlefc,Soilairefc,hThmrl,W_Chg,ThmrlCondCap,ThermCond,SSUR,fc,Tr,T0,rwuef,rroot,SFCC,Tot_Depth,Eqlspace,NS,NIT,KT,NL defaut is c(350,1,1,0,1,0,1,1,1,1,"10^2",0.02,20,273.15,1,"1.5*1e-3",1,500,0,1,30,0,100)
 #' @return write the new STEMMUS settings
 #' @family check the current parameters and settings
@@ -262,7 +263,9 @@ change_SCOPE_constants <- function(
 #' @export
 #'
 change_STEMMUS_ModelSettings <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
+    site_name = NA,
+    run_name = NA,
     R_depth = 350,
     J = 1,
     SWCC = 1,
@@ -371,6 +374,8 @@ change_STEMMUS_ModelSettings <- function(
 
   utils::write.table(Settings, paste0(patch, "src/+io/getModelSettings.m"),
               row.names = F, col.names = F, quote = FALSE, sep = "   ")
+  utils::write.table(Settings, paste0(patch, "runs/", site_name, "_", run_name, "/", "getModelSettings.m"),
+                     row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
   return(print("STEMMUS Model Settings modified, check it using get_ModelSettings() function"))
 
@@ -387,7 +392,8 @@ change_STEMMUS_ModelSettings <- function(
 #' **important** differently from SCOPE constant parameters any change in the constants will impact all
 #' next runs and not a specific site_name/run_name run as in SCOPE.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param site_name,run_name the name of the location and the name of run will be changed in the runs folder. The last can be used to name runs with different model parameters or settings,
 #' @param hd,hm,CHST,Elmn_Lnth,Dmark,Phi_S1,Phi_S2,Phi_S3,Phi_S4,Phi_S5,Phi_S6,Phi_soc,Lamda_soc,Theta_soc,XK, dafault = c(-1e7, -9899,0,0,0,-17.9,-17,-17,-19,-10,-10,-0.0103,2.7,0.6,0.025)
 #' @return write the new STEMMUS Soil Constants inputs
 #' @family check the current parameters and settings
@@ -403,7 +409,9 @@ change_STEMMUS_ModelSettings <- function(
 #' @export
 #'
 change_STEMMUS_SoilConstants <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    patch = "D:/model/rSTEMMUS_SCOPE/",
+    site_name = NA,
+    run_name = NA,
     hd = -1e7,
     hm = -9899,
     CHST = 0,
@@ -442,6 +450,8 @@ Soil_Constants <- c(
 
 utils::write.table(Soil_Constants, paste0(patch, "src/+io/getSoilConstants.m"),
             row.names = F, col.names = F, quote = FALSE, sep = "   ")
+utils::write.table(Soil_Constants, paste0(patch, "runs/", site_name, "_", run_name, "/", "getSoilConstants.m"),
+                   row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
 return(print("constants modified, check it using get_soil_constants() function"))
 
@@ -458,7 +468,8 @@ return(print("constants modified, check it using get_soil_constants() function")
 #' **important** differently from SCOPE constant parameters any change in the constants will impact all
 #' next runs and not a specific site_name/run_name run as in SCOPE.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param site_name,run_name the name of the location and the name of run will be changed in the runs folder. The last can be used to name runs with different model parameters or settings,
 #' @param A,h,c,cp,cp_specific,R,R_specific,rhoa,kappa,MH2O,Mair,MCO2,sigmaSB,deg2rad,C2K,CKTN,l,g,RHOL parameters
 #' @param RHOI,Rv,RDA,RHO_bulk,Hc,GWT,MU_a,Gamma0,Gamma_w,Lambda1,Lambda2,Lambda3,MU_W0,MU1,b,W0,c_L,c_V,c_a,c_i,lambdav,k more parameters
 #' @return write the new STEMMUS define Constants inputs
@@ -475,48 +486,50 @@ return(print("constants modified, check it using get_soil_constants() function")
 #' @export
 #'
 change_STEMMUS_DefineConstants <- function(
-    patch = "D:/model/STEMMUS_SCOPE/",
+    site_name = NA,
+    run_name = NA,
+    patch = "D:/model/rSTEMMUS_SCOPE/",
     A = "6.02214E23",
     h = "6.6262E-34",
     c = "299792458",
-    cp = "1004",
+    cp = 1004,
     cp_specific = "1.013E-3",
-    R = "8.314",
-    R_specific = "0.287",
-    rhoa = "1.2047",
-    kappa = "0.4",
-    MH2O = "18",
-    Mair = "28.96",
-    MCO2 = "44",
+    R = 8.314,
+    R_specific = 0.287,
+    rhoa = 1.2047,
+    kappa = 0.4,
+    MH2O = 18,
+    Mair = 28.96,
+    MCO2 = 44,
     sigmaSB = "5.67E-8",
     deg2rad = "pi / 180",
-    C2K = "273.15",
+    C2K = 273.15,
     CKTN = "(50 + 2.575 * 20)",
-    l = "0.5",
-    g = "981",
-    RHOL =  "1",
-    RHOI = "0.92",
+    l = 0.5,
+    g = 981,
+    RHOL =  1,
+    RHOI = 0.92,
     Rv = "461.5 * 1e4",
     RDA = "287.1 * 1e4",
-    RHO_bulk = "1.25",
-    Hc = "0.02",
-    GWT = "7",
+    RHO_bulk = 1.25,
+    Hc = 0.02,
+    GWT = 7,
     MU_a = "1.846 * 10^(-4)",
-    Gamma0 = "71.89",
+    Gamma0 = 71.89,
     Gamma_w = "const.RHOL*const.g",
     Lambda1 = "0.228 / 100",
     Lambda2 = "-2.406/100",
     Lambda3 =  "4.909/100",
     MU_W0 = "2.4152 * 10^(-4)",
-    MU1 = "4742.8",
+    MU1 = 4742.8,
     b = "4 * 10^(-6)",
     W0 = "1.001 * 10^3",
-    c_L = "4.186",
-    c_V = "1.870",
-    c_a = "1.005",
-    c_i = "2.0455",
-    lambdav = "2.45",
-    k = "0.41"
+    c_L = 4.186,
+    c_V = 1.870,
+    c_a = 1.005,
+    c_i = 2.0455,
+    lambdav = 2.45,
+    k = 0.41
 
 ){
 
@@ -570,6 +583,8 @@ def_constants <- c(
 
 utils::write.table(def_constants, paste0(patch, "src/+io/define_constants.m"),
             row.names = F, col.names = F, quote = FALSE, sep = "   ")
+utils::write.table(def_constants, paste0(patch, "runs/", site_name, "_", run_name, "/", "define_constants.m"),
+                   row.names = F, col.names = F, quote = FALSE, sep = "   ")
 
 return(print("constants modified, check it using get_define_constants() function"))
 

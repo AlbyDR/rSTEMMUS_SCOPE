@@ -8,7 +8,7 @@
 #' **important** the result of the get_SoilProperty needs to be informed,
 #' otherwise all the soil properties need to be included manually.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name,Simulation_Name the name of the location and the name of run. The second can be used to name runs with different model parameters or settings,
 #' @param LAT,LON,elevation the latitude, longitude and elevation of the point of interest,
 #' @param IGBP_veg_long the main IGBP landcover class in the point of interest,
@@ -19,6 +19,10 @@
 #' @param coef_n,coef_alpha,saturatedk,ks0,residualMC,saturatedMC,porosity,theta_s0,fieldMC,FOClay,MSOCarbon,FOSand,coef_Lamda,fmax alternatively
 #' include a data.frame("depth0"=X,"depth5"=X,"depth30"=X,"depth60"=X,"depth100"=X,"depth200"=X) with the values for each soil property,
 #' the inputs ks0, theta_s0 and fmax require only one value. @seealso [get_SoilProperties()]
+#' @param soil_type the type of soil will change some STEMMUS constants, default "sand" or alternatively "loam".
+#' @param R_depth,J,SWCC,Hystrs,Thmrlefc,Soilairefc,hThmrl,W_Chg,ThmrlCondCap,ThermCond,SSUR,fc,Tr,T0,rwuef,rroot,SFCC,Tot_Depth,Eqlspace,NS,NIT,KT,NL getModelSettings.m
+#' @param hd,hm,CHST,Elmn_Lnth,Dmark,Phi_S1,Phi_S2,Phi_S3,Phi_S4,Phi_S5,Phi_S6,Phi_soc,Lamda_soc,Theta_soc,XK getSoilConstants.m
+#' @param A,h,c,cp,cp_specific,R,R_specific,rhoa,kappa,MH2O,Mair,MCO2,sigmaSB,deg2rad,C2K,CKTN,l,g,RHOL,RHOI,Rv,RDA,RHO_bulk,Hc,GWT,MU_a,Gamma0,Gamma_w,Lambda1,Lambda2,Lambda3,MU_W0,MU1,b,W0,c_L,c_V,c_a,c_i,lambdav,k define_constants.m
 #' @param startDOY,endDOY,timezn,n_timestamps day of the year for the start and end of the run period. The the timezone and number of timestamps being run.
 #' @param timestep_min, four hourly data use 60, half hour 30 (maximum possible is 180 for timestamp of every 3 hours)
 #' @param soil_file,leaf_file,atmos_file default "soilnew.txt", "Optipar2017_ProspectD.mat","FLEX-S3_std.atm",  @seealso [info_SCOPE_README()], @seealso [info_SCOPE_options()]
@@ -38,28 +42,30 @@
 #'
 #' @examples
 #' \dontrun{
-#' set_static_inputs(patch = "D:/model/STEMMUS_SCOPE/",
+#' set_static_inputs(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'                   site_name = "DE-HoH",
 #'                   run_name = "ECdata_01",
 #'                   LAT = 37.83,
 #'                   LON = 107.69,
 #'                   elevation = 500,
 #'                   IGBP_veg_long = "Grassland",
+#'                   soil_type = "sand", # alternatively "loam"
 #'                   hc = 0.03,
 #'                   z = 2,
 #'                   zo = 0.00369,
 #'                   d = 0.0201,
 #'                   n_timestamps = 7344, # number of timestamps
 #'                   timestep_min = 30, # hourly 60, half hour 30
+#'                   # CDS ERA5Land layers 1 to 4
 #'                   initial_soil_temperature = data.frame("skt"=Initial_01MAY19_Yachi_p[1,2],
 #'                                                         "stl1"=Initial_01MAY19_Yachi_p[2,2],
 #'                                                         "stl2"=Initial_01MAY19_Yachi_p[3,2],
 #'                                                         "stl3"=Initial_01MAY19_Yachi_p[4,2],
-#'                                                         "stl4"=Initial_01MAY19_Yachi_p[5,2]), #CDS ERA5Land layers 1 to 4
+#'                                                         "stl4"=Initial_01MAY19_Yachi_p[5,2]),
 #'                   initial_volumetric_soil_water = data.frame("swvl1"=Initial_01MAY19_Yachi_p[6,2],
 #'                                                              "swvl2"=Initial_01MAY19_Yachi_p[7,2],
 #'                                                              "swvl3"=Initial_01MAY19_Yachi_p[8,2],
-#'                                                              "swvl4"=Initial_01MAY19_Yachi_p[9,2]), #CDS ERA5Land layers 1 to 4
+#'                                                              "swvl4"=Initial_01MAY19_Yachi_p[9,2]),
 #'                   soil_property_list = Soil_property_CRNs,
 #'                   startDOY = 121,
 #'                   endDOY = 274,
@@ -81,11 +87,11 @@
 #' }
 #'
 #' @export
-#'
-set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
-                        site_name = NA,
-                        run_name = NA,
-
+set_static_inputs <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
+                              site_name = NA,
+                              run_name = NA,
+                        #
+                        # STEMMUS Parameters
                         # global forncing data inputs
                         n_timestamps = NA, # number of timestamps
                         timestep_min = NA, # hourly 60, half hour 30
@@ -118,6 +124,34 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
                         coef_Lamda = data.frame("l1"=NA,"l3"=NA,"l5"=NA,"l6"=NA,"l7"=NA,"l8"=NA),
                         fmax = NA,
 
+                        soil_type = "sand", # or "loam"
+
+                        # STEMMUS getModelSettings.m
+                        R_depth = 350, J = 1, SWCC = 1, Hystrs = 0, Thmrlefc = 1, Soilairefc = 0,
+                        hThmrl = 1, W_Chg = 1, ThmrlCondCap = 1, ThermCond = 1, SSUR = "10^2",
+                        fc = 0.02, Tr = 20, T0 = 273.15, rwuef = 1, rroot = "1.5 * 1e-3",
+                        SFCC = 1, Tot_Depth = 500, Eqlspace = 0, NS = 1, NIT = 30, KT = 0, NL = 100,
+                        # STEMMUS getSoilConstants.m
+                        hd = -1e7, hm = -9899, CHST = 0, Elmn_Lnth = 0, Dmark = 0,
+                        Phi_S1=-17.9, Phi_S2=-17, Phi_S3=-17, Phi_S4=-19, Phi_S5=-10, Phi_S6=-10,
+                        Phi_soc = -0.0103, Lamda_soc = 2.7, Theta_soc = 0.6, XK = 0.011,
+                        # STEMMUS define_constants.m
+                        A = "6.02214E23", h = "6.6262E-34", c = "299792458", cp = "1004",
+                        cp_specific = "1.013E-3", R = "8.314", R_specific = "0.287",
+                        rhoa = "1.2047", kappa = "0.4", MH2O = "18", Mair = "28.96",
+                        MCO2 = "44", sigmaSB = "5.67E-8", deg2rad = "pi / 180",
+                        C2K = "273.15", CKTN = "(50 + 2.575 * 20)", l = "0.5",
+                        g = "981", RHOL =  "1", RHOI = "0.92", Rv = "461.5 * 1e4",
+                        RDA = "287.1 * 1e4", RHO_bulk = "1.25", Hc = "0.02",
+                        GWT = "7", MU_a = "1.846 * 10^(-4)",
+                        Gamma0 = "71.89", Gamma_w = "const.RHOL*const.g",
+                        Lambda1 = "0.228 / 100", Lambda2 = "-2.406/100", Lambda3 =  "4.909/100",
+                        MU_W0 = "2.4152 * 10^(-4)", MU1 = "4742.8", b = "4 * 10^(-6)", W0 = "1.001 * 10^3",
+                        c_L = "4.186", c_V = "1.870", c_a = "1.005",  c_i = "2.0455", lambdav = "2.45",
+                        k = "0.41",
+
+                        #
+                        # SCOPE parameters
                         # input_data.xls filenames spreadsheet
                         Simulation_Name	= site_name,
                         soil_file =	"soilnew.txt",
@@ -182,13 +216,12 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
                         delHaKc = 79430.00, delHaKo = 36380.00, delHaT = 37830.00,
                         Q10 = 2.00, s1 = 0.30, s2 = 313.15, s3 = 0.20,
                         s4 =	288.15, s5 = 1.30, s6 = 328.15
-
 ){
 
   # Forcing data ----
   # load the forcing data - MATLAB file (.mat)
 
-  forcing_globals <- rhdf5::H5Fopen(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "forcing_globals.mat"))
+  forcing_globals <- rhdf5::H5Fopen(paste0(patch,"runs/", site_name, "_", run_name, "/", "forcing_globals.mat"))
 
   IGBP_utf8 <- c(utf8ToInt(IGBP_veg_long),rep(32,200-length(utf8ToInt(IGBP_veg_long))))
 
@@ -212,7 +245,7 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   # Initial conditions ----
   # (the datetime that starts the timeseries data)
   # open soil initial conditions .mat file
-  soil_init <- rhdf5::H5Fopen(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "soil_init.mat"))
+  soil_init <- rhdf5::H5Fopen(paste0(patch,"runs/", site_name, "_", run_name, "/", "soil_init.mat"))
 
   soil_init$Tss[1] <- initial_soil_temperature$skt - 273.15 # K to °c
   soil_init$InitT0[1] <- initial_soil_temperature$skt - 273.15
@@ -232,11 +265,10 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
   soil_init$BtmX[1] <- initial_volumetric_soil_water$swvl4
 
   rhdf5::h5closeAll()
-  #
 
   # Soil properties ----
   # open the Matlab soil_parameters.mat file
-  soil_parameters <- rhdf5::H5Fopen(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "soil_parameters.mat"))
+  soil_parameters <- rhdf5::H5Fopen(paste0(patch,"runs/", site_name, "_", run_name, "/", "soil_parameters.mat"))
 
   if(missing(soil_property_list)){
 
@@ -284,9 +316,180 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
 
   }
 
+  if(soil_type == "loam") {
+    SSUR = "10^5"
+    fc = 0.036
+    XK = 0.011
+      }
+
+    # getModelSettings
+    Settings <- c(
+      "function ModelSettings = getModelSettings()",
+      "    %{",
+      "    %}",
+      "",
+      paste0("    ModelSettings.R_depth = ", R_depth, ";"),
+      "",
+      "    % Indicator denotes the index of soil type for choosing soil physical parameters",
+      paste0("    ModelSettings.J = ", J, ";"),
+      "",
+      "    % indicator for choose the soil water characteristic curve, =0, Clapp and",
+      "    % Hornberger; =1, Van Gen",
+      paste0("    ModelSettings.SWCC = ", SWCC, ";"),
+      "",
+      "    % If the value of Hystrs is 1, then the hysteresis is considered, otherwise 0;",
+      paste0("    ModelSettings.Hystrs = ", Hystrs, ";"),
+      "",
+      "    % Consider the isothermal water flow if the value is 0, otherwise 1;",
+      paste0("    ModelSettings.Thmrlefc = ", Thmrlefc, ";"),
+      "",
+      "    % The dry air transport is considered with the value of 1,otherwise 0;",
+      paste0("    ModelSettings.Soilairefc = ", Soilairefc, ";"),
+      "",
+      "    % Value of 1, the special calculation of water capacity is used, otherwise 0;",
+      paste0("    ModelSettings.hThmrl = ", hThmrl, ";"),
+      "",
+      "    % Value of 0 means that the heat of wetting would be calculated by Milly's",
+      "    % method/Otherwise,1. The method of Lyle Prunty would be used;",
+      paste0("    ModelSettings.W_Chg = ", W_Chg, ";"),
+      "",
+      "    % The indicator for choosing Milly's effective thermal capacity and conductivity",
+      "    % formulation to verify the vapor and heat transport in extremly dry soil.",
+      paste0("    ModelSettings.ThmrlCondCap = ", ThmrlCondCap, ";"),
+      "",
+      "    % The indicator for choosing effective thermal conductivity methods, 1= de vries",
+      "    % method;2= Jonhansen methods;3= Simplified de vries method(Tian 2016);4=",
+      "    % Farouki methods",
+      paste0("    ModelSettings.ThermCond = ", ThermCond, ";"),
+      "",
+      "    % Surface area for loam 10^5,for sand 10^2 (cm^-1)",
+      paste0("    ModelSettings.SSUR = ", SSUR, ";"),
+      "",
+      "    % The fraction of clay,for loam 0.036; for sand 0.02",
+      paste0("    ModelSettings.fc = ", fc, ";"),
+      "",
+      "    % Reference temperature",
+      paste0("    ModelSettings.Tr = ", Tr, ";"),
+      paste0("    ModelSettings.T0 = ", T0, ";"),
+      "",
+      "    % Other settings",
+      paste0("    ModelSettings.rwuef = ", rwuef, ";"),
+      paste0("    ModelSettings.rroot = ", rroot, ";"),
+      paste0("    ModelSettings.SFCC = ", SFCC, ";"),
+      "",
+      paste0("    ModelSettings.Tot_Depth = ", Tot_Depth, "; % Unit is cm. it should be usually bigger than 0.5m. Otherwise,"),
+      paste0("    ModelSettings.Eqlspace = ", Eqlspace, "; % Indicator for deciding is the space step equal or not; % the DeltZ would be reset in 50cm by hand;"),
+      "",
+      paste0("    ModelSettings.NS = ", NS, "; % Number of soil types;"),
+      "",
+      "    % The time and domain information setting",
+      paste0("    ModelSettings.NIT = ", NIT, "; % Desirable number of iterations in a time step;"),
+      paste0("    ModelSettings.KT = ", KT, "; % Number of time steps;"),
+      "",
+      "    % Determination of NL, the number of elments",
+      paste0("    ModelSettings.NL = ", NL, ";"),
+      "    if ~ModelSettings.Eqlspace",
+      "        [DeltZ, DeltZ_R, NL, ML] = Dtrmn_Z(ModelSettings.NL, ModelSettings.Tot_Depth);",
+      "    else",
+      "        for i = 1:ModelSettings.NL",
+      "           DeltZ(i) = ModelSettings.Tot_Depth / ModelSettings.NL;",
+      "        end",
+      "    end",
+      paste0("    ModelSettings.NL = NL;"),
+      paste0("    ModelSettings.ML = ML;"),
+      paste0("    ModelSettings.DeltZ = DeltZ;"),
+      paste0("    ModelSettings.DeltZ_R = DeltZ_R;"),
+      "",
+      "end"
+    )
+
+    utils::write.table(Settings, paste0(patch, "src/+io/getModelSettings.m"),
+                       row.names = F, col.names = F, quote = FALSE, sep = "   ")
+    utils::write.table(Settings, paste0(patch, "runs/", site_name, "_", run_name, "/", "getModelSettings.m"),
+                       row.names = F, col.names = F, quote = FALSE, sep = "   ")
+
+    # getSoilConstants
+      Soil_Constants <- c(
+        "function SoilConstants = getSoilConstants()",
+        "",
+        paste0("    SoilConstants.hd = ", hd, ";"),
+        paste0("    SoilConstants.hm = ", hm,";"),
+        paste0("    SoilConstants.CHST = ", CHST, ";"),
+        paste0("    SoilConstants.Elmn_Lnth = ", Elmn_Lnth, ";"),
+        paste0("    SoilConstants.Dmark = ", Dmark, ";"),
+        paste0("    SoilConstants.Phi_S = ", "[",Phi_S1,Phi_S2,Phi_S3,Phi_S4,Phi_S5,Phi_S6,"]", ";"),
+        paste0("    SoilConstants.Phi_soc = ", Phi_soc, ";"),
+        paste0("    SoilConstants.Lamda_soc = ", Lamda_soc, ";"),
+        paste0("    SoilConstants.Theta_soc = ", Theta_soc, ";"),
+        "    % XK=0.11 for silt loam; For sand XK = 0.025",
+        "    % SoilConstants.XK is used in updateSoilVariables",
+        paste0("    SoilConstants.XK = ", XK, ";"),
+        "",
+        "end")
+
+      utils::write.table(Soil_Constants, paste0(patch, "src/+io/getSoilConstants.m"),
+                         row.names = F, col.names = F, quote = FALSE, sep = "   ")
+      utils::write.table(Soil_Constants, paste0(patch, "runs/", site_name, "_", run_name, "/", "getSoilConstants.m"),
+                         row.names = F, col.names = F, quote = FALSE, sep = "   ")
+
+      # define_constants.m
+      def_constants <- c(
+        "function [const] = define_constants()",
+        "",
+        paste0("    const.A = ", A, "; % [mol-1] Constant of Avogadro"),
+        paste0("    const.h = ", h, "; % [J s] Plancks constant"),
+        paste0("    const.c = ", c, "; % [m s-1] Speed of light"),
+        paste0("    const.cp = ", cp, "; % [J kg-1 K-1] Specific heat of dry air"),
+        paste0("    const.cp_specific =  ", cp_specific, "; % specific heat at cte pressure [MJ.kg-1.C-1] FAO56 p26 box6"),
+        paste0("    const.R = ", R, "; % [J mol-1K-1] Molar gas constant"),
+        paste0("    const.R_specific = ", R_specific, "; % specific gas [kJ.kg-1.K-1] FAO56 p26 box6"),
+        paste0("    const.rhoa = ", rhoa, "; % [kg m-3] Specific mass of air"),
+        paste0("    const.kappa = ", kappa, "; % [] Von Karman constant"),
+        paste0("    const.MH2O = ", MH2O, "; % [g mol-1] Molecular mass of water"),
+        paste0("    const.Mair = ", Mair, "; % [g mol-1] Molecular mass of dry air"),
+        paste0("    const.MCO2 = ", MCO2, "; % [g mol-1] Molecular mass of carbon dioxide"),
+        paste0("    const.sigmaSB = ", sigmaSB, "; % [W m-2 K-4] Stefan Boltzman constant"),
+        paste0("    const.deg2rad = ", deg2rad, "; % [rad] Conversion from deg to rad"),
+        paste0("    const.C2K = ", C2K, "; % [K] Melting point of water"),
+        paste0("    const.CKTN = ", CKTN, "; % [] Constant used in calculating viscosity factor for hydraulic conductivity"),
+        paste0("    const.l = ", l, "; % Coefficient in VG model"),
+        paste0("    const.g = ", g, "; % [cm s-2] Gravity acceleration"),
+        paste0("    const.RHOL = ", RHOL, "; % [g cm-3] Water density"),
+        paste0("    const.RHOI = ", RHOI, "; % [g cm-3] Ice density"),
+        paste0("    const.Rv = ", Rv, "; % [cm2 s-2 Cels-1] Gas constant for vapor (original J.kg^-1.Cels^-1)"),
+        paste0("    const.RDA = ", RDA, "; % [cm2 s-2 Cels-1] Gas constant for dry air (original J.kg^-1.Cels^-1)"),
+        paste0("    const.RHO_bulk = ", RHO_bulk, "; % [g cm-3] Bulk density of sand"),
+        paste0("    const.Hc = ", Hc, "; % Henry's constant;"),
+        paste0("    const.GWT = ", GWT, "; % The gain factor(dimensionless),which assesses the temperature % dependence of the soil water retention curve is set as 7 for % sand (Noborio et al, 1996)"),
+        paste0("    const.MU_a = ", MU_a, "; % [g cm-1 s-1] Viscosity of air (original 1.846*10^(-5)kg.m^-1.s^-1)"),
+        paste0("    const.Gamma0 = ", Gamma0, "; % [g s-2] The surface tension of soil water at 25 Cels degree"),
+        paste0("    const.Gamma_w = ", Gamma_w, "; % [g cm-2 s-2] Specific weight of water"),
+        paste0("    const.Lambda1 = ", Lambda1, "; % Coefficients in thermal conductivity"),
+        paste0("    const.Lambda2 = ", Lambda2, "; % [W m-1 Cels-1] (1 W.s=J) From HYDRUS1D heat transport parameter (Chung Hortan 1987 WRR)"),
+        paste0("    const.Lambda3 = ", Lambda3, "; %"),
+        paste0("    const.MU_W0 = ", MU_W0, "; % [g cm-1 s-1] Viscosity of water at reference temperature(original 2.4152*10^(-5)kg.m^-1.s^-1)"),
+        paste0("    const.MU1 = ", MU1, "; % [J mol-1] Coefficient for calculating viscosity of water"),
+        paste0("    const.b = ", b, "; % [cm] Coefficient for calculating viscosity of water"),
+        paste0("    const.W0 = ", W0, "; % Coefficient for calculating differential heat of wetting by Milly's method"),
+        paste0("    const.c_L = ", c_L, "; % [J/g-1/Cels-1] Specific heat capacity of liquid water, Notice the original unit is 4186kg^-1"),
+        paste0("    const.c_V = ", c_V, "; % [J/g-1/Cels-1] Specific heat capacity of vapor"),
+        paste0("    const.c_a = ", c_a, "; % [J/g-1/Cels-1] Specific heat capacity of dry air"),
+        paste0("    const.c_i = ", c_i, "; % [J/g-1/Cels-1] Specific heat capacity of ice"),
+        paste0("    const.lambdav = ", lambdav, "; % latent heat of evaporation [MJ.kg-1] FAO56 pag 31"),
+        paste0("    const.k = ", k, "; % karman's cte [] FAO 56 Eq4"),
+        "",
+        "end"
+      )
+
+      utils::write.table(def_constants, paste0(patch, "src/+io/define_constants.m"),
+                         row.names = F, col.names = F, quote = FALSE, sep = "   ")
+      utils::write.table(def_constants, paste0(patch, "runs/", site_name, "_", run_name, "/", "define_constants.m"),
+                         row.names = F, col.names = F, quote = FALSE, sep = "   ")
+
+
   # SCOPE constants ----
   # open the excel file
-  input_data <- rio::import_list(paste0(patch,"input/runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
+  input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   # change the model according the argument setoptions in the spreadsheet options
   input_data[[2]]$`Simulation options` = c(NA,NA,NA,setoptions,NA,NA)
@@ -390,8 +593,8 @@ set_static_inputs <- function(patch = "D:/model/STEMMUS_SCOPE/",
 
   input_data[[4]][25,2:6] <- Tparam
 
-  rio::export(input_data, paste0(patch, "input/runs/", site_name,  "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
+  rio::export(input_data, paste0(patch, "runs/", site_name,  "_", run_name, "/", "input_data.xlsx"), col.names = FALSE)
 
-  return(print(paste0("The model settings, default constants, site dependent inputs and initial conditions files forcing_globals.mat, soil_init.mat, soil_parameters.mat were updated for the location in the folder ", site_name, "-", run_name, " at ..input/runs/")))
+  return(print(paste0("The model settings, default constants, site dependent inputs and initial conditions files forcing_globals.mat, soil_init.mat, soil_parameters.mat were updated for the location in the folder ", site_name, "-", run_name, " at runs/")))
 
 }

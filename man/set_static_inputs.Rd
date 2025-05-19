@@ -5,7 +5,7 @@
 \title{to set all statical input parameters and model setting required}
 \usage{
 set_static_inputs(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   site_name = NA,
   run_name = NA,
   n_timestamps = NA,
@@ -41,6 +41,86 @@ set_static_inputs(
     depth138.3 = NA, depth229.6 = NA),
   coef_Lamda = data.frame(l1 = NA, l3 = NA, l5 = NA, l6 = NA, l7 = NA, l8 = NA),
   fmax = NA,
+  soil_type = "sand",
+  R_depth = 350,
+  J = 1,
+  SWCC = 1,
+  Hystrs = 0,
+  Thmrlefc = 1,
+  Soilairefc = 0,
+  hThmrl = 1,
+  W_Chg = 1,
+  ThmrlCondCap = 1,
+  ThermCond = 1,
+  SSUR = "10^2",
+  fc = 0.02,
+  Tr = 20,
+  T0 = 273.15,
+  rwuef = 1,
+  rroot = "1.5 * 1e-3",
+  SFCC = 1,
+  Tot_Depth = 500,
+  Eqlspace = 0,
+  NS = 1,
+  NIT = 30,
+  KT = 0,
+  NL = 100,
+  hd = -1e+07,
+  hm = -9899,
+  CHST = 0,
+  Elmn_Lnth = 0,
+  Dmark = 0,
+  Phi_S1 = -17.9,
+  Phi_S2 = -17,
+  Phi_S3 = -17,
+  Phi_S4 = -19,
+  Phi_S5 = -10,
+  Phi_S6 = -10,
+  Phi_soc = -0.0103,
+  Lamda_soc = 2.7,
+  Theta_soc = 0.6,
+  XK = 0.011,
+  A = "6.02214E23",
+  h = "6.6262E-34",
+  c = "299792458",
+  cp = "1004",
+  cp_specific = "1.013E-3",
+  R = "8.314",
+  R_specific = "0.287",
+  rhoa = "1.2047",
+  kappa = "0.4",
+  MH2O = "18",
+  Mair = "28.96",
+  MCO2 = "44",
+  sigmaSB = "5.67E-8",
+  deg2rad = "pi / 180",
+  C2K = "273.15",
+  CKTN = "(50 + 2.575 * 20)",
+  l = "0.5",
+  g = "981",
+  RHOL = "1",
+  RHOI = "0.92",
+  Rv = "461.5 * 1e4",
+  RDA = "287.1 * 1e4",
+  RHO_bulk = "1.25",
+  Hc = "0.02",
+  GWT = "7",
+  MU_a = "1.846 * 10^(-4)",
+  Gamma0 = "71.89",
+  Gamma_w = "const.RHOL*const.g",
+  Lambda1 = "0.228 / 100",
+  Lambda2 = "-2.406/100",
+  Lambda3 = "4.909/100",
+  MU_W0 = "2.4152 * 10^(-4)",
+  MU1 = "4742.8",
+  b = "4 * 10^(-6)",
+  W0 = "1.001 * 10^3",
+  c_L = "4.186",
+  c_V = "1.870",
+  c_a = "1.005",
+  c_i = "2.0455",
+  lambdav = "2.45",
+  k = "0.41",
   Simulation_Name = site_name,
   soil_file = "soilnew.txt",
   leaf_file = "Optipar2017_ProspectD.mat",
@@ -136,7 +216,7 @@ set_static_inputs(
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{site_name, run_name, Simulation_Name}{the name of the location and the name of run. The second can be used to name runs with different model parameters or settings,}
 
@@ -153,6 +233,14 @@ set_static_inputs(
 \item{coef_n, coef_alpha, saturatedk, ks0, residualMC, saturatedMC, porosity, theta_s0, fieldMC, FOClay, MSOCarbon, FOSand, coef_Lamda, fmax}{alternatively
 include a data.frame("depth0"=X,"depth5"=X,"depth30"=X,"depth60"=X,"depth100"=X,"depth200"=X) with the values for each soil property,
 the inputs ks0, theta_s0 and fmax require only one value. @seealso \code{\link[=get_SoilProperties]{get_SoilProperties()}}}
+
+\item{soil_type}{the type of soil will change some STEMMUS constants, default "sand" or alternatively "loam".}
+
+\item{R_depth, J, SWCC, Hystrs, Thmrlefc, Soilairefc, hThmrl, W_Chg, ThmrlCondCap, ThermCond, SSUR, fc, Tr, T0, rwuef, rroot, SFCC, Tot_Depth, Eqlspace, NS, NIT, KT, NL}{getModelSettings.m}
+
+\item{hd, hm, CHST, Elmn_Lnth, Dmark, Phi_S1, Phi_S2, Phi_S3, Phi_S4, Phi_S5, Phi_S6, Phi_soc, Lamda_soc, Theta_soc, XK}{getSoilConstants.m}
+
+\item{A, h, c, cp, cp_specific, R, R_specific, rhoa, kappa, MH2O, Mair, MCO2, sigmaSB, deg2rad, C2K, CKTN, l, g, RHOL, RHOI, Rv, RDA, RHO_bulk, Hc, GWT, MU_a, Gamma0, Gamma_w, Lambda1, Lambda2, Lambda3, MU_W0, MU1, b, W0, c_L, c_V, c_a, c_i, lambdav, k}{define_constants.m}
 
 \item{soil_file, leaf_file, atmos_file}{default "soilnew.txt", "Optipar2017_ProspectD.mat","FLEX-S3_std.atm",  @seealso \code{\link[=info_SCOPE_README]{info_SCOPE_README()}}, @seealso \code{\link[=info_SCOPE_options]{info_SCOPE_options()}}
 SCOPE model inputs, constants from inputdata spreadsheet}
@@ -196,27 +284,30 @@ otherwise all the soil properties need to be included manually.
 }
 \examples{
 \dontrun{
-set_static_inputs(patch = "D:/model/STEMMUS_SCOPE/",
-                  site_name = "mySite",
-                  run_name = "grass_2019",
+set_static_inputs(patch = "D:/model/rSTEMMUS_SCOPE/",
+                  site_name = "DE-HoH",
+                  run_name = "ECdata_01",
                   LAT = 37.83,
                   LON = 107.69,
                   elevation = 500,
                   IGBP_veg_long = "Grassland",
+                  soil_type = "sand", # alternatively "loam"
                   hc = 0.03,
                   z = 2,
                   zo = 0.00369,
                   d = 0.0201,
                   n_timestamps = 7344, # number of timestamps
-                  timestep_min = 30, # hourly 60, half hour 3
+                  timestep_min = 30, # hourly 60, half hour 30
+                  # CDS ERA5Land layers 1 to 4
                   initial_soil_temperature = data.frame("skt"=Initial_01MAY19_Yachi_p[1,2],
                                                         "stl1"=Initial_01MAY19_Yachi_p[2,2],
                                                         "stl2"=Initial_01MAY19_Yachi_p[3,2],
-                                                        "stl4"=Initial_01MAY19_Yachi_p[5,2]), #CDS ERA5Land layers 1 to 4
+                                                        "stl3"=Initial_01MAY19_Yachi_p[4,2],
+                                                        "stl4"=Initial_01MAY19_Yachi_p[5,2]),
                   initial_volumetric_soil_water = data.frame("swvl1"=Initial_01MAY19_Yachi_p[6,2],
                                                              "swvl2"=Initial_01MAY19_Yachi_p[7,2],
                                                              "swvl3"=Initial_01MAY19_Yachi_p[8,2],
-                                                             "swvl4"=Initial_01MAY19_Yachi_p[9,2]), #CDS ERA5Land layers 1 to 4
+                                                             "swvl4"=Initial_01MAY19_Yachi_p[9,2]),
                   soil_property_list = Soil_property_CRNs,
                   startDOY = 121,
                   endDOY = 274,

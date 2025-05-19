@@ -5,52 +5,56 @@
 \title{to change the current STEMMUS Model define Constants file}
 \usage{
 change_STEMMUS_DefineConstants(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  site_name = NA,
+  run_name = NA,
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   A = "6.02214E23",
   h = "6.6262E-34",
   c = "299792458",
-  cp = "1004",
+  cp = 1004,
   cp_specific = "1.013E-3",
-  R = "8.314",
-  R_specific = "0.287",
-  rhoa = "1.2047",
-  kappa = "0.4",
-  MH2O = "18",
-  Mair = "28.96",
-  MCO2 = "44",
+  R = 8.314,
+  R_specific = 0.287,
+  rhoa = 1.2047,
+  kappa = 0.4,
+  MH2O = 18,
+  Mair = 28.96,
+  MCO2 = 44,
   sigmaSB = "5.67E-8",
   deg2rad = "pi / 180",
-  C2K = "273.15",
+  C2K = 273.15,
   CKTN = "(50 + 2.575 * 20)",
-  l = "0.5",
-  g = "981",
-  RHOL = "1",
-  RHOI = "0.92",
+  l = 0.5,
+  g = 981,
+  RHOL = 1,
+  RHOI = 0.92,
   Rv = "461.5 * 1e4",
   RDA = "287.1 * 1e4",
-  RHO_bulk = "1.25",
-  Hc = "0.02",
-  GWT = "7",
+  RHO_bulk = 1.25,
+  Hc = 0.02,
+  GWT = 7,
   MU_a = "1.846 * 10^(-4)",
-  Gamma0 = "71.89",
+  Gamma0 = 71.89,
   Gamma_w = "const.RHOL*const.g",
   Lambda1 = "0.228 / 100",
   Lambda2 = "-2.406/100",
   Lambda3 = "4.909/100",
   MU_W0 = "2.4152 * 10^(-4)",
-  MU1 = "4742.8",
+  MU1 = 4742.8,
   b = "4 * 10^(-6)",
   W0 = "1.001 * 10^3",
-  c_L = "4.186",
-  c_V = "1.870",
-  c_a = "1.005",
-  c_i = "2.0455",
-  lambdav = "2.45",
-  k = "0.41"
+  c_L = 4.186,
+  c_V = 1.87,
+  c_a = 1.005,
+  c_i = 2.0455,
+  lambdav = 2.45,
+  k = 0.41
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{site_name, run_name}{the name of the location and the name of run will be changed in the runs folder. The last can be used to name runs with different model parameters or settings,}
+
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{A, h, c, cp, cp_specific, R, R_specific, rhoa, kappa, MH2O, Mair, MCO2, sigmaSB, deg2rad, C2K, CKTN, l, g, RHOL}{parameters}
 

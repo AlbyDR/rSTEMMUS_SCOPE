@@ -5,13 +5,13 @@
 \title{to check the current STEMMUS Model soil properties}
 \usage{
 check_STEMMUS_SoilProperties(
-  patch = "D:/model/STEMMUS_SCOPE/",
+  patch = "D:/model/rSTEMMUS_SCOPE/",
   site_name = NA,
   run_name = NA
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to
 name runs with different model parameters or settings,}
@@ -31,7 +31,8 @@ for each run.
 \examples{
 
 \dontrun{
-formattable::formattable(check_STEMMUS_SoilProperties(site_name ="DE-Hai", run_name = "ECdata_36"), align = c("l","c","c","c","c","c","c","l"))
+formattable::formattable(check_STEMMUS_SoilProperties(site_name ="DE-Hai",
+run_name = "ECdata_36"), align = c("l","c","c","c","c","c","c","l"))
 }
 
 }

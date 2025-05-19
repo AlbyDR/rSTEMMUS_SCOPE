@@ -9,7 +9,7 @@
 #' @seealso [setup_folder())],  @seealso [set_static_inputs())],  @seealso [set_ts_inputs()] be previously ran
 #' with the same site_name and run_name
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/STEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @param cores set 1,2,4,6,8 cores for ech run **experimental**
 #' @return run the model in MATLAB that will return the resuls in the folder ~/output/site_name_run_name_time/
@@ -17,7 +17,7 @@
 #' @examples
 #' \dontrun{
 #'
-#'run_Matlab(patch = "D:/model/STEMMUS_SCOPE/",
+#'run_Matlab(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'               site_name = "DE-HoH",
 #'               run_name = "ECdata_01")
 #'
@@ -36,7 +36,7 @@
 #'
 #' @export
 
-run <- function(patch = "D:/model/STEMMUS_SCOPE/",
+run <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
                 site_name = NA,
                 run_name = NA,
                 cores = NULL
@@ -44,20 +44,20 @@ run <- function(patch = "D:/model/STEMMUS_SCOPE/",
 ){
 
 # change the config file ----
-config_file <- utils::read.table(, file = paste0(patch, "input/runs/", site_name,  "_", run_name, "/", site_name,"_", run_name, "_", "config.txt"))
+config_file <- utils::read.table(, file = paste0(patch, "runs/", site_name,  "_", run_name, "/", site_name,"_", run_name, "_", "config.txt"))
 
 config_file$V1[[12]] <- paste0("OutputPath=",patch,"output/", site_name, "_", run_name, "_", format(Sys.time(), "%Y%b%d_%H%M"), "/")
 
-utils::write.table(config_file, file = paste0(patch, "input/runs/", site_name, "_", run_name, "/", site_name,"_", run_name, "_", "config.txt"),
+utils::write.table(config_file, file = paste0(patch, "runs/", site_name, "_", run_name, "/", site_name,"_", run_name, "_", "config.txt"),
             quote = FALSE, col.names = FALSE, row.names = FALSE)
 
 # create MATLAB path to find the new input directory ----
-CFG = paste0(patch, "input/runs/", site_name, "_", run_name, "/", site_name,"_", run_name, "_", "config.txt")
+CFG = paste0(patch, "runs/", site_name, "_", run_name, "/", site_name,"_", run_name, "_", "config.txt")
 
 # write the one line text file into the run directory ----
 # (will be overwrite every time the run_setup is run)
 
-utils::write.table(CFG, file = paste0(patch, "input/runs/", "path.txt"),
+utils::write.table(CFG, file = paste0(patch, "runs/", "path.txt"),
             sep = " ", col.names = F, row.names = F, quote = F, eol = "", append=F)
 
 if(missing(cores)){

@@ -1,7 +1,7 @@
 #' to create a input folder with required files to run the model
 #'
 #' @description
-#' `setup_folder` returns a new folder with the required files to run the model for a location.
+#' `new_run` returns a new folder with the required files to run the model for a location.
 #'
 #' @details
 #' This is a function to prepare input folders and set-up path and files for a new run of STEMMUS_SCOPE/Matlab
@@ -12,12 +12,11 @@
 #' @param EndTime a final datetime to end the simulations in the same format "2023-05-01T23:00".
 #' @param site_name,run_name a short name for the site or location of the run.
 #' @param output_name the default is the site_name (with _) and the datatime from the Sys.time() funtion.
-#' @return It return a message "done!". A set of files from the simulation will be save on the SCOPE
-#'  directory/output/simulation_name
+#' @return It return a message "done!". it will show the path to the run subfolder were the input data will be saved.
 #' @examples
 #'
 #' \dontrun{
-#' setup_folder(patch = "D:/model/STEMMUS_SCOPE/",
+#' new_run(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'       StartTime = "2023-06-01T00:00",
 #'       EndTime = "2023-11-30T23:00",
 #'       site_name = "DE-HoH",
@@ -27,7 +26,7 @@
 #' site_CRN_names <- c(paste0("DE-C0",1:9), paste0("DE-C",10:19))
 #'
 #' for (i in 1:19) {
-#' setup_folder(patch = "D:/model/STEMMUS_SCOPE/",
+#' new_run(patch = "D:/model/STEMMUS_SCOPE/",
 #'            StartTime = "2023-06-01T00:00",
 #'            EndTime = "2023-11-30T23:00",
 #'            site_name = site_CRN_names[i],
@@ -38,7 +37,7 @@
 #'
 #' @export
 #'
-setup_folder <- function(
+new_run <- function(
     patch = "D:/model/rSTEMMUS_SCOPE/",
     StartTime = NA,
     EndTime = NA,

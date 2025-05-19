@@ -22,6 +22,12 @@ initial_setup <- function(patch = "D:/model/rSTEMMUS_SCOPE/"
 
 ){
 
+  if(dir.exists(patch) == FALSE) {
+
+  dir.create(patch, recursive = TRUE)
+
+    }
+
 # download a .zip file of the repository
 # from the "Clone or download - Download ZIP" button
 # on the GitHub repository of interest
@@ -29,6 +35,7 @@ utils::download.file(url = "https://github.com/AlbyDR/rSTEMMUS.SCOPE/archive/mas
               destfile = paste0(patch, "master.zip"))
 # unzip the .zip file
 utils::unzip(paste0(patch, "master.zip"), exdir = patch)
+unlink(paste0(patch, "master.zip"), recursive = TRUE)
 
 files_rSTEMMUS_SCOPE <- list.files(paste0(patch, "rSTEMMUS.SCOPE-master/rSTEMMUS_SCOPE/"),
                                    full.names = TRUE, recursive = TRUE)

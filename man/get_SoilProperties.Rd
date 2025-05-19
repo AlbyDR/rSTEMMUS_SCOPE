@@ -31,11 +31,11 @@ coordinates (+proj=longlat +datum=WGS8).
 \strong{important} the folder ../inputs_for_input/SoilProperty/ with the global data files need to be downloaded.
 }
 \examples{
-
+\dontrun{
 Soil_property_loc1 <- get_SoilProperties(patch = "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",
                                          lon = 107.688,
                                          lat = 37.829)
-
+}
 }
 \seealso{
 Other get input parameters: 

@@ -23,7 +23,7 @@ a table with information about SCOPE current model constant parameters
 }
 \details{
 This function shows current SCOPE  constant used to run the model. If it was not changed while
-using @seealso \code{\link[=set_static_inputs]{set_static_inputs()}} it will present the default values.
+using @seealso \code{\link[=input_constants]{input_constants()}} it will present the default values.
 }
 \examples{
 

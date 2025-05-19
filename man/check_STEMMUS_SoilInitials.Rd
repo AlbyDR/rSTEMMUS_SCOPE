@@ -24,7 +24,7 @@ a table with information about STEMMUS current soil initial inputs
 \details{
 This function shows current STEMMUS model soil initial temperature and water content inputs in
 different depths. These constants for the first timestamps are required to run the model @seealso \code{\link[=get_SoilInitials]{get_SoilInitials()}}.
-\strong{important} the soil initial values are passed by the function @seealso \code{\link[=set_static_inputs]{set_static_inputs()}}
+\strong{important} the soil initial values are passed by the function @seealso \code{\link[=input_constants]{input_constants()}}
 for each run.
 }
 \examples{

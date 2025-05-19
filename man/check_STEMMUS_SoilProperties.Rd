@@ -25,7 +25,7 @@ a table with information about STEMMUS current soil properties inputs
 \details{
 This function shows current STEMMUS model soil properties inputs in different depths.
 These constants are required to run the model @seealso \code{\link[=get_SoilProperties]{get_SoilProperties()}}.
-\strong{important} the soil initial values are passed by the function @seealso \code{\link[=set_static_inputs]{set_static_inputs()}}
+\strong{important} the soil initial values are passed by the function @seealso \code{\link[=input_constants]{input_constants()}}
 for each run.
 }
 \examples{

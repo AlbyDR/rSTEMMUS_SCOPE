@@ -8,42 +8,41 @@ First step is to create the input/output folders and patch to run the model.
 
 #### set up the input folder for the location
 ``` r
-setup_folder(patch = "D:/model/STEMMUS_SCOPE/", # model (src) location
-             StartTime = "2023-06-01T00:00",    # datatime starts the timeseries
-             EndTime = "2023-11-30T23:00",      # datatime ends the timeseries
-             site_name = "DE-HoH",              # location name
-             run_name = "ECdata_01",            # run name for this settings (calibration)
-             output_name = format(Sys.time(), "%Y%b%d_%H%M")) # run datatime
+new_run(patch = "D:/model/rSTEMMUS_SCOPE/", # model (src) location
+        StartTime = "2023-06-01T00:00",    # datatime starts the timeseries
+        EndTime = "2023-11-30T23:00",      # datatime ends the timeseries
+        site_name = "DE-HoH",              # location name
+        run_name = "ECdata_01",            # run name for this settings (calibration)
+        output_name = format(Sys.time(), "%Y%b%d_%H%M")) # run datatime
 ```
 
 Second step is to set all required static input parameters to run the model.
 
 #### set up the static inputs for the location
 ``` r
- set_static_inputs(patch = "D:/model/STEMMUS_SCOPE/", # model (src) location
-                   site_name = "DE-HoH",              # location name
-                   run_name = "ECdata_01",            # run name for this settings (calibration)
-                   LAT = 51.25,
-                   LON = 11.44,
-                   elevation = 500,
-                   IGBP_veg_long = "Grassland",       # any IGBP class (see info_ functions)
-                   hc = 0.03,                         # canopy height
-                   n_timestamps = 7344,               # number of timestamps steps
-                   timestep_min = 30,                 # 60 for hourly and 30 for half hour
-                   initial_soil_temperature = data.frame("skt"  = Initial_01June23[1,2], # see info_
+ input_constants(patch = "D:/model/rSTEMMUS_SCOPE/", # model (src) location
+                 site_name = "DE-HoH",              # location name
+                 run_name = "ECdata_01",            # run name for this settings (calibration)
+                 LAT = 51.25,
+                 LON = 11.44,
+                 elevation = 500,
+                 IGBP_veg_long = "Grassland",       # any IGBP class (see info_ functions)
+                 hc = 0.03,                         # canopy height
+                 n_timestamps = 7344,               # number of timestamps steps
+                 timestep_min = 30,                 # 60 for hourly and 30 for half hour
+                 initial_soil_temperature = data.frame("skt"  = Initial_01June23[1,2], # see info_
                                                          "stl1" = Initial_01June23[2,2],
                                                          "stl2" = Initial_01June23[3,2],
                                                          "stl3" = Initial_01June23[4,2],
                                                          "stl4" = Initial_01June23[5,2]), #CDS ERA5Land layers 1 to 4
-                   initial_volumetric_soil_water = data.frame("swvl1" = Initial_01June23[6,2],
+                 initial_volumetric_soil_water = data.frame("swvl1" = Initial_01June23[6,2],
                                                               "swvl2" = Initial_01June23[7,2],
                                                               "swvl3" = Initial_01June23[8,2],
                                                               "swvl4" = Initial_01June23[9,2]), #CDS ERA5Land layers 1 to 4
-                   soil_property_list = Soil_property_CRNs, # see info_
-                   startDOY = 121,    # day of the year starting the timeseries
-                   endDOY = 274,      # day of the year ending the timeseries
-                   timezn = 1,        # timezone
-                   setoptions = c(1,1,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,1)) # SCOPE model options (see info_)
+                 soil_property_list = Soil_property_CRNs, # see info_
+                 startDOY = 121,    # day of the year starting the timeseries
+                 endDOY = 274,      # day of the year ending the timeseries
+                 timezn = 1,        # timezone)
 ```
 **note:** see "get_SoilInitials()" for the initial_soil_temperature and initial_volumetric_soil_water, 
 "get_SoilProperties()" for soil_property_list, "info_SCOPE_options()" for setoptions, 
@@ -55,32 +54,32 @@ Third step is to set all required time series input data to run the model (see R
 
 #### set up the input folder for the location
 ``` r
-set_ts_inputs(patch = "D:/model/STEMMUS_SCOPE/",  # model (src) location
-              site_name = "DE-HoH",               # location name
-              run_name = "ECdata_01",             # run name for this settings (calibration)
-              t_file =	ts_DWD$t_,                # Decimal Julian Day (doy_float)
-              year_file	= year(ts_DWD$timestamp), # vector with the Calendar Year
-              Rin_file	= ts_DWD$Rin_sun,         # Incoming Shortwave Radiation [W m-2]
-              Rli_file	= ts_DWD$Rli_,            # Incoming Longwave Radiation [W m-2]
-              p_file	= ts_DWD$p_,                # Atmospheric pressure vector [hPa]
-              Ta_file =	ts_DWD$Ta_,               # Air Temperature [°C]
-              RH_file = ts_DWD$RH_,               # Relative Humidity [%]
-              ea_file =	ts_DWD$ea_,               # Air Vapor Pressure [hPa]
-              VPD_file = ts_DWD$VPD_,             # Vapour Pressure Deficit [hPa]
-              u_file	= ts_DWD$u_,                # Wind speed 	[m s-1] (u >= 0.05)
-              rain_file = ts_DWD$rain_/36000,     # Precipitation [cm s-1] (36000 mm/h))
-              tts_file	= tts_calc,               # optional Zenith Solar Angle
-              CO2_file	= DE_ICOS$CO2_,           # optional Carbon Dioxide Concentration [mg m-3] 	
-              LAI_file =	LAI500_Modis$LAI)       # Leaf Area Index [m2 m-2] (LAI >= 0.01)
+input_timeseries(patch = "D:/model/rSTEMMUS_SCOPE/",  # model (src) location
+                 site_name = "DE-HoH",               # location name
+                 run_name = "ECdata_01",             # run name for this settings (calibration)
+                 t_file =	ts_DWD$t_,                # Decimal Julian Day (doy_float)
+                 year_file	= year(ts_DWD$timestamp), # vector with the Calendar Year
+                 Rin_file	= ts_DWD$Rin_sun,         # Incoming Shortwave Radiation [W m-2]
+                 Rli_file	= ts_DWD$Rli_,            # Incoming Longwave Radiation [W m-2]
+                 p_file	= ts_DWD$p_,                # Atmospheric pressure vector [hPa]
+                 Ta_file =	ts_DWD$Ta_,               # Air Temperature [°C]
+                 RH_file = ts_DWD$RH_,               # Relative Humidity [%]
+                 ea_file =	ts_DWD$ea_,               # Air Vapor Pressure [hPa]
+                 VPD_file = ts_DWD$VPD_,             # Vapour Pressure Deficit [hPa]
+                 u_file	= ts_DWD$u_,                # Wind speed 	[m s-1] (u >= 0.05)
+                 rain_file = ts_DWD$rain_/36000,     # Precipitation [cm s-1] (36000 mm/h))
+                 tts_file	= tts_calc,               # optional Zenith Solar Angle
+                 CO2_file	= DE_ICOS$CO2_,           # optional Carbon Dioxide Concentration [mg m-3] 	
+                 LAI_file =	LAI500_Modis$LAI)       # Leaf Area Index [m2 m-2] (LAI >= 0.01)
 ```
 
 Last step is to run the model by informing the site_name and run_name. The MATLAB path need to be set to "D:/model/STEMMUS_SCOPE/src/".
 
 
 ``` r
-run_Matlab(patch = "D:/model/STEMMUS_SCOPE/", # model (src) location
-           site_name = "DE-HoH",              # location name
-           run_name = "ECdata_01")            # run name for this settings (calibration)
+run_inMATLAB(patch = "D:/model/rSTEMMUS_SCOPE/", # model (src) location
+             site_name = "DE-HoH",               # location name
+             run_name = "ECdata_01")             # run name for this settings (calibration)
 ```
 
 MATLAB will open and the model will start to run, when the last timestamp is run, the window will be closed and the results will be available in the output folder.
@@ -95,7 +94,7 @@ library(hydroGOF)
 
 #### SWC simulations output
 ``` r
-Sim_Theta_files <- list.files(path = "D:/model/STEMMUS_SCOPE/output/",
+Sim_Theta_files <- list.files(path = "D:/model/rSTEMMUS_SCOPE/output/",
                               pattern = "Sim_Theta", full.names=T, recursive=T)
 
 # to subset a group by the run name if needed
@@ -174,7 +173,7 @@ hydroGOF::KGE(CRNs_obs_daily$SM_C01, SMC001_default_doy$dept_15_2, out.type = "f
 
 #### Fluxes simulation output
 ``` r
-Sim_Fluxes_files <- list.files(path = "D:/model/STEMMUS_SCOPE/output/",
+Sim_Fluxes_files <- list.files(path = "D:/model/rSTEMMUS_SCOPE/output/",
                                pattern = "fluxes", full.names=T, recursive=T)
 
 # to subset a group by the run name if needed

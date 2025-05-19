@@ -16,11 +16,11 @@
 #' @family get input parameters
 #'
 #' @examples
-#'
+#' \dontrun{
 #' Soil_property_loc1 <- get_SoilProperties(patch = "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",
 #'                                          lon = 107.688,
 #'                                          lat = 37.829)
-#'
+#' }
 #' @export
 #'
 get_SoilProperties <- function(patch = "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",

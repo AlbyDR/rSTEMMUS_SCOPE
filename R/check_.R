@@ -48,7 +48,7 @@ return(SCOPE_options)
 #'
 #' @details
 #' This function shows current SCOPE  constant used to run the model. If it was not changed while
-#' using @seealso [set_static_inputs()] it will present the default values.
+#' using @seealso [input_constants()] it will present the default values.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
@@ -264,7 +264,7 @@ check_STEMMUS_DefineConstants <- function(
 #' @details
 #' This function shows current STEMMUS model soil initial temperature and water content inputs in
 #' different depths. These constants for the first timestamps are required to run the model @seealso [get_SoilInitials()].
-#' **important** the soil initial values are passed by the function @seealso [set_static_inputs()]
+#' **important** the soil initial values are passed by the function @seealso [input_constants()]
 #' for each run.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
@@ -315,7 +315,7 @@ return(initials)
 #' @details
 #' This function shows current STEMMUS model soil properties inputs in different depths.
 #' These constants are required to run the model @seealso [get_SoilProperties()].
-#' **important** the soil initial values are passed by the function @seealso [set_static_inputs()]
+#' **important** the soil initial values are passed by the function @seealso [input_constants()]
 #' for each run.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
@@ -470,7 +470,7 @@ check_STEMMUS_SoilProperties <- function(
 #' @details
 #' This function shows current STEMMUS model global forcing data inputs.
 #' **important** This global information is required to run the model and the global forcing data
-#' are passed by the function @seealso [set_static_inputs()] for each run.
+#' are passed by the function @seealso [input_constants()] for each run.
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to

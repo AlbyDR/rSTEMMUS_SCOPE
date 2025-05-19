@@ -25,7 +25,7 @@ a table with information about STEMMUS current global forcing data inputs
 \details{
 This function shows current STEMMUS model global forcing data inputs.
 \strong{important} This global information is required to run the model and the global forcing data
-are passed by the function @seealso \code{\link[=set_static_inputs]{set_static_inputs()}} for each run.
+are passed by the function @seealso \code{\link[=input_constants]{input_constants()}} for each run.
 }
 \examples{
 

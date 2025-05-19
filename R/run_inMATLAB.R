@@ -1,12 +1,12 @@
 #' to run the model in MATLAB (as time series simulation)
 #'
 #' @description
-#' `run` opens the MATLAB, run the model and close it when is done
+#' `run_inMATLAB` opens the MATLAB, run the model and close it when is done
 #'
 #' @details
 #' This is a function run the model and MATLAB using the input variables set before
 #' **important** it needs MATLAB installed in the machine and the functions
-#' @seealso [setup_folder())],  @seealso [set_static_inputs())],  @seealso [set_ts_inputs()] be previously ran
+#' @seealso [new_run())],  @seealso [input_constants())],  @seealso [input_timeseries()] be previously ran
 #' with the same site_name and run_name
 #'
 #' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
@@ -17,14 +17,14 @@
 #' @examples
 #' \dontrun{
 #'
-#'run_Matlab(patch = "D:/model/rSTEMMUS_SCOPE/",
+#'run_inMATLAB(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'               site_name = "DE-HoH",
 #'               run_name = "ECdata_01")
 #'
 #' n = 10
 #' for (i in 1:10) {
 #'
-#' run_Matlab(patch = "D:/model/STEMMUS_SCOPE/",
+#' run_inMATLAB(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'            site_name = site_names[i],
 #'            run_name = "DWD_36")
 #'            svMisc::progress(i, n, progress.bar = TRUE, init = T) # time delay
@@ -36,7 +36,7 @@
 #'
 #' @export
 
-run <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
+run_inMATLAB <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
                 site_name = NA,
                 run_name = NA,
                 cores = NULL

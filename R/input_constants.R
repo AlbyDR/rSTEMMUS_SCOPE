@@ -1,7 +1,7 @@
 #' to set all statical input parameters and model setting required
 #'
 #' @description
-#' `set_static_inputs` set all statical parameters and model setting required to run the model.
+#' `input_constants` set all statical parameters and model setting required to run the model.
 #'
 #' @details
 #' This is a function to prepare all static input parameters to run the model.
@@ -42,7 +42,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' set_static_inputs(patch = "D:/model/rSTEMMUS_SCOPE/",
+#' input_constants(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'                   site_name = "DE-HoH",
 #'                   run_name = "ECdata_01",
 #'                   LAT = 37.83,
@@ -87,7 +87,7 @@
 #' }
 #'
 #' @export
-set_static_inputs <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
+input_constants <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
                               site_name = NA,
                               run_name = NA,
                         #

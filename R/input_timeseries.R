@@ -1,7 +1,7 @@
 #' to set all time series model inputs for a location
 #'
 #' @description
-#' `set_ts_inputs` set all time series parameters required to run the model.
+#' `input_timeseries` set all time series parameters required to run the model.
 #'
 #' @details
 #' This is a function to prepare all time series input parameters to run the model.
@@ -35,7 +35,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' set_ts_inputs(patch = "D:/model/rSTEMMUS_SCOPE/",
+#' input_timeseries(patch = "D:/model/rSTEMMUS_SCOPE/",
 #'               site_name = "DE-HoH",
 #'               run_name = "ECdata_01",
 #'               t_file =	ts_DWD$t_,
@@ -56,7 +56,7 @@
 #'
 #' @export
 #'
-set_ts_inputs <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
+input_timeseries <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
                       site_name = NA,
                       run_name = NULL,
                       data_frame = NULL, # if all data input is into one data.frame with column names (t_, Ta_, RH_, u_, p_, rain_, Rin_, Rli_, LAI_, CO2_, ea_)

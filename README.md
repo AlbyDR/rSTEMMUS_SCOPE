@@ -42,6 +42,15 @@ D:/model/rSTEMMUS_SCOPE/
       - ... (MATLAB codes)
 ```
 
+To check the installation run the test data as below.
+
+```
+run_inMATLAB(patch = "D:/model/rSTEMMUS_SCOPE/",
+             site_name = "AR-SLu",
+             run_name = "2024-01-25-0911")
+```             
+note: change the patch accordingly and include the patch in MATLAB ```"D:/model/rSTEMMUS_SCOPE/src/"```
+             
 ------------------------------------------------------------------------
 #### Steps to run the model for a time series at a specific location
 

@@ -281,7 +281,7 @@ SoilConstants <- data.frame(
 
   "units" = c("[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]", "[-]"),
 
-  "descrition" =c("getSoilConstants", "getSoilConstants", "getSoilConstants", "getSoilConstants",
+  "description" =c("getSoilConstants", "getSoilConstants", "getSoilConstants", "getSoilConstants",
                   "getSoilConstants", "getSoilConstants", "getSoilConstants", "getSoilConstants", "getSoilConstants",
                   "XK=0.11 for silt loam and XK = 0.025 for sand, the SoilConstants.XK is used in updateSoilVariables"))
 
@@ -333,7 +333,7 @@ define_constants <- data.frame(
                 "[J mol-1]", "[cm]", "[-]", "[J/g-1/Cels-1]", "[J/g-1/Cels-1]", "[J/g-1/Cels-1]", "[J/g-1/Cels-1]",
                 "[MJ.kg-1]", "[-]"),
 
-    "descrition" =c("Constant of Avogadro", "Plancks constant", "Speed of light", "Specific heat of dry air",
+    "description" =c("Constant of Avogadro", "Plancks constant", "Speed of light", "Specific heat of dry air",
                     "specific heat at cte pressure FAO56 p26 box6", "Molar gas constant", "specific gas FAO56 p26 box6",
                     "Specific mass of air", "Von Karman constant", "Molecular mass of water", "Molecular mass of dry air",
                     "Molecular mass of carbon dioxide", "Stefan Boltzman constant", "Conversion from deg to rad",

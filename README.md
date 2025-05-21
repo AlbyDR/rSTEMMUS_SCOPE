@@ -55,7 +55,7 @@ note: change the patch according to the ```initial_setup()``` choice and include
 #### Steps to run the model for a time series at a specific location
 
 After collecting and organising the data required to run the model (see input variables below), there will be four steps (functions) to run a time series simulation for a specific location.
-[see here the steps](https://github.com/EcoExtreML/rSTEMMUS_SCOPE/blob/master/run_steps.md)
+[see here the steps](https://github.com/EcoExtreML/rSTUMMUS_SCOPE/blob/master/run_steps.md)
 
 ------------------------------------------------------------------------
 

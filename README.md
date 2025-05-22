@@ -193,7 +193,7 @@ Soil_property_loc1 <- get_SoilProperties(patch = "D:/model/rSTEMMUS_SCOPE/input/
                                          lat = 37.829)
 ```
 
-note: you can also download manually from https://zenodo.org/api/records/15488066/files/SoilProperty.zip/content then unzip and place it to "D:/model/rSTEMMUS_SCOPE/input/" or inside of the "input" folder in your patch choice
+##### note: you can also download manually from https://zenodo.org/api/records/15488066/files/SoilProperty.zip/content, then unzip and place it in "D:/model/rSTEMMUS_SCOPE/input/" or inside the "input" folder in your patch choice
 ------------------------------------------------------------------------
 #### 1.5 Constants and model settings
 Use functions of the family "info", "check" and "change" to get more information about which constant (model parameters) and model settings from STEMMUS and SCOPE can be changed to calibrate the model for the site characteristics.

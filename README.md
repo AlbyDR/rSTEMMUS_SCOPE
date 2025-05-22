@@ -6,7 +6,7 @@ Codes to run the STEMMUS_SCOPE model in MATLAB from R. Integrated code of SCOPE 
 ### To install rSTEMMUS_SCOPE, use:
 ``` r
 devtools::install_github("EcoExtreML/rSTEMMUS_SCOPE")
-library(rSTEMMUS_SCOPE)
+library(rSTEMMUSSCOPE)
 ```
 You may need to install the rhdf5 package before using BiocManager, as shown below.
 ``` r

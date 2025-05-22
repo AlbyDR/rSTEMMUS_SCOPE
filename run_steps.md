@@ -1,7 +1,7 @@
 ## Sequency of steps to run one time series location
 
 ``` r
-library(rSTEMMUS_SCOPE)
+library(rSTEMMUSSCOPE)
 ```
 
 First step is to create the input/output folders and patch to run the model.

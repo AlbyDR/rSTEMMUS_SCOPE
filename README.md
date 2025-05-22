@@ -180,6 +180,20 @@ note: data from CDS ERA5 Land
 
 <sup>4</sup> Only the Lambda file layers l1, l3, l5, l6, l7, l8 (depth_indices) were combined and used
 
+### To download global maps to extract the above variables run the follow code:
+
+```
+# the file is 24GB, so may need more time ...
+# download, unzip in the folder ../input/SoilProperty/ using ...                       
+download_SoilProperty("D:/model/rSTEMMUS_SCOPE/", timeout = 1000)   
+
+# extract to your location using the argument latitude and longitude (+proj=longlat +datum=WGS8)
+Soil_property_loc1 <- get_SoilProperties(patch = "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",
+                                         lon = 107.688,
+                                         lat = 37.829)
+```
+
+note: you can also download manually from https://zenodo.org/api/records/15488066/files/SoilProperty.zip/content then unzip and place it to "D:/model/rSTEMMUS_SCOPE/input/" or inside of the "input" folder in your patch choice
 ------------------------------------------------------------------------
 #### 1.5 Constants and model settings
 Use functions of the family "info", "check" and "change" to get more information about which constant (model parameters) and model settings from STEMMUS and SCOPE can be changed to calibrate the model for the site characteristics.

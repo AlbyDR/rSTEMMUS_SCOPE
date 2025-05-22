@@ -6,13 +6,16 @@
 \usage{
 download_SoilProperty(
   patch = "D:/model/rSTEMMUS_SCOPE/",
-  doi = "10.5281/zenodo.15488066"
+  doi = "10.5281/zenodo.15488066",
+  timeout = 1000
 )
 }
 \arguments{
 \item{patch}{the path to the STEMMUS_SCOPE downloaded, example:\code{"D:/models/rSTEMMUS_SCOPE/"}.}
 
 \item{doi}{the Zenodo doi of the SoilProperty folder (do not change)}
+
+\item{timeout}{the file is 24 GB so you may need to increase it, default 1000}
 }
 \value{
 It return a message: SoilProperty folder download at \code{"patch/input/"}.

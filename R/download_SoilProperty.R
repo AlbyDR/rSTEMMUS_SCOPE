@@ -9,6 +9,7 @@
 #'
 #' @param patch the path to the STEMMUS_SCOPE downloaded, example:```"D:/models/rSTEMMUS_SCOPE/"```.
 #' @param doi the Zenodo doi of the SoilProperty folder (do not change)
+#' @param timeout the file is 24 GB so you may need to increase it, default 1000
 #' @return It return a message: SoilProperty folder download at ```"patch/input/"```.
 #' @examples
 #'
@@ -19,13 +20,15 @@
 #' @export
 #'
 download_SoilProperty <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
-                                  doi = "10.5281/zenodo.15488066"
+                                  doi = "10.5281/zenodo.15488066",
+                                  timeout = 1000
 
 ){
 
   # download a .zip file of the Zenodo repository
   zen4R::download_zenodo(doi,
                          path = paste0(patch, "input/"),
+                         timeout = 1000,
                          files = list("SoilProperty.zip"))
 
   utils::unzip(paste0(patch, "input/","SoilProperty.zip"), exdir = paste0(patch, "input/"))

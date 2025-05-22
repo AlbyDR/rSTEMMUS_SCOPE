@@ -1,4 +1,4 @@
-Package: rSTEMMUS.SCOPE
+Package: rSTEMMUS_SCOPE
 Type: Package
 Title: Run STEMMUS-SCOPE model through R
 Version: 0.1.0
@@ -9,8 +9,8 @@ Description: This package compile functions to run STEMMUS-SCOPE by preparing an
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/AlbyDR/rSTEMMUS.SCOPE
-BugReports: https://github.com/AlbyDR/rSTEMMUS.SCOPE/issues
+URL: https://github.com/EcoExtreML/rSTEMMUS_SCOPE
+BugReports: https://github.com/EcoExtreML/rSTEMMUS_SCOPE/issues
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Suggests: 

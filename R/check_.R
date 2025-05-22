@@ -75,7 +75,7 @@ check_SCOPE_constants <- function(
   input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_constants <- input_data[[4]][6:117,c(1,2,8,9)]
-  SCOPE_constants |> dplyr::filter(!is.na("Input_for_SCOPE")) -> SCOPE_constants
+  SCOPE_constants <- dplyr::filter(SCOPE_constants, !is.na("Input_for_SCOPE"))
   SCOPE_constants[,1] <- stringr::word(SCOPE_constants[,1], 1)
   SCOPE_constants[is.na(SCOPE_constants)] <- ""
 
@@ -121,7 +121,7 @@ check_SCOPE_tsInputs <- function(
   input_data <- rio::import_list(paste0(patch,"runs/", site_name, "_", run_name, "/", "input_data.xlsx"))
 
   SCOPE_ts_inputs <- input_data[[3]][3:33, c(1,2)]
-  SCOPE_ts_inputs |> dplyr::filter(!is.na("files")) -> SCOPE_ts_inputs
+  SCOPE_ts_inputs <- dplyr::filter(SCOPE_ts_inputs, !is.na("files"))
 
   row.names(SCOPE_ts_inputs) <- NULL
 

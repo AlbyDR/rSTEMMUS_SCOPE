@@ -175,11 +175,11 @@ info_SCOPE_tsInputs <- function(
   readme_descr <- input_data[[1]][16:45,c(1,3)]
   row.names(readme_descr) <- NULL
   names(readme_descr) <- c("file_name", "description")
-  readme_descr |> dplyr::filter(!is.na("description")) -> readme_descr
+  readme_descr <- dplyr::filter(readme_descr, !is.na("description"))
   readme_descr[is.na(readme_descr)] <- ""
 
   SCOPE_ts_inputs <- input_data[[3]][3:33, c(1,2)]
-  SCOPE_ts_inputs |> dplyr::filter(!is.na("files")) -> SCOPE_ts_inputs
+  SCOPE_ts_inputs <- dplyr::filter(SCOPE_ts_inputs, !is.na("files"))
 
   row.names(SCOPE_ts_inputs) <- NULL
 

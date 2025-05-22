@@ -5,8 +5,8 @@ Codes to run the STEMMUS_SCOPE model in MATLAB from R. Integrated code of SCOPE 
 
 ### To install rSTEMMUS_SCOPE, use:
 ``` r
-devtools::install_github("EcoExtreML/rSTEMMUS_SCOPE")
-library(rSTEMMUS_SCOPE)
+devtools::install_github("AlbyDR/rSTEMMUS.SCOPE")
+library(rSTEMMUS.SCOPE)
 ```
 You may need to install the rhdf5 package before using BiocManager, as shown below.
 ``` r
@@ -55,7 +55,7 @@ note: change the patch according to the ```initial_setup()``` choice and include
 #### Steps to run the model for a time series at a specific location
 
 After collecting and organising the data required to run the model (see input variables below), there will be four steps (functions) to run a time series simulation for a specific location.
-[see here the steps](https://github.com/EcoExtreML/rSTUMMUS_SCOPE/blob/master/run_steps.md)
+[see here the steps](https://github.com/AlbyDR/rSTEMMUS.SCOPE/blob/master/run_steps.md)
 
 ------------------------------------------------------------------------
 

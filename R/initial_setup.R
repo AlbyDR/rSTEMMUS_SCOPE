@@ -7,9 +7,8 @@
 #' This is a function to prepare the STEMMUS_SCOPE (Matlab) codes and required  model inputs.
 #' **important** It is only needed once after install the package as initial setup
 #'
-#' @param patch the path to the STEMMUS_SCOPE downloaded, example:"D:/models/rSTEMMUS_SCOPE/".
-#' @return It return a message "done!". it will show the main path to run all the functions.
-#'  directory/output/simulation_name
+#' @param patch the path to the STEMMUS_SCOPE downloaded, example:```"D:/models/rSTEMMUS_SCOPE/"```.
+#' @return It return a message that shows the main path to run all the functions.
 #' @examples
 #'
 #' \dontrun{

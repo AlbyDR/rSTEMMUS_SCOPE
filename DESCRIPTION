@@ -28,4 +28,5 @@ Imports:
     tibble,
     tidyr,
     archive,
-    filesstrings
+    filesstrings,
+    zen4R

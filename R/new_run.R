@@ -5,13 +5,13 @@
 #'
 #' @details
 #' This is a function to prepare input folders and set-up path and files for a new run of STEMMUS_SCOPE/Matlab
-#' simulations. The input structure is created in the ../input/runs/site_name_inputs.
+#' simulations. The input structure is created in the ```../input/runs/site_name_inputs```.
 #'
-#' @param patch the path to the STEMMUS_SCOPE downloaded folder, example:"D:/models/rSTEMMUS_SCOPE/".
-#' @param StartTime a start datetime to the simulations/initial conditions in this format "2023-01-01T01:00".
-#' @param EndTime a final datetime to end the simulations in the same format "2023-05-01T23:00".
+#' @param patch the path to the STEMMUS_SCOPE downloaded folder, example:```"D:/models/rSTEMMUS_SCOPE/"```.
+#' @param StartTime a start datetime to the simulations/initial conditions in this format ```"2023-01-01T01:00"```.
+#' @param EndTime a final datetime to end the simulations in the same format ```"2023-05-01T23:00"```.
 #' @param site_name,run_name a short name for the site or location of the run.
-#' @param output_name the default is the site_name (with _) and the datatime from the Sys.time() funtion.
+#' @param output_name the default is the site_name (with _) and the datatime from the ```Sys.time()``` funtion.
 #' @return It return a message "done!". it will show the path to the run subfolder were the input data will be saved.
 #' @examples
 #'

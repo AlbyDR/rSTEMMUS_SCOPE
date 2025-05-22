@@ -7,11 +7,10 @@
 initial_setup(patch = "D:/model/rSTEMMUS_SCOPE/")
 }
 \arguments{
-\item{patch}{the path to the STEMMUS_SCOPE downloaded, example:"D:/models/rSTEMMUS_SCOPE/".}
+\item{patch}{the path to the STEMMUS_SCOPE downloaded, example:\code{"D:/models/rSTEMMUS_SCOPE/"}.}
 }
 \value{
-It return a message "done!". it will show the main path to run all the functions.
-directory/output/simulation_name
+It return a message that shows the main path to run all the functions.
 }
 \description{
 \code{initial_setup} create the file structure with the MATLAB codes and inputs in a directory of choice.

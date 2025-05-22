@@ -7,7 +7,7 @@
 #' This is a function show examples of typical input values ranges, parameters units, sensitivity of some
 #' parameters per IBGP landcover class, among other information.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default ```"D:/model/rSTEMMUS_SCOPE/"```,
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @return a table with information about SCOPE parameters
 #' @family information about parameters and settings
@@ -244,7 +244,7 @@ ModelSettings <- data.frame(
                     "number of soil types",
                     "time and domain information setting, desirable number of iterations in a time step",
                     "time and domain information setting, number of time steps",
-                    "determination of NL, the number of elments"
+                    "determination of NL, the number of elements"
                     ))
 
 return(ModelSettings)

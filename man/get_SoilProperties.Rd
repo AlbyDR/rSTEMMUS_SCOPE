@@ -12,7 +12,7 @@ get_SoilProperties(
 )
 }
 \arguments{
-\item{patch}{the patch to the raster files, default "D:/model/rSTEMMUS_SCOPE/input/SoilProperty/",}
+\item{patch}{the patch to the raster files, default \code{"D:/model/rSTEMMUS_SCOPE/input/SoilProperty/"},}
 
 \item{lat, lon}{the latitude and longitude of the point of interest,}
 
@@ -26,9 +26,9 @@ returns list with all soil properties required
 }
 \details{
 This is a function to prepare the soil properties to run the set_static_inputs function by
-extracting soil properties from raster ../input/SoilProperty/ folder using
-coordinates (+proj=longlat +datum=WGS8).
-\strong{important} the folder ../inputs_for_input/SoilProperty/ with the global data files need to be downloaded.
+extracting soil properties from raster \verb{../input/SoilProperty/} folder using
+coordinates \code{+proj=longlat +datum=WGS8}.
+\strong{important} the folder \verb{../inputs_for_input/SoilProperty/} with the global data files need to be downloaded.
 }
 \examples{
 \dontrun{

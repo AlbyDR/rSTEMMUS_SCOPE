@@ -12,14 +12,14 @@ run_inMATLAB(
 )
 }
 \arguments{
-\item{patch}{the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",}
+\item{patch}{the patch to the STEMMUS_SCOPE model directory, default \code{"D:/model/rSTEMMUS_SCOPE/"},}
 
 \item{site_name, run_name}{the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,}
 
 \item{cores}{set 1,2,4,6,8 cores for ech run \strong{experimental}}
 }
 \value{
-run the model in MATLAB that will return the resuls in the folder ~/output/site_name_run_name_time/
+run the model in MATLAB that will return the resuls in the folder \verb{~/output/site_name_run_name_time/}
 }
 \description{
 \code{run_inMATLAB} opens the MATLAB, run the model and close it when is done

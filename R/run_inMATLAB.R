@@ -9,10 +9,10 @@
 #' @seealso [new_run())],  @seealso [input_constants())],  @seealso [input_timeseries()] be previously ran
 #' with the same site_name and run_name
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default ```"D:/model/rSTEMMUS_SCOPE/"```,
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @param cores set 1,2,4,6,8 cores for ech run **experimental**
-#' @return run the model in MATLAB that will return the resuls in the folder ~/output/site_name_run_name_time/
+#' @return run the model in MATLAB that will return the resuls in the folder ```~/output/site_name_run_name_time/```
 #'
 #' @examples
 #' \dontrun{

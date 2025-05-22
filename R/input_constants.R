@@ -8,7 +8,7 @@
 #' **important** the result of the get_SoilProperty needs to be informed,
 #' otherwise all the soil properties need to be included manually.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default ```"D:/model/rSTEMMUS_SCOPE/"```,
 #' @param site_name,run_name,Simulation_Name the name of the location and the name of run. The second can be used to name runs with different model parameters or settings,
 #' @param LAT,LON,elevation the latitude, longitude and elevation of the point of interest,
 #' @param IGBP_veg_long the main IGBP landcover class in the point of interest,

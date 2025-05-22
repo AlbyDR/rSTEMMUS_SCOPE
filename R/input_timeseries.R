@@ -8,7 +8,7 @@
 #' **important** @seealso [info_SCOPE_README()] to more information about which inputs are required or optional,
 #' also the units must be used.
 #'
-#' @param patch the patch to the STEMMUS_SCOPE model directory, default "D:/model/rSTEMMUS_SCOPE/",
+#' @param patch the patch to the STEMMUS_SCOPE model directory, default ```"D:/model/rSTEMMUS_SCOPE/"```,
 #' @param site_name,run_name the name of the location and the name of run. The last can be used to name runs with different model parameters or settings,
 #' @param data_frame if all data input are into one data.frame with column names (t_, Ta_, RH_, u_, p_, rain_, Rin_, Rli_, LAI_, CO2_, ea_)
 #' @param t_file required

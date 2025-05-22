@@ -22,7 +22,7 @@ MATLAB R2015b or superior is required to run STEMMUS_SCOPE, and the MATLAB codes
 
 **directory structure**
 
-After run ```initial_setup(path = "D:/model/rSTEMMUS_SCOPE/")```, the following structure should be created.
+After run ```initial_setup(patch = "D:/model/rSTEMMUS_SCOPE/")```, the following structure should be created.
 
 ```
 D:/model/rSTEMMUS_SCOPE/

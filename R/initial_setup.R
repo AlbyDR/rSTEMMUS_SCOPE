@@ -30,19 +30,19 @@ initial_setup <- function(patch = "D:/model/rSTEMMUS_SCOPE/"
 # download a .zip file of the repository
 # from the "Clone or download - Download ZIP" button
 # on the GitHub repository of interest
-utils::download.file(url = "https://github.com/AlbyDR/rSTEMMUS.SCOPE/archive/master.zip",
+utils::download.file(url = "https://github.com/EcoExtreML/rSTEMMUS_SCOPE/archive/master.zip",
               destfile = paste0(patch, "master.zip"))
 # unzip the .zip file
 utils::unzip(paste0(patch, "master.zip"), exdir = patch)
 unlink(paste0(patch, "master.zip"), recursive = TRUE)
 
-files_rSTEMMUS_SCOPE <- list.files(paste0(patch, "rSTEMMUS.SCOPE-master/rSTEMMUS_SCOPE/"),
+files_rSTEMMUS_SCOPE <- list.files(paste0(patch, "rSTEMMUS_SCOPE-master/rSTEMMUS_SCOPE/"),
                                    full.names = TRUE, recursive = TRUE)
 
 filesstrings::file.move(files_rSTEMMUS_SCOPE, patch)
 
 # delete a directory -- must add recursive = TRUE
-unlink(paste0(patch, "rSTEMMUS.SCOPE-master"), recursive = TRUE)
+unlink(paste0(patch, "rSTEMMUS_SCOPE-master"), recursive = TRUE)
 
 utils::unzip(paste0(patch, "src.zip"), exdir = patch)
 unlink(paste0(patch, "src.zip"), recursive = TRUE)

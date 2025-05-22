@@ -1,4 +1,4 @@
-Package: rSTEMMUS_SCOPE
+Package: rSTEMMUSSCOPE
 Type: Package
 Title: Run STEMMUS-SCOPE model through R
 Version: 0.1.0

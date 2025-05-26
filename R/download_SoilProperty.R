@@ -28,7 +28,7 @@ download_SoilProperty <- function(patch = "D:/model/rSTEMMUS_SCOPE/",
   # download a .zip file of the Zenodo repository
   zen4R::download_zenodo(doi,
                          path = paste0(patch, "input/"),
-                         timeout = 1000,
+                         timeout = timeout,
                          files = list("SoilProperty.zip"))
 
   utils::unzip(paste0(patch, "input/","SoilProperty.zip"), exdir = paste0(patch, "input/"))
